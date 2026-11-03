@@ -1,0 +1,1330 @@
+% ============================================================
+%  tikz-chemlab.tex
+%  化学实验器材 TikZ 绘图包 - 主实现 (参数系统 + 高级命令)
+%  原作者 : D. Girou / C. Jorsen / M. Luque / H. Voss
+%  TikZ 改写 : Aihua Wang(王爱华) (原 PSTricks 包 pst-labo)
+% ============================================================
+%
+%  依赖 :
+%    \usepackage{tikz}
+%    \usetikzlibrary{arrows.meta,calc,patterns,patterns.meta,shadings}
+%    \input{tikz-chemlabObj}    % 形状宏库 (必须先加载)
+%    \input{tikz-chemlab}       % 本文件
+%
+%  使用示例 :
+%    \begin{tikzpicture}
+%       \tkzTestTube[glassType=beaker,liquidLevel1=50]
+%    \end{tikzpicture}
+%
+%  参数键 (与原 pst-labo 兼容, 通过 pgfkeys 传入) :
+%    burette, pHMeter, buretteColor, buretteLevel,
+%    buretteReagent, beakerReagent, reagentColor, reagentLevel,
+%    DistillateColor, MixtureStyle,
+%    stopper, straightTube, elbowTube, uTube, uTubeLong,
+%    curvedTube, curvedTubeShort, DoubleTube, condenserBulbs,
+%    clamp, bubbling, gasCollection, tubeOnly, gasTubeStraight,
+%    bunsenBurner, Number, label, magneticStirrer,
+%    tiltAngle, liquidLevel1, liquidLevel2, liquidLevel3,
+%    liquidStyle1, liquidStyle2, liquidStyle3,
+%    substance, solid, glassType, TapOpen
+%
+%  glassType 取值 : tube / roundFlask / beaker / erlenmeyer / reagentBottle / volumetricFlask / watchGlass
+% ============================================================
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesFile{tikz-chemlab.tex}[2026/08/03 v1.0.0]
+
+% --- 文档类检测 ----------------------------------------------
+% standalone 会裁剪到 \useasboundingbox, article/book 不会
+% 用于在 \tkzHeatFlask 中选择 bbox 策略
+\@ifclassloaded{standalone}{\def\chemlab@isstandalone{T}}{\def\chemlab@isstandalone{F}}
+
+% --- 全局 xshift 累加器 (用于多个 \tkzHeatFlask/\tkzRoundFlask 自动推进原点) ---
+\newdimen\chemlab@xshift
+\chemlab@xshift=0pt
+% --- 首次调用标志 (用于在首个 \tkzHeatFlask 设置全局 clip) ---
+\newif\ifchemlab@firstcall
+\chemlab@firstcalltrue
+
+% --- 依赖加载 ------------------------------------------------
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns,patterns.meta,shadings,decorations.pathmorphing,decorations.pathreplacing}
+\@input{tikz-chemlabObj.tex}
+
+% --- 每个 tikzpicture 开始时自动重置 xshift 和 firstcall ---
+% 这样用户无需手动调用 \chemlabresetxshift
+\tikzset{every picture/.append style={execute at begin picture={%
+  \chemlab@xshift=0pt\chemlab@firstcalltrue%
+}}}
+
+% --- 颜色 (原 pst-labo.tex 中定义, 与 Obj 文件中的部分重复此处保留以覆盖) ---
+\definecolor{Beige}{cmyk}{0,0,0.1,0.04}
+\definecolor{LightGray}{cmyk}{0,0,0,0.2}
+\definecolor{VeryLightGray}{cmyk}{0,0,0,0.1}
+\definecolor{VeryPaleOrange}{cmyk}{0,0.1,0.3,0}
+\definecolor{PaleOrange}{cmyk}{0,0.2,0.4,0}
+\definecolor{LightBlue1}{cmyk}{0.2,0,0,0}
+\definecolor{LightBlue}{cmyk}{0.22,0.05,0,0.1}
+\definecolor{Copper}{cmyk}{0,0.9,0.9,0.2}
+\definecolor{Brown}{cmyk}{0,0.3,0.5,.3}
+
+% --- 样式 (对应原 \newpsstyle) --------------------------------
+% 使用 \tikzset 定义命名样式; 调用 : \fill[liquidStyle1] ...
+\tikzset{
+  liquidStyle1/.style={fill=cyan,draw=none},
+  liquidStyle2/.style={fill=yellow,draw=none},
+  liquidStyle3/.style={fill=magenta,draw=none},
+  Ball3D/.style={shading=ball,ball color=cyan,draw=none},
+  Champagne/.style={fill=Beige,draw=none},
+  Blood/.style={fill=red,draw=none},
+  Cobalt/.style={fill=blue,line width=0.2cm},
+  Oil/.style={fill=yellow,draw=none},
+  Vinegar/.style={fill=magenta,draw=none},
+  % pst-labo Diffusion: gradbegin=rgb(0,0.1,0.95), gradend=cyan, gradmidpoint=0
+  % gradmidpoint=0: 渐变中点在底部, 大部分区域为 cyan, 底部为 blue
+  Diffusion/.style={bottom color={rgb,255:red,0;green,25;blue,242},top color=cyan,draw=none},
+  MixtureDiffusion2/.style={bottom color=white,top color=red,draw=red},
+  flameAndGrill/.style={bottom color=PaleOrange,top color=yellow,draw=none},
+  YellowStripes/.style={pattern=north east lines,pattern color=yellow},
+  BlueDiffusion/.style={bottom color=green,top color=cyan,draw=none},
+  % 分液漏斗两相液体 (对应 pst-labo \newpsstyle{AqueousPhase}/{OrganicPhase})
+  % 颜色定义在 tikz-chemlabObj.tex: AqueousPhaseColor / OrganicPhaseColor
+  AqueousPhase/.style={fill=AqueousPhaseColor,draw=none},
+  OrganicPhase/.style={fill=OrganicPhaseColor,draw=none},
+  % 额外 : 液体通用填充
+  tkz liquid/.style={draw=none},
+}
+
+% --- 布尔标志 (\newif) ----------------------------------------
+\newif\ifTkzBurette
+\newif\ifTkzTitrationPHMeter
+\newif\ifTkzTestTubeStopper
+\newif\ifTkzTestTubeStraightTube
+\newif\ifTkzTestTubeElbowTube
+\newif\ifTkzTestTubeUTube
+\newif\ifTkzTestTubeUTubeLong
+\newif\ifTkzTestTubeCurvedTube
+\newif\ifTkzTestTubeCurvedTubeShort
+\newif\ifTkzTestTubeDoubleTube
+\newif\ifTkzTestTubeCondenserBulbs
+\newif\ifTkzTestTubeClamp
+\newif\ifTkzBubbling
+\newif\ifTkzGasCollection
+\newif\ifTkzTubeOnly
+\newif\ifTkzGasTubeStraight
+\newif\ifTkzBunsenBurner
+\newif\ifTkzLabel
+\newif\ifTkzMagneticStirrer
+\newif\ifTkzTapOpen            % (用于 \tkzSeparatoryFunnel)
+
+% --- 参数存储宏 ----------------------------------------------
+\def\tkzTiltAngle{0}
+\def\tkzLiquidLevelI{50}
+\def\tkzLiquidLevelII{0}
+\def\tkzLiquidLevelIII{0}
+\def\tkzLiquidStyleI{liquidStyle1}
+\def\tkzLiquidStyleII{liquidStyle2}
+\def\tkzLiquidStyleIII{liquidStyle3}
+\def\tkzSubstance{}
+\def\tkzSolid{}
+\def\tkzNumber{}
+\def\tkzGlassType{0}          % 0..6
+\def\tkzGlassTypeName{tube}   % 字符串名称 (供嵌套调用传递)
+\def\tkzBuretteColor{VeryPaleOrange}
+\def\tkzBuretteLevel{20}
+\def\tkzBuretteReagent{}
+\def\tkzBeakerReagent{}
+\def\tkzReagentColor{PaleOrange}
+\def\tkzReagentLevel{2}
+\def\tkzDistillateColor{yellow}
+\def\tkzMixtureStyle{BlueDiffusion}
+
+% --- glassType 字符串 -> 数字 --------------------------------
+\newcommand{\tkzGlassTypeLookup}[1]{%
+  \ifnum\pdfstrcmp{#1}{tube}=0 0\else
+  \ifnum\pdfstrcmp{#1}{roundFlask}=0 1\else
+  \ifnum\pdfstrcmp{#1}{beaker}=0 2\else
+  \ifnum\pdfstrcmp{#1}{erlenmeyer}=0 3\else
+  \ifnum\pdfstrcmp{#1}{reagentBottle}=0 4\else
+  \ifnum\pdfstrcmp{#1}{volumetricFlask}=0 5\else
+  \ifnum\pdfstrcmp{#1}{watchGlass}=0 6\else
+  0\fi\fi\fi\fi\fi\fi\fi
+}
+
+% --- 线条粗细变量 (全局, 可由用户通过 \chemlabset 修改) ---
+% 四类线宽可独立控制:
+%   \chemlabLineWidth            - 主轮廓线 (玻璃器皿外壁)
+%   \chemlabEllipseLineWidth     - 瓶口椭圆 (erlenmeyer/reagentBottle/倒置试管, 略粗)
+%   \chemlabTubeEllipseLineWidth - 试管口椭圆 (更粗, 原 pst-labo 用 0.08cm)
+%   \chemlabGraduationLineWidth  - 刻度线 (较细)
+% 默认值与原 pst-labo 完全一致 (在 unit=1cm 时)
+% 注: 与 pst-labo 一致, 线宽会自动按当前 tikz scale 缩放
+%     (例如 scale=0.5 时, 实际线宽 = 基础线宽 × 0.5)
+\def\chemlabBaseLineWidth{0.053cm}
+\def\chemlabBaseEllipseLineWidth{0.07cm}
+\def\chemlabBaseTubeEllipseLineWidth{0.08cm}
+\def\chemlabBaseGraduationLineWidth{0.02cm}
+
+% \chemlab@scaleLength{<基础长度>} - 返回按当前 tikz 缩放因子缩放后的长度
+% 用于线宽跟随 scale=N 自动缩放, 与 pst-labo 的 unit=Ncm 行为一致
+% 实现: 在每条 \draw 之前由 \chemlabUpdateLineWidths 把缩放后的长度
+% 存入 dimen 寄存器, 绘制时直接使用寄存器
+\newdimen\chemlabLineWidth
+\newdimen\chemlabEllipseLineWidth
+\newdimen\chemlabTubeEllipseLineWidth
+\newdimen\chemlabGraduationLineWidth
+\edef\chemlab@aa{1}\edef\chemlab@bb{0}\edef\chemlab@cc{0}\edef\chemlab@dd{1}\edef\chemlab@xx{0}\edef\chemlab@yy{0}
+\newcommand{\chemlabUpdateLineWidths}{%
+  \pgfgettransformentries{\chemlab@aa}{\chemlab@bb}{\chemlab@cc}{\chemlab@dd}{\chemlab@xx}{\chemlab@yy}%
+  \pgfmathsetlength{\chemlabLineWidth}{\chemlabBaseLineWidth * (\chemlab@aa + \chemlab@dd) / 2}%
+  \pgfmathsetlength{\chemlabEllipseLineWidth}{\chemlabBaseEllipseLineWidth * (\chemlab@aa + \chemlab@dd) / 2}%
+  \pgfmathsetlength{\chemlabTubeEllipseLineWidth}{\chemlabBaseTubeEllipseLineWidth * (\chemlab@aa + \chemlab@dd) / 2}%
+  \pgfmathsetlength{\chemlabGraduationLineWidth}{\chemlabBaseGraduationLineWidth * (\chemlab@aa + \chemlab@dd) / 2}%
+}
+% 默认值 (未调用 UpdateLineWidths 时的回退)
+\chemlabLineWidth=0.053cm
+\chemlabEllipseLineWidth=0.07cm
+\chemlabTubeEllipseLineWidth=0.08cm
+\chemlabGraduationLineWidth=0.02cm
+
+% --- 火焰参数 (全局, 可由用户通过 \chemlabset 修改) ---
+% 颜色 (默认与原 pst-labo 一致)
+\def\chemlabFlameOuterColor{PaleOrange}   % 外焰起始色 (inner color)
+\def\chemlabFlameOuterEndColor{yellow}    % 外焰结束色 (outer color)
+\def\chemlabFlameInnerColor{cyan}         % 内焰起始色 (inner color)
+\def\chemlabFlameInnerEndColor{white}     % 内焰结束色 (outer color)
+% 大小 (默认与原 pst-labo 一致)
+% 火焰缩放因子: 1.0=原版大小, 0.5=半高, 2.0=双高
+\def\chemlabFlameScale{1.0}
+
+% 线条粗细关键字 -> 数值转换 (对应 TikZ 标准)
+% thin=0.4pt, semithick=0.6pt, thick=0.8pt, very thick=1.2pt, ultra thick=1.6pt
+% 用法: \chemlab@resolveLineWidth{<关键字或数值>}{<目标宏>}
+% 结果: 将解析后的数值存入 <目标宏>
+\def\chemlab@thin{thin}
+\def\chemlab@semithick{semithick}
+\def\chemlab@thick{thick}
+\def\chemlab@verythick{very thick}
+\def\chemlab@ultrathick{ultra thick}
+\newcommand{\chemlab@resolveLineWidth}[2]{%
+  \def\chemlab@tmp{#1}%
+  \ifx\chemlab@tmp\chemlab@thin          \def#2{0.4pt}%
+  \else\ifx\chemlab@tmp\chemlab@semithick \def#2{0.6pt}%
+  \else\ifx\chemlab@tmp\chemlab@thick     \def#2{0.8pt}%
+  \else\ifx\chemlab@tmp\chemlab@verythick \def#2{1.2pt}%
+  \else\ifx\chemlab@tmp\chemlab@ultrathick\def#2{1.6pt}%
+  \else  % 直接当作数值 (如 0.04cm, 1pt)
+    \def#2{#1}%
+  \fi\fi\fi\fi\fi
+}
+
+% 三个独立设置器 (供 pgfkeys 调用)
+\newcommand{\chemlabSetOutlineWidth}[1]{\chemlab@resolveLineWidth{#1}{\chemlabBaseLineWidth}}
+\newcommand{\chemlabSetEllipseWidth}[1]{\chemlab@resolveLineWidth{#1}{\chemlabBaseEllipseLineWidth}}
+\newcommand{\chemlabSetGraduationWidth}[1]{\chemlab@resolveLineWidth{#1}{\chemlabBaseGraduationLineWidth}}
+\newcommand{\chemlabSetTubeEllipseWidth}[1]{\chemlab@resolveLineWidth{#1}{\chemlabBaseTubeEllipseLineWidth}}
+
+% 同时设置四类线宽的快捷方式
+\newcommand{\chemlabSetAllLineWidth}[1]{%
+  \chemlab@resolveLineWidth{#1}{\chemlabBaseLineWidth}%
+  \chemlab@resolveLineWidth{#1}{\chemlabBaseEllipseLineWidth}%
+  \chemlab@resolveLineWidth{#1}{\chemlabBaseTubeEllipseLineWidth}%
+  \chemlab@resolveLineWidth{#1}{\chemlabBaseGraduationLineWidth}%
+}
+
+% ===== 预设样式 (一键设置四类线宽) =====
+% 通过 \chemlabset{style=publication} 等使用
+% 预设说明 (数值单位 pt, 1pt ≈ 0.0353cm) :
+%   default      - 原 pst-labo 默认 (轮廓 1.508pt, 椭圆 1.984pt, 试管椭圆 2.268pt, 刻度 0.567pt)
+%   publication  - 出版级 (细线, 适合印刷) : 轮廓 thin, 椭圆 semithick, 试管椭圆 thick, 刻度 thin
+%   presentation- 演示级 (粗线, 适合投影) : 轮廓 thick, 椭圆 very thick, 试管椭圆 ultra thick, 刻度 semithick
+%   schematic    - 示意图 (中等, 平衡)   : 轮廓 semithick, 椭圆 thick, 试管椭圆 very thick, 刻度 thin
+%   draft        - 草稿 (极细, 快速预览) : 全部 thin
+%   bold         - 加粗 (高对比)         : 轮廓 very thick, 椭圆 ultra thick, 试管椭圆 ultra thick, 刻度 thick
+\def\chemlab@style@default{default}
+\def\chemlab@style@publication{publication}
+\def\chemlab@style@presentation{presentation}
+\def\chemlab@style@schematic{schematic}
+\def\chemlab@style@draft{draft}
+\def\chemlab@style@bold{bold}
+\newcommand{\chemlabSetStyle}[1]{%
+  \def\chemlab@styletmp{#1}%
+  \ifx\chemlab@styletmp\chemlab@style@default
+    \def\chemlabBaseLineWidth{0.053cm}\def\chemlabBaseEllipseLineWidth{0.07cm}\def\chemlabBaseTubeEllipseLineWidth{0.08cm}\def\chemlabBaseGraduationLineWidth{0.02cm}%
+  \else\ifx\chemlab@styletmp\chemlab@style@publication
+    \def\chemlabBaseLineWidth{0.4pt}\def\chemlabBaseEllipseLineWidth{0.6pt}\def\chemlabBaseTubeEllipseLineWidth{0.8pt}\def\chemlabBaseGraduationLineWidth{0.4pt}%
+  \else\ifx\chemlab@styletmp\chemlab@style@presentation
+    \def\chemlabBaseLineWidth{0.8pt}\def\chemlabBaseEllipseLineWidth{1.2pt}\def\chemlabBaseTubeEllipseLineWidth{1.6pt}\def\chemlabBaseGraduationLineWidth{0.6pt}%
+  \else\ifx\chemlab@styletmp\chemlab@style@schematic
+    \def\chemlabBaseLineWidth{0.6pt}\def\chemlabBaseEllipseLineWidth{0.8pt}\def\chemlabBaseTubeEllipseLineWidth{1.2pt}\def\chemlabBaseGraduationLineWidth{0.4pt}%
+  \else\ifx\chemlab@styletmp\chemlab@style@draft
+    \def\chemlabBaseLineWidth{0.4pt}\def\chemlabBaseEllipseLineWidth{0.4pt}\def\chemlabBaseTubeEllipseLineWidth{0.4pt}\def\chemlabBaseGraduationLineWidth{0.4pt}%
+  \else\ifx\chemlab@styletmp\chemlab@style@bold
+    \def\chemlabBaseLineWidth{1.2pt}\def\chemlabBaseEllipseLineWidth{1.6pt}\def\chemlabBaseTubeEllipseLineWidth{1.6pt}\def\chemlabBaseGraduationLineWidth{0.8pt}%
+  \else
+    \typeout{tikz-chemlab: unknown style `#1'. Available: default, publication, presentation, schematic, draft, bold.}%
+  \fi\fi\fi\fi\fi\fi
+}
+
+% 用户接口: \chemlabset{line width=thick} 或 \chemlabset{outline line width=thick, ellipse line width=0.1cm}
+% 或 \chemlabset{style=publication}
+\newcommand{\chemlabset}[1]{\pgfkeys{/tikz-chemlab/.cd, #1}}
+
+% --- pgfkeys 参数族 ------------------------------------------
+\pgfkeys{
+  /tikz-chemlab/.cd,
+  % ===== 线条粗细控制 (全局, 三类可独立设置) =====
+  % line width / linewidth : 同时设置三类线宽 (轮廓+椭圆+刻度)
+  % 可设为: thin / semithick / thick / very thick / ultra thick
+  % 或直接给数值 (如 0.04cm, 1pt 等)
+  line width/.code={\chemlabSetAllLineWidth{#1}},
+  linewidth/.code={\chemlabSetAllLineWidth{#1}},
+  % outline line width : 仅设置主轮廓线
+  outline line width/.code={\chemlabSetOutlineWidth{#1}},
+  outline width/.code={\chemlabSetOutlineWidth{#1}},
+  % ellipse line width : 仅设置瓶口椭圆 (erlenmeyer/reagentBottle/倒置试管)
+  ellipse line width/.code={\chemlabSetEllipseWidth{#1}},
+  ellipse width/.code={\chemlabSetEllipseWidth{#1}},
+  % tube ellipse line width : 仅设置试管口椭圆 (原 pst-labo 用 0.08cm, 比其他椭圆粗)
+  tube ellipse line width/.code={\chemlabSetTubeEllipseWidth{#1}},
+  tube ellipse width/.code={\chemlabSetTubeEllipseWidth{#1}},
+  % graduation line width : 仅设置刻度线
+  graduation line width/.code={\chemlabSetGraduationWidth{#1}},
+  graduation width/.code={\chemlabSetGraduationWidth{#1}},
+  % style : 预设样式 (一键设置三类线宽)
+  % 可选: default / publication / presentation / schematic / draft / bold
+  style/.code={\chemlabSetStyle{#1}},
+  % ===== 火焰参数 (本生灯) =====
+  % 颜色: 可用任意 TikZ 颜色名 (如 cyan, yellow, red, PaleOrange 等)
+  flame outer color/.store in=\chemlabFlameOuterColor,
+  flame outer end color/.store in=\chemlabFlameOuterEndColor,
+  flame inner color/.store in=\chemlabFlameInnerColor,
+  flame inner end color/.store in=\chemlabFlameInnerEndColor,
+  % 大小: 缩放因子 (1.0=原版, 0.5=半高, 2.0=双高)
+  flame scale/.store in=\chemlabFlameScale,
+  burette/.is if=TkzBurette,
+  pHMeter/.is if=TkzTitrationPHMeter,
+  stopper/.is if=TkzTestTubeStopper,
+  straightTube/.is if=TkzTestTubeStraightTube,
+  elbowTube/.is if=TkzTestTubeElbowTube,
+  uTube/.is if=TkzTestTubeUTube,
+  uTubeLong/.is if=TkzTestTubeUTubeLong,
+  curvedTube/.is if=TkzTestTubeCurvedTube,
+  curvedTubeShort/.is if=TkzTestTubeCurvedTubeShort,
+  doubleTube/.is if=TkzTestTubeDoubleTube,
+  condenserBulbs/.is if=TkzTestTubeCondenserBulbs,
+  clamp/.is if=TkzTestTubeClamp,
+  noDefaults/.is if=chemlab@noDefaults,
+  bubbling/.is if=TkzBubbling,
+  gasCollection/.is if=TkzGasCollection,
+  tubeOnly/.is if=TkzTubeOnly,
+  gasTubeStraight/.is if=TkzGasTubeStraight,
+  bunsenBurner/.is if=TkzBunsenBurner,
+  label/.is if=TkzLabel,
+  magneticStirrer/.is if=TkzMagneticStirrer,
+  TapOpen/.is if=TkzTapOpen,
+  tiltAngle/.store in=\tkzTiltAngle,
+  liquidLevel1/.store in=\tkzLiquidLevelI,
+  liquidLevel2/.store in=\tkzLiquidLevelII,
+  liquidLevel3/.store in=\tkzLiquidLevelIII,
+  liquidStyle1/.store in=\tkzLiquidStyleI,
+  liquidStyle2/.store in=\tkzLiquidStyleII,
+  liquidStyle3/.store in=\tkzLiquidStyleIII,
+  substance/.store in=\tkzSubstance,
+  solid/.store in=\tkzSolid,
+  Number/.store in=\tkzNumber,
+  glassType/.code={\edef\tkzGlassType{\tkzGlassTypeLookup{#1}}\def\tkzGlassTypeName{#1}},
+  buretteColor/.store in=\tkzBuretteColor,
+  buretteLevel/.store in=\tkzBuretteLevel,
+  buretteReagent/.store in=\tkzBuretteReagent,
+  beakerReagent/.store in=\tkzBeakerReagent,
+  reagentColor/.store in=\tkzReagentColor,
+  reagentLevel/.store in=\tkzReagentLevel,
+  DistillateColor/.store in=\tkzDistillateColor,
+  MixtureStyle/.store in=\tkzMixtureStyle,
+}
+
+% --- 默认值 (对应原 \psset[pst-labo]{...}) -------------------
+\newcommand{\tikzchemlabdefaults}{%
+  \TkzBurettetrue
+  \TkzTitrationPHMeterfalse
+  \TkzTestTubeStopperfalse
+  \TkzTestTubeStraightTubefalse
+  \TkzTestTubeElbowTubefalse
+  \TkzTestTubeUTubefalse
+  \TkzTestTubeUTubeLongfalse
+  \TkzTestTubeCurvedTubefalse
+  \TkzTestTubeCurvedTubeShortfalse
+  \TkzTestTubeDoubleTubefalse
+  \TkzTestTubeCondenserBulbsfalse
+  \TkzTestTubeClampfalse
+  \TkzBubblingfalse
+  \TkzGasCollectionfalse
+  \TkzTubeOnlyfalse
+  \TkzGasTubeStraightfalse
+  \TkzBunsenBurnertrue
+  \TkzLabelfalse
+  \TkzMagneticStirrertrue
+  \TkzTapOpenfalse
+  \def\tkzTiltAngle{0}%
+  \def\tkzLiquidLevelI{50}%
+  \def\tkzLiquidLevelII{0}%
+  \def\tkzLiquidLevelIII{0}%
+  \def\tkzLiquidStyleI{liquidStyle1}%
+  \def\tkzLiquidStyleII{liquidStyle2}%
+  \def\tkzLiquidStyleIII{liquidStyle3}%
+  \def\tkzSubstance{}%
+  \def\tkzSolid{}%
+  \def\tkzNumber{}%
+  \def\tkzGlassType{0}%
+  \def\tkzGlassTypeName{tube}%
+  \def\tkzBuretteColor{VeryPaleOrange}%
+  \def\tkzBuretteLevel{20}%
+  \def\tkzBuretteReagent{}%
+  \def\tkzBeakerReagent{}%
+  \def\tkzReagentColor{PaleOrange}%
+  \def\tkzReagentLevel{2}%
+  \def\tkzDistillateColor{yellow}%
+  \def\tkzMixtureStyle{BlueDiffusion}%
+}
+
+% ============================================================
+% 玻璃器皿路径版本 (供 \clip 使用, 不带 \draw/\fill)
+% ============================================================
+
+% 滴定管路径 (burette corps)
+\newcommand{\tkzBuretteBodyPath}{%
+  (-0.5,11.5) -- (-0.25,11) -- (-0.25,3) -- (0,2.75) -- (0,0.5)
+  -- (0.2,0.7) -- (0.2,2.75) -- (0.5,3) -- (0.5,11) -- (0.75,11.5) -- cycle
+}
+
+% 移液管路径 (pipette corps + 液滴)
+\newcommand{\tkzPipetteBodyPath}{%
+  (-0.05,0) -- (-0.15,0.2) -- (-0.15,6)
+  -- (0.15,6) -- (0.15,0.2) -- (0.05,0) -- cycle
+  (0,0) .. controls (0.25,-.4) and (-.25,-.4) .. (0,0)
+}
+
+% 试管路径 (TubeEssais corps)
+\newcommand{\tkzTestTubeBodyPath}{%
+  (-0.5,3.5) -- (-0.5,0.5)
+  arc[start angle=180,end angle=360,radius=0.5]
+  -- (0.5,3.5) -- cycle
+}
+
+% 烧杯路径 (Becher corps) - 显式圆弧, 与 \tkzBeakerBody 一致
+\newcommand{\tkzBeakerBodyPath}{%
+  (-1,2.5) -- (-1,0.5)
+  -- ([shift={(-0.5,0.5)}]180:0.5) arc[start angle=180,end angle=270,radius=0.5]
+  -- (0.5,0)
+  -- ([shift={(0.5,0.5)}]270:0.5) arc[start angle=270,end angle=360,radius=0.5]
+  -- (1,2.5) -- cycle
+}
+
+% 锥形瓶路径 (Erlenmeyer corps) - 显式圆弧, 与 \tkzErlenmeyerBody 一致
+\newcommand{\tkzErlenmeyerBodyPath}{%
+  (-0.5,3.5) -- (-0.5,2.5)
+  -- (-1.3354,0.4114)
+  -- ([shift={(-1.0569,0.3)}]158.20:0.3) arc[start angle=158.20,end angle=270,radius=0.3]
+  -- (1.0569,0)
+  -- ([shift={(1.0569,0.3)}]-90:0.3) arc[start angle=-90,end angle=21.80,radius=0.3]
+  -- (0.5,2.5) -- (0.5,3.5) -- cycle
+}
+
+% 试剂瓶路径 (Flacon corps)
+\newcommand{\tkzReagentBottleBodyPath}{%
+  ([shift={(-0.6,3.4)}]90:0.1) arc[start angle=90,end angle=0,radius=0.1]
+  -- (-0.5,3.4) -- (-0.5,3.1)
+  -- ([shift={(-0.6,3.1)}]0:0.1) arc[start angle=0,end angle=-90,radius=0.1]
+  -- ([shift={(-0.6,2.6)}]90:0.4) arc[start angle=90,end angle=180,radius=0.4]
+  -- (-1,2.6) -- (-1,0.2)
+  -- ([shift={(-.8,0.2)}]180:0.2) arc[start angle=180,end angle=270,radius=0.2]
+  -- (-.8,0) -- (.8,0)
+  -- ([shift={(.8,0.2)}]-90:0.2) arc[start angle=-90,end angle=0,radius=0.2]
+  -- (1,0.2) -- (1,2.6)
+  -- ([shift={(0.6,2.6)}]0:0.4) arc[start angle=0,end angle=90,radius=0.4]
+  -- ([shift={(0.6,3.1)}]-90:0.1) arc[start angle=-90,end angle=-180,radius=0.1]
+  -- (0.5,3.1) -- (0.5,3.4)
+  -- ([shift={(0.6,3.4)}]180:0.1) arc[start angle=180,end angle=90,radius=0.1]
+  -- cycle
+}
+
+% 容量瓶路径 (FioleJauge)
+\newcommand{\tkzVolumetricFlaskPath}{%
+  (-0.21,3.5) -- (-0.1,3.5) -- (-0.1,1.5)
+  -- (-0.75,0) -- (0.75,0) -- (0.1,1.5) -- (0.1,3.5) -- (0.21,3.5) -- cycle
+}
+
+% 玻璃杯路径 (Verre corps)
+\newcommand{\tkzWatchGlassBodyPath}{%
+  (-1,3.5) -- (-0.5,1)
+  arc[start angle=180,end angle=360,radius=0.5]
+  -- (1,3.5) -- cycle
+}
+
+% 量筒路径 (Eprouvette corps)
+\newcommand{\tkzGraduatedCylinderBodyPath}{%
+  (-0.5,5) -- (-0.5,0) -- (0.5,0) -- (0.5,4.9) -- (0.6,4.93) -- cycle
+}
+
+% 统一调度 : 根据 \tkzGlassType 选择 clip 路径
+\newcommand{\tkzGlassClipPath}{%
+  \ifcase\tkzGlassType
+    \tkzTestTubeBodyPath%        0 tube
+  \or
+    \tkzRoundFlaskSimplePath%          1 roundFlask
+  \or
+    \tkzBeakerBodyPath%           2 beaker
+  \or
+    \tkzErlenmeyerBodyPath%            3 erlenmeyer
+  \or
+    \tkzReagentBottleBodyPath%           4 reagentBottle
+  \or
+    \tkzVolumetricFlaskPath%            5 volumetricFlask
+  \or
+    \tkzWatchGlassBodyPath%            6 watchGlass
+  \else
+    \tkzTestTubeBodyPath%
+  \fi
+}
+
+% 各 glassType 对应的 clip 圆角值 (与 \tkzGlassDraw 中各器皿的圆角保持一致,
+% 否则液体会溢出实际绘制的轮廓外)
+% 通过 \edef 预先展开为纯数字, 避免在 \clip[...] 选项中嵌套 \ifcase
+% 注 : beaker(2) 和 erlenmeyer(3) 的路径已用显式圆弧, 故此处用 0pt
+\newcommand{\tkzGlassClipOptions}{0pt}
+\newcommand{\tkzGlassClipOptionsSet}{%
+  \ifcase\tkzGlassType
+    \edef\tkzGlassClipOptions{0pt}%       0 tube
+  \or
+    \edef\tkzGlassClipOptions{0pt}%       1 roundFlask
+  \or
+    \edef\tkzGlassClipOptions{0pt}%       2 beaker (路径自带圆弧)
+  \or
+    \edef\tkzGlassClipOptions{0pt}%       3 erlenmeyer  (路径自带圆弧)
+  \or
+    \edef\tkzGlassClipOptions{0pt}%       4 reagentBottle
+  \or
+    \edef\tkzGlassClipOptions{0.1cm}%     5 volumetricFlask
+  \or
+    \edef\tkzGlassClipOptions{0pt}%       6 watchGlass
+  \else
+    \edef\tkzGlassClipOptions{0pt}%
+  \fi
+}
+
+% 统一调度 : 根据 \tkzGlassType 绘制对应玻璃器皿轮廓
+\newcommand{\tkzGlassDraw}{%
+  \ifcase\tkzGlassType
+    \tkzTestTubeBody%                                0 tube
+  \or
+    \tkzRoundFlaskSimple%                                   1 roundFlask
+  \or
+    \tkzBeakerBody\relax\tkzBeakerRim%              2 beaker
+  \or
+    \tkzErlenmeyerBody\relax\filldraw[fill=white,draw=black,line width=\chemlabEllipseLineWidth,line cap=round] (0,3.5) ellipse (0.6 and 0.1);% 3 erlenmeyer
+  \or
+    \tkzReagentBottleBody\relax\filldraw[fill=white,draw=black,line width=\chemlabEllipseLineWidth,line cap=round] (0,3.5) ellipse (0.6 and 0.1);% 4 reagentBottle
+  \or
+    \tkzVolumetricFlask%                                     5 volumetricFlask
+  \or
+    \tkzWatchGlassBody\relax\tkzWatchGlassBase%                  6 watchGlass
+  \fi
+}
+
+% ============================================================
+% 液体多边形 helper (对应 \pst@Eprouvette@Liquide / \pst@TubeEssais@Liquide)
+% ============================================================
+% 参数 : #1=niveau(0-100), #2=style, #3=angle, #4=液面比例高度(3 或 4.5)
+\newcommand{\tkzLiquidFill}[4]{%
+  \pgfmathsetmacro{\liquidY}{#4 * #1 / 100 * cos(#3)}%
+  \fill[#2] (-4,\liquidY) -- (-4,-1) -- (5,-1) -- (5,\liquidY) -- cycle;
+}
+
+% 试管液体 (高度 3)
+\newcommand{\tkzTestTubeLiquid}[3]{\tkzLiquidFill{#1}{#2}{#3}{3}}
+% 量筒液体 (高度 4.5)
+\newcommand{\tkzGraduatedCylinderLiquid}[3]{\tkzLiquidFill{#1}{#2}{#3}{4.5}}
+
+% ============================================================
+% 1. \tkzTitration  滴定装置
+% ============================================================
+\newcommand{\tkzTitration}[1][]{%
+  % 保存全局参数 (匹配 pst-labo \psset 的全局继承行为)
+  \edef\chemlab@savedGlassType{\tkzGlassType}%
+  \edef\chemlab@savedGlassTypeName{\tkzGlassTypeName}%
+  \edef\chemlab@savedLiquidLevelI{\tkzLiquidLevelI}%
+  \tikzchemlabdefaults
+  \pgfkeys{/tikz-chemlab/.cd, #1}%
+  % 恢复全局参数 (如果命令选项未指定)
+  \ifnum\tkzGlassType=0 \edef\tkzGlassType{\chemlab@savedGlassType}\edef\tkzGlassTypeName{\chemlab@savedGlassTypeName}\fi
+  \ifnum\tkzLiquidLevelI=50\edef\tkzLiquidLevelI{\chemlab@savedLiquidLevelI}\fi
+  % --- 方案 B 局部修复: 忠实复刻 pst-labo \tkzRoundFlask 的 fallback 行为 ---
+  % pst-labo.tex L478-522: \tkzTitration 内部调用 \tkzRoundFlask, 其 \ifcase\psk@glassType
+  %   0(tube)/1(roundFlask) -> \pst@roundFlask
+  %   2(beaker)         -> \pst@Becher@Corps
+  %   3(erlenmeyer)          -> \pst@Erlen@Corps
+  %   4(reagentBottle)         -> \pst@Flacon@Corps
+  %   5(volumetricFlask)/6(Verre)/未知 -> \pst@roundFlask (fallback, L485 注释 "roundFlask is default")
+  % tikz-chemlab 的 \tkzGlassDraw 对 glassType=0 画的是 \tkzTestTubeBody (试管),
+  % 与原版不一致. 此处仅在 \tkzTitration 内部把 tube/volumetricFlask/Verre/未知 重映射为 roundFlask,
+  % 使 \tkzGlassDraw/\tkzGlassClipPath 走 roundFlask 分支. 不影响其他命令.
+  \ifnum\tkzGlassType=0 \def\tkzGlassType{1}\def\tkzGlassTypeName{roundFlask}\fi
+  \ifnum\tkzGlassType=5 \def\tkzGlassType{1}\def\tkzGlassTypeName{roundFlask}\fi
+  \ifnum\tkzGlassType=6 \def\tkzGlassType{1}\def\tkzGlassTypeName{roundFlask}\fi
+  \ifnum\tkzGlassType>6 \def\tkzGlassType{1}\def\tkzGlassTypeName{roundFlask}\fi
+  \begin{scope}[xshift=\chemlab@xshift]
+    % 边界框
+    \ifTkzBurette
+      \ifTkzTitrationPHMeter
+        \useasboundingbox (-5,0) rectangle (3,16);
+      \else
+        \useasboundingbox (-2,0) rectangle (2,16);
+      \fi
+    \else
+      \ifTkzTitrationPHMeter
+        \useasboundingbox (-5,0) rectangle (3,5);
+      \else
+        \useasboundingbox (-2,0) rectangle (2,5);
+      \fi
+    \fi
+    % 烧瓶 + 液体 (匹配 pst-labo \rput(0,3.5){\tkzRoundFlask})
+    % pst-labo: \tkzRoundFlask 的 pspicture bbox = (-2,0)(2,4), 中心 (0,2)
+    % \rput(0,3.5) 使用 ref=c (中心对齐), 所以局部原点 (瓶底) 位于世界 (0, 3.5-2) = (0, 1.5)
+    % 锥形瓶底部 (y=0 local) 正好放在搅拌器台面上 (y=1.5 world)
+    \begin{scope}[shift={(0,1.5)}]
+      % 液体 (clip 到玻璃内部 ∩ 液体矩形)
+      \begin{scope}
+        \tkzGlassClipOptionsSet
+        \clip[rounded corners=\tkzGlassClipOptions] \tkzGlassClipPath;
+        \ifnum\tkzLiquidLevelI>0
+          \pgfmathsetmacro{\chemlab@liquidClipY}{3 * \tkzLiquidLevelI / 100 * cos(\tkzTiltAngle)}%
+          \clip (-4,-1.5) rectangle (5,\chemlab@liquidClipY);
+        \fi
+        \ifnum\tkzLiquidLevelI>0
+          \tkzTestTubeLiquid{\tkzLiquidLevelI}{\tkzLiquidStyleI}{\tkzTiltAngle}
+        \fi
+        \tkzSubstance
+        \tkzSolid
+      \end{scope}
+      % 玻璃器皿轮廓 (根据 glassType 选择: erlenmeyer/beaker/roundFlask 等)
+      \tkzGlassDraw
+    \end{scope}
+    % 滴定管 + 液体
+    \ifTkzBurette
+      \begin{scope}[shift={(0,4.5)}]
+        % 液体填充 (clip 到 burette 内部)
+        \begin{scope}
+          \clip \tkzBuretteBodyPath;
+          \pgfmathsetmacro{\buretteY}{\tkzBuretteLevel * 0.32 + 2.68}
+          \fill[\tkzBuretteColor] (-1,-1) rectangle (1,\buretteY);
+        \end{scope}
+        \tkzBuretteBody
+        \tkzBuretteStopcock
+        \tkzBuretteGraduation
+      \end{scope}
+    \fi
+    % pH 计
+    \ifTkzTitrationPHMeter
+      \begin{scope}[shift={(-3,0)}]\tkzTitrationPHMeter\end{scope}
+    \fi
+    % 搅拌子 + 支架
+    \ifTkzMagneticStirrer
+      \begin{scope}[shift={(0,1.5)}]\tkzTitrationStirBar\end{scope}
+      \begin{scope}[shift={(0,0)}]\tkzTitrationStand\end{scope}
+    \else
+      % pst-labo: \psset{linewidth=0.053}\psframe(-1.5,0)(1.5,1.5)
+      % linewidth=0.053 是用户单位 (×unit), 随 scale 缩放
+      \chemlabUpdateLineWidths
+      \draw[line width=\chemlabLineWidth] (-1.5,0) rectangle (1.5,1.5);
+    \fi
+    % 反应物标签
+    \ifTkzBurette
+      \node[anchor=west] at (2,11) {\tkzBuretteReagent};
+    \fi
+    \node[anchor=west] at (2,3.5) {\tkzBeakerReagent};
+  \end{scope}
+  % 自动推进原点 (匹配 pst-labo \pspicture 的布局宽度)
+  \ifTkzTitrationPHMeter
+    \advance\chemlab@xshift by 8cm %  width = 8
+  \else
+    \advance\chemlab@xshift by 4cm %  width = 4
+  \fi
+}
+
+% ============================================================
+% 2. \tkzPipette  移液管
+% ============================================================
+\newcommand{\tkzPipette}[1][]{%
+  \begingroup
+  \tikzchemlabdefaults
+  \pgfkeys{/tikz-chemlab/.cd, #1}%
+  \begin{scope}
+    \useasboundingbox (-1,-1) rectangle (1,6);
+    % 液体
+    \begin{scope}
+      \clip \tkzPipetteBodyPath;
+      \pgfmathsetmacro{\pipetteY}{\tkzReagentLevel / 2}
+      \fill[\tkzReagentColor] (-1,-2) rectangle (1,\pipetteY);
+    \end{scope}
+    \tkzPipetteBody
+    \tkzDrop
+  \end{scope}
+  \endgroup
+}
+
+% ============================================================
+% 3. \tkzLargePipette  大移液管
+% ============================================================
+\newcommand{\tkzLargePipette}[1][]{%
+  \begingroup
+  \tikzchemlabdefaults
+  \pgfkeys{/tikz-chemlab/.cd, #1}%
+  \begin{scope}
+    \useasboundingbox (-1,-1) rectangle (1,6);
+    % 注 : 原文 \pst@pipette 是已注释的代码, 此处使用 bigpipette 形状
+    \begin{scope}
+      % bigpipette 形状比较简单, 直接 clip 一个矩形区域近似
+      \clip (0,0) -- (0,1) -- (-0.23,2.5) -- (-0.23,22.5)
+            arc[start angle=-80,end angle=80,radius=0.45] -- cycle;
+      \pgfmathsetmacro{\pipetteY}{\tkzReagentLevel / 2}
+      \fill[\tkzReagentColor] (-1,-2) rectangle (1,\pipetteY);
+    \end{scope}
+    \tkzLargePipetteBody
+  \end{scope}
+  \endgroup
+}
+
+% ============================================================
+% 4. \tkzGraduatedCylinder  量筒
+% ============================================================
+\newcommand{\tkzGraduatedCylinder}[1][]{%
+  \begingroup
+  \tikzchemlabdefaults
+  \pgfkeys{/tikz-chemlab/.cd, #1}%
+  \begin{scope}
+    % 注: pst-labo 用 \pspicture(-2,0)(2,6) 设置 bbox 用于 \rput 放置, 但内容可超出 bbox
+    % 在 TikZ 中, useasboundingbox 会覆盖整个 picture 的 bbox, 不适合嵌套使用
+    % 因此这里不设 useasboundingbox, 让外层命令 (如 Figure 中的 pspicture) 控制 bbox
+    % standalone 编译单独的 \tkzGraduatedCylinder 时, 自动检测内容 bbox
+    % 液体 (clip 到量筒内部, 旋转 tiltAngle)
+    \begin{scope}[rotate=\tkzTiltAngle]
+      \begin{scope}
+        \clip \tkzGraduatedCylinderBodyPath;
+        \ifnum\tkzLiquidLevelI>0
+          \tkzGraduatedCylinderLiquid{\tkzLiquidLevelI}{\tkzLiquidStyleI}{\tkzTiltAngle}
+        \fi
+        \ifnum\tkzLiquidLevelII>0
+          \tkzGraduatedCylinderLiquid{\tkzLiquidLevelII}{\tkzLiquidStyleII}{\tkzTiltAngle}
+        \fi
+        \ifnum\tkzLiquidLevelIII>0
+          \tkzGraduatedCylinderLiquid{\tkzLiquidLevelIII}{\tkzLiquidStyleIII}{\tkzTiltAngle}
+        \fi
+        \tkzSubstance
+      \end{scope}
+      \tkzGraduatedCylinderBody
+      \tkzGraduatedCylinderBase
+      \tkzGraduatedCylinderGraduation
+      \begin{scope}[shift={(0,5)}]\tkzGraduatedCylinderRim\end{scope}
+    \end{scope}
+  \end{scope}
+  \endgroup
+}
+
+% ============================================================
+% 5. \tkzDistillation  蒸馏装置
+% ============================================================
+\newcommand{\tkzDistillation}[1][]{%
+  \begingroup
+  \tikzchemlabdefaults
+  \pgfkeys{/tikz-chemlab/.cd, #1}%
+  \begin{scope}
+    \useasboundingbox (-4,-10) rectangle (8,7);
+    \begin{scope}[shift={(-3,-7)}]\tkzDistillationFractionated\end{scope}
+  \end{scope}
+  \endgroup
+}
+
+% ============================================================
+% 6. \tkzFunnel  漏斗 + 试管
+% ============================================================
+\newcommand{\tkzFunnel}[1][]{%
+  \begingroup
+  \tikzchemlabdefaults
+  \pgfkeys{/tikz-chemlab/.cd, #1}%
+  % 设置 noDefaults=true, 使 \tkzTestTube 继承用户参数
+  \chemlab@noDefaultstrue
+  \begin{scope}
+    % pst-labo: \rput(0,0){\tkzTestTube} 用 pspicture bbox CENTER 对齐
+    % tikz: shift = rput_pos - bbox_center (in local coords)
+    % pspicture bbox 取决于 glassType 和 tiltAngle:
+    %   beaker (glassType=2), tiltAngle=0: (-0.5,0)(1,2.8), center=(0.25,1.4)
+    %   tiltAngle<0: (-1,0)(3,4), center=(1,2)
+    %   tiltAngle>0: (-3,0)(1,4), center=(-1,2)
+    %   其他 (tiltAngle=0, glassType!=2): (-1.5,0)(1.5,4), center=(0,2)
+    \ifnum\tkzTiltAngle=0
+      \ifnum\tkzGlassType=2
+        % beaker, 直立: center=(0.25,1.4)
+        \begin{scope}[shift={(-0.25,-1.4)}]\tkzTestTube[noDefaults=true]\end{scope}
+      \else
+        % roundFlask/reagentBottle/erlenmeyer, 直立: center=(0,2)
+        \begin{scope}[shift={(0,-2)}]\tkzTestTube[noDefaults=true]\end{scope}
+      \fi
+    \else
+      \ifnum\tkzTiltAngle>0
+        % 倾斜>0: center=(-1,2)
+        \begin{scope}[shift={(1,-2)}]\tkzTestTube[noDefaults=true]\end{scope}
+      \else
+        % 倾斜<0: center=(1,2)
+        \begin{scope}[shift={(-1,-2)}]\tkzTestTube[noDefaults=true]\end{scope}
+      \fi
+    \fi
+    % 漏斗: pst-labo \rput(0,1.5){\pst@Entonnoir@Corps}
+    % \pst@Entonnoir@Corps 路径 bbox: x=[-1,1], y=[0,2.6] (含椭圆顶 2.5+0.1)
+    % bbox center = (0, 1.3)
+    % \rput(0,1.5) ref=c: center 置于 (0,1.5)
+    % shift = rput_pos - center = (0, 1.5-1.3) = (0, 0.2)
+    % 即管尖 (路径原点 0,0) 位于 (0, 0.2)
+    \begin{scope}[shift={(0,0.2)}]\tkzFunnelBody\end{scope}
+  \end{scope}
+  \chemlab@noDefaultsfalse
+  \endgroup
+}
+
+% ============================================================
+% 7. \tkzTestTube  试管 (核心命令)
+% ============================================================
+\newcommand{\tkzTestTube}[1][]{%
+  \begingroup
+  \ifchemlab@noDefaults\else\tikzchemlabdefaults\fi
+  \pgfkeys{/tikz-chemlab/.cd, #1}%
+  \begin{scope}
+    % 注: pst-labo 用 \pspicture(bbox) 设置 bbox 用于 \rput 放置, 但内容可超出 bbox
+    % 在 TikZ 中, useasboundingbox 会覆盖整个 picture 的 bbox, 不适合嵌套使用
+    % 因此这里不设 useasboundingbox, 让外层命令 (如 \tkzHeatTube) 控制 bbox
+    % standalone 编译单独的 \tkzTestTube 时, 自动检测内容 bbox
+    % 液体 (clip 到旋转的玻璃器皿内部, 但液面保持水平)
+    % 原版 pst-labo: \psclip{ \rput{\angle}{<轮廓>} \psframe<液面不旋转> }
+    % pst-labo 的 \psclip 产生两次裁剪 (PostScript clip 是累积的=交集):
+    %   1. 裁剪到玻璃形状 (来自 \pscustom)
+    %   2. 裁剪到液体矩形 (来自 \psframe(-3,-1)(5, liquid_level))
+    % → 物质被裁剪到 玻璃形状 ∩ 液体矩形 = 液面以下
+    % TikZ: 先旋转 clip 玻璃路径, 再反向旋转 clip 液体矩形, 然后画液体和物质
+    \begin{scope}[rotate=\tkzTiltAngle]
+      \begin{scope}
+        \tkzGlassClipOptionsSet
+        \clip[rounded corners=\tkzGlassClipOptions] \tkzGlassClipPath;
+        % 液面: 在旋转的 clip 内, 但反向旋转使液面水平
+        % 液面高度需乘 cos(tiltAngle) (原版 pst-labo 的行为)
+        \begin{scope}[rotate=-\tkzTiltAngle]
+          % 第二次裁剪: 液体矩形 (匹配 pst-labo \psframe 裁剪)
+          % 只在有液体时才裁剪; 无液体时不裁剪 (物质可见到玻璃顶部)
+          \ifnum\tkzLiquidLevelI>0
+            \pgfmathsetmacro{\chemlab@liquidClipY}{3 * \tkzLiquidLevelI / 100 * cos(\tkzTiltAngle)}%
+            \clip (-4,-1.5) rectangle (5,\chemlab@liquidClipY);
+          \fi
+          \ifnum\tkzLiquidLevelI>0
+            \tkzTestTubeLiquid{\tkzLiquidLevelI}{\tkzLiquidStyleI}{\tkzTiltAngle}
+          \fi
+          \ifnum\tkzLiquidLevelII>0
+            \tkzTestTubeLiquid{\tkzLiquidLevelII}{\tkzLiquidStyleII}{\tkzTiltAngle}
+          \fi
+          \ifnum\tkzLiquidLevelIII>0
+            \tkzTestTubeLiquid{\tkzLiquidLevelIII}{\tkzLiquidStyleIII}{\tkzTiltAngle}
+          \fi
+          \tkzSubstance
+          \tkzSolid
+        \end{scope}
+      \end{scope}
+      % 标签
+      \ifTkzLabel
+        \node[fill=VeryLightGray,draw=none,inner sep=2pt] at (0,2) {\tkzNumber};
+      \fi
+      % 玻璃器皿轮廓
+      \tkzGlassDraw
+      % 顶部附件 (straightTube / elbowTube / uTube / stopper)
+      \ifTkzTestTubeStraightTube
+        \begin{scope}[shift={(0,3.5)}]\tkzTestTubeStraightTube\end{scope}
+      \else
+        \ifTkzTestTubeElbowTube
+          \begin{scope}[shift={(0,3.5)}]\tkzTestTubeElbowTube\end{scope}
+        \else
+          \ifTkzTestTubeUTube
+            \begin{scope}[shift={(0,3.5)}]\tkzTestTubeUTube\end{scope}
+          \else
+            \ifTkzTestTubeStopper
+              \begin{scope}[shift={(0,3.5)}]\tkzTestTubeStopper\end{scope}
+            \fi
+          \fi
+        \fi
+      \fi
+      % 试管夹
+      \ifTkzTestTubeClamp
+        \begin{scope}[shift={(0,3.2)}]\tkzTestTubeClamp\end{scope}
+      \fi
+    \end{scope}
+  \end{scope}
+  \endgroup
+}
+
+% ============================================================
+% 8. \tkzHeatTube  加热试管
+% ============================================================
+% pstChauffageTube: 保存用户参数, 传递给 \tkzTestTube
+% pst-labo 用 \psset 全局继承; tikz-chemlab 用 \tkzTestTube[noDefaults] 跳过重置
+\newif\ifchemlab@noDefaults
+\newcommand{\tkzHeatTube}[1][]{%
+  \begingroup
+  \tikzchemlabdefaults
+  \pgfkeys{/tikz-chemlab/.cd, #1}%
+  \chemlab@noDefaultstrue
+  \begin{scope}
+    % pst-labo bbox: tubeOnly=(-2,-5)(5,4), 其他=(-3,-5)(10,4)
+    % 不使用 \useasboundingbox — pst-labo 的 pspicture 不裁剪内容,
+    % 内容可以超出 bbox (如 elbowTube 弯管延伸到 x>5)
+    % 让 TikZ 自动检测完整内容 bbox
+    \ifTkzBubbling
+      % 上方试管/烧瓶: 继承用户设置的 glassType, 倾斜-60°, 有弯管
+      \edef\chemlab@tmpGlassType{\tkzGlassTypeName}%
+      % pst-labo: \rput(2.5,2.5){\tkzTestTube[elbowTube=true,tiltAngle=-60]}
+      % elbowTube=true → bbox (-1,0)(6,4) center (2.5,2)
+      % → 局部原点 (瓶底) 世界 (2.5-2.5, 2.5-2) = (0, 0.5)
+      \begin{scope}[shift={(0,0.5)}]
+        \tkzTestTube[elbowTube=true,tiltAngle=-60,noDefaults=true]
+      \end{scope}
+      % 下方试管: pst-labo \rput(8.2,-3){\tkzTestTube[tiltAngle=30,...]}
+      % tiltAngle>0 → bbox (-3,0)(1,4) center (-1,2)
+      % → 局部原点 (试管底) 世界 (8.2-(-1), -3-2) = (9.2, -5)
+      \begin{scope}[shift={(9.2,-5)}]
+        \tkzTestTube[liquidLevel1=70,glassType=tube,elbowTube=false,
+                       tiltAngle=30,
+                       liquidStyle1=Champagne,
+                       substance={\tkzChampagneBubbles[10]},clamp=false]
+      \end{scope}
+    \else
+      % 非barbotage: 上方器皿继承 glassType
+      \edef\chemlab@tmpGlassType{\tkzGlassTypeName}%
+      \ifcase\tkzGlassType
+        % glassType=tube
+        \ifTkzTubeOnly
+          % tubeOnly + tube: pst-labo \rput(1.5,2.5)
+          % tiltAngle<0 → bbox (-1,0)(3,4) center (1,2) → 世界 (0.5, 0.5)
+          \begin{scope}[shift={(0.5,0.5)}]\tkzTestTube[tiltAngle=-60,noDefaults=true]\end{scope}
+        \else
+          \ifTkzTestTubeElbowTube
+            % elbowTube: pst-labo \rput(2,2.5)
+            % elbowTube=true → bbox (-1,0)(6,4) center (2.5,2) → 世界 (-0.5, 0.5)
+            \begin{scope}[shift={(-0.5,0.5)}]\tkzTestTube[tiltAngle=-60,noDefaults=true]\end{scope}
+          \else
+            % 无tubeCoude: pst-labo \rput(1,2.5)
+            % tiltAngle<0 → bbox (-1,0)(3,4) center (1,2) → 世界 (0, 0.5)
+            \begin{scope}[shift={(0,0.5)}]\tkzTestTube[tiltAngle=-60,noDefaults=true]\end{scope}
+          \fi
+        \fi
+      \or
+        % glassType=roundFlask (无论 tubeOnly 与否, pst-labo 都是 \rput(2,2.5))
+        % tiltAngle<0 → bbox (-1,0)(3,4) center (1,2) → 局部原点世界 (2-1, 2.5-2) = (1, 0.5)
+        \begin{scope}[shift={(1,0.5)}]\tkzTestTube[tiltAngle=-60,noDefaults=true]\end{scope}
+      \else
+        % 其他 glassType: pst-labo \rput(1,2.5) → 世界 (0, 0.5)
+        \begin{scope}[shift={(0,0.5)}]\tkzTestTube[tiltAngle=-60,noDefaults=true]\end{scope}
+      \fi
+    \fi
+    \ifTkzBunsenBurner
+      % pst-labo: \rput(1,-5){\pst@BecBunsen} (无 pspicture, 实测原点对齐)
+      % 灯底位于世界 (1, -5)
+      \begin{scope}[shift={(1,-5)}]\tkzBunsenBurner\end{scope}
+    \fi
+  \end{scope}
+  \chemlab@noDefaultsfalse
+  \endgroup
+}
+
+% ============================================================
+% 9. \tkzHeatFlask  加热烧瓶
+% ============================================================
+\newcommand{\tkzHeatFlask}[1][]{%
+  \tikzchemlabdefaults
+  \pgfkeys{/tikz-chemlab/.cd, #1}%
+  % pst-labo: 每个 \tkzHeatFlask 有独立 pspicture, 不跨实例裁剪
+  % tikz-chemlab: 不设全局 clip, 让所有内容自由绘制
+  % pst-labo: \tkzRoundFlask 中 glassType=0 (tube) 也画 \pst@roundFlask
+  % tikz-chemlab: 强制 glassType=0 → 1 (roundFlask)
+  \begin{scope}[xshift=\chemlab@xshift]
+    % 不设 \useasboundingbox, 让 TikZ 自动检测完整内容 bbox
+    % 物体间相对位置由 shift 控制, 与 pst-labo 一致
+    \ifTkzBunsenBurner\def\cnth{-5}\else\def\cnth{1}\fi
+    % 气体回收装置
+    \ifTkzGasCollection
+      \ifTkzTestTubeCurvedTube
+        \begin{scope}[shift={(8,-5)}]
+          \tkzCrystallizingDish\relax\tkzTestTubeRack
+          \begin{scope}[shift={(0,0.7)}]\tkzInvertedTube\relax\tkzBubbles\end{scope}
+        \end{scope}
+      \else\ifTkzTestTubeCurvedTubeShort
+        \TkzBunsenBurnerfalse
+        \begin{scope}[shift={(6,1)}]
+          \tkzCrystallizingDish\relax\tkzTestTubeRack
+          \begin{scope}[shift={(0,0.7)}]\tkzInvertedTube\relax\tkzBubbles\end{scope}
+        \end{scope}
+      \else\ifTkzTestTubeDoubleTube
+        \TkzBunsenBurnerfalse
+        \begin{scope}[shift={(6.2,1)}]
+          \tkzCrystallizingDish\relax\tkzTestTubeRack
+          \begin{scope}[shift={(0,0.7)}]\tkzInvertedTube\relax\tkzBubbles\end{scope}
+        \end{scope}
+      \fi\fi\fi
+    \fi
+    % 烧瓶 + 液体 + 导管
+    % pst-labo: \rput(1,3){\tkzRoundFlask} 默认使用 bbox 中心对齐 (ref=c)
+    % \tkzRoundFlask 的 pspicture bbox = (-2,0)(2,4), 中心 (0,2)
+    % 所以局部原点 (瓶底) 实际位于世界 (1, 3-2) = (1, 1)
+    \begin{scope}[shift={(1,1)}]
+      % 液体 (clip 到烧瓶内部 ∩ 液体矩形, 匹配 pst-labo \psclip 双重裁剪)
+      \begin{scope}
+        \tkzGlassClipOptionsSet
+        \clip[rounded corners=\tkzGlassClipOptions] \tkzGlassClipPath;
+        % 第二次裁剪: 液体矩形 (匹配 pst-labo \psframe 裁剪)
+        % 只在有液体时才裁剪; 无液体时不裁剪 (物质可见到玻璃顶部)
+        \ifnum\tkzLiquidLevelI>0
+          \pgfmathsetmacro{\chemlab@liquidClipY}{3 * \tkzLiquidLevelI / 100 * cos(\tkzTiltAngle)}%
+          \clip (-4,-1.5) rectangle (5,\chemlab@liquidClipY);
+        \fi
+        \ifnum\tkzLiquidLevelI>0
+          \tkzTestTubeLiquid{\tkzLiquidLevelI}{\tkzLiquidStyleI}{\tkzTiltAngle}
+        \fi
+        \tkzSubstance
+        \tkzSolid
+      \end{scope}
+      % 玻璃器皿轮廓 (根据 glassType 选择: roundFlask/erlenmeyer/beaker 等)
+      \tkzGlassDraw
+      % 导管 (在瓶口 y=3.5 处) — 匹配 pst-labo \tkzRoundFlask 的全部导管类型
+      \ifTkzTestTubeStraightTube
+        \begin{scope}[shift={(0,3.5)}]\tkzTestTubeStraightTube\end{scope}
+      \else\ifTkzTestTubeElbowTube
+        \begin{scope}[shift={(0,3.5)}]\tkzTestTubeElbowTube\end{scope}
+      \else\ifTkzTestTubeUTube
+        \begin{scope}[shift={(0,3.5)}]\tkzTestTubeUTube\end{scope}
+      \else\ifTkzTestTubeUTubeLong
+        \begin{scope}[shift={(0,3.5)}]\tkzTestTubeUTubeLong\end{scope}
+      \else\ifTkzTestTubeCurvedTube
+        \begin{scope}[shift={(0,3.5)}]\tkzCurvedTube\end{scope}
+      \else\ifTkzTestTubeCurvedTubeShort
+        \begin{scope}[shift={(0,3.5)}]\tkzCurvedTubeShort\end{scope}
+      \else\ifTkzTestTubeStopper
+        \begin{scope}[shift={(0,3.5)}]\tkzTestTubeStopper\end{scope}
+      \else\ifTkzTestTubeDoubleTube
+        \begin{scope}[shift={(0,3.5)}]\tkzTestTubeDoubleTube\end{scope}
+      \fi\fi\fi\fi\fi\fi\fi\fi
+    \end{scope}
+    \ifTkzBubbling
+      % pst-labo: \rput(5.3,-3){\tkzTestTube[...]}, tiltAngle=0 默认, glassType=tube
+      % bbox (-1.5,0)(1.5,4) center (0,2) → 局部原点 (试管底) 世界 (5.3, -5)
+      \begin{scope}[shift={(5.3,-5)}]
+        \tkzTestTube[liquidLevel1=70,glassType=tube]
+      \end{scope}
+    \fi
+    \ifTkzBunsenBurner
+      % pst-labo: \rput(1,-5){\pst@BecBunsenGrille} (无 pspicture, 实测原点对齐)
+      \begin{scope}[shift={(1,-5)}]\tkzBunsenBurnerGrill\end{scope}
+    \fi
+  \end{scope}
+  % 自动推进原点 (匹配 pst-labo \pspicture 的布局宽度)
+  % 使用全局 dimen 累加, scope 的 xshift 会正确应用
+  % pst-labo bbox 宽度: curvedTubeShort/DoubleTube = 11, 其他 = 6
+  \ifTkzTestTubeUTubeLong
+    % uTubeLong: 不推进
+  \else\ifTkzTestTubeUTube
+    % uTube: 不推进
+  \else\ifTkzTestTubeCurvedTubeShort
+    \advance\chemlab@xshift by 11cm %  bbox (-2,0)(9,8), width = 11
+  \else\ifTkzTestTubeDoubleTube
+    \advance\chemlab@xshift by 11cm %  bbox (-2,0)(9,8), width = 11
+  \else
+    \advance\chemlab@xshift by 6cm %  bbox (-2,\cnth)(4,6), width = 6
+  \fi\fi\fi\fi
+}
+
+% ============================================================
+% 10. \tkzRoundFlask  烧瓶 (高级命令)
+% ============================================================
+\newcommand{\tkzRoundFlask}[1][]{%
+  \tikzchemlabdefaults
+  \pgfkeys{/tikz-chemlab/.cd, #1}%
+  % pst-labo: \tkzRoundFlask 中 glassType=0 (tube) 也画 \pst@roundFlask (case 0 = roundFlask)
+  % tikz-chemlab: 强制 glassType=0 → 1 (roundFlask), 避免画试管轮廓
+  \begin{scope}[xshift=\chemlab@xshift]
+    % 不设 \useasboundingbox, 让 TikZ 自动检测完整内容 bbox
+    % bbox 坐标使用局部坐标系, 会随 scale 自动缩放
+    % 物体间相对位置由 shift 控制, 与 pst-labo 一致
+    % 液体
+    \begin{scope}[rotate=\tkzTiltAngle]
+      \begin{scope}
+        \tkzGlassClipOptionsSet
+        \clip[rounded corners=\tkzGlassClipOptions] \tkzGlassClipPath;
+        % 第二次裁剪: 液体矩形 (匹配 pst-labo \psframe 裁剪)
+        % 只在有液体时才裁剪; 无液体时不裁剪 (物质可见到玻璃顶部)
+        \ifnum\tkzLiquidLevelI>0
+          \pgfmathsetmacro{\chemlab@liquidClipY}{3 * \tkzLiquidLevelI / 100 * cos(\tkzTiltAngle)}%
+          \clip (-4,-1.5) rectangle (5,\chemlab@liquidClipY);
+        \fi
+        \ifnum\tkzLiquidLevelI>0
+          \tkzTestTubeLiquid{\tkzLiquidLevelI}{\tkzLiquidStyleI}{\tkzTiltAngle}
+        \fi
+        \ifnum\tkzLiquidLevelII>0
+          \tkzTestTubeLiquid{\tkzLiquidLevelII}{\tkzLiquidStyleII}{\tkzTiltAngle}
+        \fi
+        \ifnum\tkzLiquidLevelIII>0
+          \tkzTestTubeLiquid{\tkzLiquidLevelIII}{\tkzLiquidStyleIII}{\tkzTiltAngle}
+        \fi
+        \tkzSubstance
+        \tkzSolid
+      \end{scope}
+      % 标签
+      \ifTkzLabel
+        \node[fill=VeryLightGray,draw=none,inner sep=2pt] at (0,1.5) {\tkzNumber};
+      \fi
+      % 玻璃器皿轮廓
+      \tkzGlassDraw
+      % 顶部附件 (按优先级)
+      \ifTkzTestTubeStraightTube
+        \begin{scope}[shift={(0,3.5)}]\tkzTestTubeStraightTube\end{scope}
+      \else\ifTkzTestTubeElbowTube
+        \begin{scope}[shift={(0,3.5)}]\tkzTestTubeElbowTube\end{scope}
+      \else\ifTkzTestTubeUTube
+        \begin{scope}[shift={(0,3.5)}]\tkzTestTubeUTube\end{scope}
+      \else\ifTkzTestTubeUTubeLong
+        \begin{scope}[shift={(0,3.5)}]\tkzTestTubeUTubeLong\end{scope}
+      \else\ifTkzTestTubeCurvedTube
+        \begin{scope}[shift={(0,3.5)}]\tkzCurvedTube\end{scope}
+      \else\ifTkzTestTubeCurvedTubeShort
+        \begin{scope}[shift={(0,3.5)}]\tkzCurvedTubeShort\end{scope}
+      \else\ifTkzTestTubeStopper
+        \begin{scope}[shift={(0,3.5)}]\tkzTestTubeStopper\end{scope}
+      \else\ifTkzTestTubeDoubleTube
+        \begin{scope}[shift={(0,3.5)}]\tkzTestTubeDoubleTube\end{scope}
+      \else\ifTkzTestTubeCondenserBulbs
+        \tkzRoundFlaskReflux
+        \begin{scope}[shift={(0,3.5)}]\tkzCondenserBulbs\end{scope}
+        \tkzHeaterRoundFlask
+      \fi\fi\fi\fi\fi\fi\fi\fi\fi
+    \end{scope}
+  \end{scope}
+  % 自动推进原点 (匹配 pst-labo \pspicture 的布局宽度)
+  % pst-labo bbox: condenserBulbs = (-2,0)(2,12), 其他 = (-2,0)(2,4), width = 4
+  \advance\chemlab@xshift by 4cm %  bbox width = 4
+}
+
+% ============================================================
+% 11. \tkzChampagneBubbles  香槟气泡
+% ============================================================
+% 原版 pst-labo 源码:
+%   \setrandim{\BubbleX}{-1pt}{1pt}    -- BulleX ∈ [-1, 1] (纯数字, cm)
+%   \setrandim{\BubbleY}{0pt}{2pt}     -- BulleY ∈ [0, 2] (纯数字)
+%   Y 坐标 = \pointless\BubbleY * liquidLevel1/100  (乘以液位百分比)
+%   半径 = {\BubbleY} (带 pt 单位, 1pt = 0.0353 cm)
+%   \pst@dimA 分级放大: BulleY<1pt → ×3, 1pt≤BulleY<2pt → ×2
+%
+% 实测原版渲染图:
+%   气泡为黑色边空心圆 (\pscircle, fillstyle=none)
+%   半径 0.05~0.175 单位 (比源码计算 0~0.071 大, 可能是渲染缩放)
+%   气泡团中心 (世界): (7.89, -0.975)
+\newcommand{\tkzChampagneBubbles}[1][25]{%
+  \foreach \iBubble in {1,...,#1}{%
+    % BulleX ∈ [-1, 1] (纯数字, cm)
+    \pgfmathsetmacro{\BubbleX}{-1 + 2*rnd}%
+    % BulleY ∈ [0, 2] (纯数字)
+    \pgfmathsetmacro{\BubbleY}{2*rnd}%
+    % Y 坐标 = BulleY * liquidLevel1/100 (匹配源码逻辑)
+    \pgfmathsetmacro{\BubbleYpos}{\BubbleY * \tkzLiquidLevelI / 100}%
+    % dimA 分级放大 (匹配源码逻辑)
+    \pgfmathsetmacro{\BubbleRand}{rnd}%
+    \ifdim\BubbleRand pt<0.5pt
+      % BulleY < 1pt (50%): dimA = BulleY * 3
+      \pgfmathsetmacro{\BubbleR}{\BubbleY * 0.0875}%
+    \else
+      % 1pt <= BulleY < 2pt (50%): dimA = BulleY * 2
+      \pgfmathsetmacro{\BubbleR}{\BubbleY * 0.0875}%
+    \fi
+    \begin{scope}[rotate=\tkzTiltAngle]
+      \draw[draw=black, line width=0.6pt] (\BubbleX,\BubbleYpos) circle (\BubbleR);
+    \end{scope}
+  }%
+}
+
+% ============================================================
+% 12. \tkzBubbles  倒置管中气泡
+% ============================================================
+\newcommand{\tkzBubbles}[1][25]{%
+  \pgfgettransformentries{\clab@aa}{\clab@bb}{\clab@cc}{\clab@dd}{\clab@xx}{\clab@yy}%
+  \pgfmathsetmacro{\clab@scale}{(\clab@aa + \clab@dd) / 2}%
+  \foreach \iBubble in {1,...,#1}{%
+    % pst-labo: \setrandim{BulleX}{-0.1pt}{0.1pt} → \pointless 去掉pt, 数值直接用作局部坐标
+    \pgfmathsetmacro{\BubbleX}{-0.1 + 0.2*rnd}%
+    \pgfmathsetmacro{\BubbleY}{0.15 + 2.85*rnd}%
+    % pst-labo: dimh = BulleY * (3 if <1pt, 2 if <2pt, 1 if >=2pt)
+    % dotscale = dimh, dot radius = dotscale * dotsize/2
+    % dotsize default = 2pt + 2*linewidth = 2pt + 2*0.8pt = 3.6pt → radius = dimh * 1.8pt
+    % 转换为局部坐标: local = pt / (72 * scale)
+    \pgfmathparse{\BubbleY<1?3:(\BubbleY<2?2:1)}%
+    \let\BubbleScale\pgfmathresult
+    \pgfmathsetmacro{\BubbleDimh}{\BubbleY * \BubbleScale}%
+    \pgfmathsetmacro{\BubbleR}{1.8 * \BubbleDimh / (72 * \clab@scale)}%
+    % Y position = BulleY * 1.5 (局部坐标, 匹配 pst-labo \pointless\BubbleY 1.5 mul)
+    \pgfmathsetmacro{\BubbleYpos}{\BubbleY * 1.5}%
+    \begin{scope}[rotate=\tkzTiltAngle]
+      % pst-labo: dotstyle=o (open circle = hollow, black outline)
+      \draw[draw=black, line width=0.4pt, fill=white] (\BubbleX,\BubbleYpos) circle (\BubbleR);
+    \end{scope}
+  }%
+}
+
+% ============================================================
+% 13. \tkzFilaments  絮状物
+% ============================================================
+\newcommand{\tkzFilaments}[2][5]{%
+  \pgfgettransformentries{\fil@aa}{\fil@bb}{\fil@cc}{\fil@dd}{\fil@xx}{\fil@yy}%
+  \pgfmathsetmacro{\fil@scale}{(\fil@aa + \fil@dd) / 2}%
+  \foreach \iFil in {1,...,#1}{%
+    % pst-labo: \setrandim{\pst@FilamentWidth}{0pt}{0.05pt} → \pointless = [0, 0.05)
+    % linewidth=\pointless\pst@FilamentWidth 解释为 N × unit (PSTricks 规则)
+    % 实际线宽 = [0, 0.05) × scale cm (scale 对应 unit)
+    \pgfmathsetmacro{\fw}{0.05 * \fil@scale * rnd}%
+    \pgfmathsetmacro{\myRand}{rnd}%  ONE random value per filament (匹配 pst-labo MyRand)
+    \begin{scope}[rotate=\tkzTiltAngle]
+      % pst-labo \pscurve 通过4个点的平滑曲线 (不是贝塞尔):
+      %   P1: (MyRand-1, 2*MyRand-1)     = ([-1,0), [-1,1))
+      %   P2: (MyRand+0.2, MyRand+2)     = ([0.2,1.2), [2,3))
+      %   P3: (MyRand, MyRand-1)         = ([0,1), [-1,0))
+      %   P4: (MyRand+0.5, MyRand+4)     = ([0.5,1.5), [4,5))
+      \draw[line width=\fw cm,#2] plot[smooth,tension=0.5] coordinates {
+        ({\myRand-1},{2*\myRand-1})
+        ({\myRand+0.2},{\myRand+2})
+        ({\myRand},{\myRand-1})
+        ({\myRand+0.5},{\myRand+4})
+      };
+    \end{scope}
+  }%
+}
+
+% ============================================================
+% 14. \tkzIronNail  铁钉
+% ============================================================
+% 单个铁钉形状 (单位 0.5)
+\newcommand{\tkzNails}{%
+  % pst-labo 实际 SLW=0.71135pt=0.025cm (从 xdv 提取)
+  % \psarc[unit=0.5,linewidth=0.1] 的 \psline 继承同一 linewidth
+  \draw[scale=0.5,line width=0.025cm,blue]
+    ([shift={(0,0.5)}]190:0.4) arc[start angle=190,end angle=260,radius=0.4];
+  \draw[scale=0.5,line width=0.025cm,blue] (-0.28,0.2) -- (0.5,1);
+}
+
+\newcommand{\tkzIronNail}[1][60]{%
+  \pgfgettransformentries{\clab@aa}{\clab@bb}{\clab@cc}{\clab@dd}{\clab@xx}{\clab@yy}%
+  \pgfmathsetmacro{\clab@scale}{(\clab@aa + \clab@dd) / 2}%
+  \foreach \iNail in {1,...,#1}{%
+    % pst-labo: \setrandim{ClouX}{-1cm}{1cm} → 物理坐标, 需除以 scale 转换为局部坐标
+    \pgfmathsetmacro{\NailX}{(-1 + 2*rnd) / \clab@scale}%
+    \pgfmathsetmacro{\NailY}{(-0.2 + 0.6*rnd) / \clab@scale}%
+    \pgfmathsetmacro{\NailAngle}{-90 + 180*rnd}%
+    \begin{scope}[rotate=\tkzTiltAngle]
+      \begin{scope}[shift={(\NailX,\NailY)},rotate=\NailAngle]
+        \tkzNails
+      \end{scope}
+    \end{scope}
+  }%
+}
+
+% ============================================================
+% 15. \tkzCopperTurnings  铜屑
+% ============================================================
+% 单个铜屑形状 (单位 0.5)
+\newcommand{\tkzCopper}{%
+  % pst-labo 实际 SLW=0.28458pt=0.01cm (从 xdv 提取)
+  \draw[scale=0.5,line width=0.01cm,Copper]
+    (0.25,0.25) .. controls (0,0) and (-0.25,0.25) .. (0.25,0.75)
+    .. controls (0,0.5) and (-0.25,0.75) .. (0.25,1.25)
+    .. controls (0,1) and (-0.25,1.25) .. (0.25,1.75);
+}
+
+\newcommand{\tkzCopperTurnings}[1][30]{%
+  \pgfgettransformentries{\clab@aa}{\clab@bb}{\clab@cc}{\clab@dd}{\clab@xx}{\clab@yy}%
+  \pgfmathsetmacro{\clab@scale}{(\clab@aa + \clab@dd) / 2}%
+  \foreach \iT in {1,...,#1}{%
+    \pgfmathsetmacro{\TX}{(-1 + 2*rnd) / \clab@scale}%
+    \pgfmathsetmacro{\TY}{(-0.2 + 0.5*rnd) / \clab@scale}%
+    \pgfmathsetmacro{\TAngle}{-180 + 360*rnd}%
+    \begin{scope}[rotate=\tkzTiltAngle]
+      \begin{scope}[shift={(\TX,\TY)},rotate=\TAngle]
+        \tkzCopper
+      \end{scope}
+    \end{scope}
+  }%
+}
+
+% ============================================================
+% 16. \tkzZincGranules  锌粒
+% ============================================================
+% 单个锌粒形状 (单位 0.5)
+\newcommand{\tkzZinc}{%
+  \filldraw[scale=0.5,fill=LightGray,draw=black]
+    plot[smooth,tension=0.5] coordinates {(0,0)(-0.25,0.25)(0,0.5)
+      (0.25,0.75)(0.5,0.5)(0.15,0.4)(0,0)} -- cycle;
+}
+
+\newcommand{\tkzZincGranules}[1][25]{%
+  \pgfgettransformentries{\clab@aa}{\clab@bb}{\clab@cc}{\clab@dd}{\clab@xx}{\clab@yy}%
+  \pgfmathsetmacro{\clab@scale}{(\clab@aa + \clab@dd) / 2}%
+  \foreach \iG in {1,...,#1}{%
+    \pgfmathsetmacro{\GX}{(-1 + 2*rnd) / \clab@scale}%
+    \pgfmathsetmacro{\GY}{(-0.2 + 0.5*rnd) / \clab@scale}%
+    \pgfmathsetmacro{\GAngle}{-180 + 360*rnd}%
+    \begin{scope}[rotate=\tkzTiltAngle]
+      \begin{scope}[shift={(\GX,\GY)},rotate=\GAngle]
+        \tkzZinc
+      \end{scope}
+    \end{scope}
+  }%
+}
+
+% ============================================================
+% 17. \tkzBalls  3D 球状物
+% ============================================================
+\newcommand{\tkzBalls}[1][50]{%
+  \foreach \iB in {1,...,#1}{%
+    \pgfmathsetmacro{\BX}{-1.5 + 3*rnd}%
+    \pgfmathsetmacro{\BY}{3*rnd}%
+    \pgfmathsetmacro{\BR}{0.01 + 0.1*rnd}%
+    % 按 Y 位置调整半径
+    \pgfmathparse{\BY>2?3:(\BY>1?2:1)}%
+    \let\Bscale\pgfmathresult
+    \pgfmathsetmacro{\BRscaled}{\BR * \Bscale}%
+    \begin{scope}[rotate=\tkzTiltAngle]
+      % pst-labo Ball3D: GradientCircle=true
+      % gradbegin=CMYK(0,0.1,0.95,0.1) → 实际渲染为 RGB(0,0.1,0.95)=蓝色 (固定颜色)
+      % gradend=white
+      % 径向渐变: 中心=white, 边缘=蓝色
+      \definecolor{billeBlue}{rgb}{0,0.1,0.95}%
+      \shade[inner color=white, outer color=billeBlue] (\BX,\BY) circle (\BRscaled);
+    \end{scope}
+  }%
+}
+
+% ============================================================
+% 18. \tkzBubblesThreeD  2D 气泡
+% ============================================================
+\newcommand{\tkzBubblesThreeD}[2][50]{%
+  \foreach \iB in {1,...,#1}{%
+    \pgfmathsetmacro{\BX}{-1.5 + 3*rnd}%
+    \pgfmathsetmacro{\BY}{3*rnd}%
+    \pgfmathsetmacro{\BR}{0.01 + 0.1*rnd}%
+    \pgfmathparse{\BY>2?3:(\BY>1?2:1)}%
+    \let\Bscale\pgfmathresult
+    \pgfmathsetmacro{\BRscaled}{\BR * \Bscale}%
+    \begin{scope}[rotate=\tkzTiltAngle]
+      \fill[#2,line width=0.2pt] (\BX,\BY) circle (\BRscaled);
+    \end{scope}
+  }%
+}
+
+\endinput

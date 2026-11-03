@@ -1,0 +1,1026 @@
+{
+ "_note": "人工标注层：把自动切出来的图逐张命名。devices 用注册表类型名（absence = 该类型尚未在 config/diagram/device_registry.json 里定义）。category: set=成套装置 part=单个装置 color=彩色装置 glass=玻璃仪器 inst=仪器用品 illus=课本插图 experiment=实验装置 meta=页眉图例",
+ "atlas-001": {
+  "name": "简易蒸馏装置",
+  "category": "set",
+  "devices": [
+   "flask",
+   "condenser",
+   "thermometer",
+   "burner",
+   "stand",
+   "tube"
+  ],
+  "note": "蒸馏烧瓶支管接冷凝管，冷凝管下进上出，末端接锥形瓶接收"
+ },
+ "atlas-002": {
+  "name": "气体通过灼热固体·硬质玻璃管",
+  "category": "set",
+  "devices": [
+   "hard_glass_tube",
+   "burner",
+   "stand",
+   "tube",
+   "gas_jar"
+  ],
+  "note": "横放的硬质玻璃管由两支铁架台夹持，酒精灯加热管中部，右侧导管通入集气瓶"
+ },
+ "atlas-003": {
+  "name": "固固加热·排水法收集",
+  "category": "set",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner",
+   "tube",
+   "gas_jar"
+  ],
+  "note": "试管口向下倾斜、酒精灯加热管底、导管从管口引出伸到集气瓶底部"
+ },
+ "atlas-004": {
+  "name": "固液常温发生装置（锥形瓶+分液漏斗）",
+  "category": "set",
+  "devices": [
+   "bottle",
+   "separating_funnel",
+   "tube",
+   "gas_jar"
+  ],
+  "note": "分液漏斗滴加液体，导管伸到集气瓶底"
+ },
+ "atlas-005": {
+  "name": "圆底烧瓶+分液漏斗·加热装置",
+  "category": "set",
+  "devices": [
+   "flask",
+   "separating_funnel",
+   "stand",
+   "burner",
+   "tube"
+  ],
+  "note": "铁圈托烧瓶、分液漏斗自上方插入、支管导出"
+ },
+ "atlas-006": {
+  "name": "固固加热·导管引出（无收集）",
+  "category": "set",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner",
+   "tube"
+  ]
+ },
+ "atlas-007": {
+  "name": "固固加热·导管引出（镜像版）",
+  "category": "set",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner",
+   "tube"
+  ]
+ },
+ "atlas-008": {
+  "name": "竖直试管加热·导管向上（B 方案）",
+  "category": "set",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner",
+   "tube"
+  ],
+  "note": "管口朝上，作对照用"
+ },
+ "atlas-009": {
+  "name": "加热试管·排水法收集",
+  "category": "set",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner",
+   "tube",
+   "trough"
+  ],
+  "note": "两支试管：左加热发生，右倒扣集气"
+ },
+ "atlas-010": {
+  "name": "U 形管装置（两端塞）",
+  "category": "set",
+  "devices": [
+   "u_tube"
+  ],
+  "note": "u_tube 尚未注册"
+ },
+ "atlas-011": {
+  "name": "长颈漏斗+温度计·加热反应",
+  "category": "set",
+  "devices": [
+   "long_neck_funnel",
+   "test_tube",
+   "stand",
+   "burner",
+   "thermometer"
+  ],
+  "note": "thermometer 尚未注册"
+ },
+ "atlas-012": {
+  "name": "温度计（竖放）",
+  "category": "inst",
+  "devices": [
+   "thermometer"
+  ]
+ },
+ "atlas-013": {
+  "name": "分液漏斗滴加·试管反应",
+  "category": "set",
+  "devices": [
+   "separating_funnel",
+   "test_tube",
+   "stand",
+   "tube"
+  ]
+ },
+ "atlas-014": {
+  "name": "水槽+烧瓶+分液漏斗（发生与收集）",
+  "category": "set",
+  "devices": [
+   "flask",
+   "separating_funnel",
+   "burner",
+   "trough",
+   "tube"
+  ]
+ },
+ "atlas-015": {
+  "name": "圆底烧瓶+分液漏斗·导管导出",
+  "category": "set",
+  "devices": [
+   "flask",
+   "separating_funnel",
+   "tube"
+  ]
+ },
+ "atlas-016": {
+  "name": "圆底烧瓶·回流冷凝装置",
+  "category": "set",
+  "devices": [
+   "flask",
+   "stand",
+   "burner",
+   "condenser"
+  ],
+  "note": "冷凝管尚未注册（condenser）"
+ },
+ "atlas-017": {
+  "name": "集气瓶·短导管进气（向下排空气法）",
+  "category": "set",
+  "devices": [
+   "gas_jar",
+   "tube"
+  ],
+  "note": "向下排空气法（短进长出）"
+ },
+ "atlas-018": {
+  "name": "集气瓶·长导管进气（向上排空气法）",
+  "category": "set",
+  "devices": [
+   "gas_jar",
+   "tube"
+  ],
+  "note": "向上排空气法（长进短出）"
+ },
+ "atlas-019": {
+  "name": "试管·单孔塞导管",
+  "category": "set",
+  "devices": [
+   "test_tube",
+   "tube"
+  ]
+ },
+ "atlas-020": {
+  "name": "集气瓶串联（洗气/收集）",
+  "category": "set",
+  "devices": [
+   "gas_jar",
+   "tube"
+  ]
+ },
+ "atlas-021": {
+  "name": "水槽·倒扣试管（排水法）",
+  "category": "set",
+  "devices": [
+   "trough",
+   "test_tube",
+   "tube"
+  ]
+ },
+ "atlas-022": {
+  "name": "排水法·倒扣集气瓶",
+  "category": "set",
+  "devices": [
+   "trough",
+   "gas_jar",
+   "tube"
+  ]
+ },
+ "atlas-023": {
+  "name": "导管通入烧杯（气体验证）",
+  "category": "set",
+  "devices": [
+   "beaker",
+   "tube"
+  ]
+ },
+ "atlas-024": {
+  "name": "锥形瓶",
+  "category": "part",
+  "devices": [
+   "bottle"
+  ]
+ },
+ "atlas-025": {
+  "name": "细口试剂瓶（棕色）",
+  "category": "part",
+  "devices": [
+   "bottle"
+  ]
+ },
+ "atlas-026": {
+  "name": "烧杯+分液漏斗+速率曲线",
+  "category": "part",
+  "devices": [
+   "beaker",
+   "separating_funnel"
+  ],
+  "note": "图内混排 v-t 曲线，宜拆开使用"
+ },
+ "atlas-027": {
+  "name": "分液漏斗（球形带活塞）",
+  "category": "part",
+  "devices": [
+   "separating_funnel"
+  ]
+ },
+ "atlas-028": {
+  "name": "平底烧瓶（带支管）",
+  "category": "part",
+  "devices": [
+   "flask"
+  ]
+ },
+ "atlas-029": {
+  "name": "速率-时间曲线 v=1/t",
+  "category": "illus",
+  "devices": []
+ },
+ "atlas-030": {
+  "name": "球形干燥管（横放）",
+  "category": "part",
+  "devices": [
+   "drying_tube"
+  ],
+  "note": "drying_tube 尚未注册"
+ },
+ "atlas-031": {
+  "name": "蒸馏装置（标注进出水口）",
+  "category": "color",
+  "devices": [
+   "distilling_flask",
+   "condenser",
+   "burner",
+   "stand",
+   "bottle",
+   "thermometer"
+  ],
+  "note": "distilling_flask / condenser / thermometer 均待注册"
+ },
+ "atlas-032": {
+  "name": "加热氯化铵与氢氧化钙制氨气（A：管口向上）",
+  "category": "color",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner",
+   "tube"
+  ],
+  "note": "喷酒精灯加热、管口略向下、口部塞棉花"
+ },
+ "atlas-033": {
+  "name": "加热氯化铵与氢氧化钙制氨气（B：棉花位置错）",
+  "category": "color",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner",
+   "tube"
+  ]
+ },
+ "atlas-034": {
+  "name": "加热氯化铵与氢氧化钙制氨气（C：正确）",
+  "category": "color",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner",
+   "tube"
+  ]
+ },
+ "atlas-035": {
+  "name": "加热试管·排水法收集（彩色）",
+  "category": "color",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner",
+   "trough",
+   "tube"
+  ]
+ },
+ "atlas-036": {
+  "name": "铁架台夹持试管加热",
+  "category": "color",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner"
+  ]
+ },
+ "atlas-037": {
+  "name": "球形干燥管（竖放）",
+  "category": "color",
+  "devices": [
+   "drying_tube"
+  ]
+ },
+ "atlas-038": {
+  "name": "双孔塞反应瓶（加热，双导管）",
+  "category": "set",
+  "devices": [
+   "bottle",
+   "tube",
+   "burner"
+  ]
+ },
+ "atlas-039": {
+  "name": "集气瓶（倒置）·双孔塞",
+  "category": "set",
+  "devices": [
+   "gas_jar",
+   "tube"
+  ]
+ },
+ "atlas-040": {
+  "name": "试管加热·导管通入烧杯（气体验证）",
+  "category": "set",
+  "devices": [
+   "test_tube",
+   "tube",
+   "beaker",
+   "burner"
+  ]
+ },
+ "atlas-041": {
+  "name": "水槽（盛水）",
+  "category": "color",
+  "devices": [
+   "trough"
+  ]
+ },
+ "atlas-042": {
+  "name": "水槽·倒扣集气瓶（排水法）",
+  "category": "color",
+  "devices": [
+   "trough",
+   "gas_jar",
+   "tube"
+  ]
+ },
+ "atlas-043": {
+  "name": "集气瓶·双孔塞洗气（彩色）",
+  "category": "color",
+  "devices": [
+   "gas_jar",
+   "tube"
+  ]
+ },
+ "atlas-044": {
+  "name": "氢气还原氧化铜（彩色）",
+  "category": "color",
+  "devices": [
+   "test_tube",
+   "burner",
+   "stand",
+   "tube"
+  ],
+  "note": "导管须伸到管内固体上方"
+ },
+ "atlas-045": {
+  "name": "木炭还原氧化铜（彩色）",
+  "category": "color",
+  "devices": [
+   "test_tube",
+   "burner",
+   "stand",
+   "tube"
+  ],
+  "note": "同上，导管伸到管内"
+ },
+ "atlas-046": {
+  "name": "分液漏斗",
+  "category": "color",
+  "devices": [
+   "separating_funnel"
+  ]
+ },
+ "atlas-047": {
+  "name": "坩埚（含泥三角）",
+  "category": "color",
+  "devices": [
+   "crucible"
+  ]
+ },
+ "atlas-048": {
+  "name": "酒精灯（点燃）",
+  "category": "color",
+  "devices": [
+   "burner"
+  ]
+ },
+ "atlas-049": {
+  "name": "导管（弯管，气流标识）",
+  "category": "color",
+  "devices": [
+   "tube"
+  ]
+ },
+ "atlas-050": {
+  "name": "文字标注“H2还原CuO装置图”",
+  "category": "meta",
+  "devices": []
+ },
+ "atlas-051": {
+  "name": "文字标注“木炭还原CuO装置图”",
+  "category": "meta",
+  "devices": []
+ },
+ "atlas-052": {
+  "name": "量筒（10 mL）",
+  "category": "glass",
+  "devices": [
+   "cylinder"
+  ]
+ },
+ "atlas-053": {
+  "name": "温度计（红液）",
+  "category": "glass",
+  "devices": [
+   "thermometer"
+  ]
+ },
+ "atlas-054": {
+  "name": "量筒（大容量）",
+  "category": "glass",
+  "devices": [
+   "cylinder"
+  ]
+ },
+ "atlas-055": {
+  "name": "托盘天平",
+  "category": "inst",
+  "devices": [
+   "balance"
+  ]
+ },
+ "atlas-056": {
+  "name": "量筒（细长）",
+  "category": "glass",
+  "devices": [
+   "cylinder"
+  ]
+ },
+ "atlas-057": {
+  "name": "烧杯（250 mL 带刻度）",
+  "category": "glass",
+  "devices": [
+   "beaker"
+  ]
+ },
+ "atlas-058": {
+  "name": "烧杯（空）",
+  "category": "glass",
+  "devices": [
+   "beaker"
+  ]
+ },
+ "atlas-059": {
+  "name": "烧杯（100 mL 带刻度）",
+  "category": "glass",
+  "devices": [
+   "beaker"
+  ]
+ },
+ "atlas-060": {
+  "name": "烧杯（装水）",
+  "category": "glass",
+  "devices": [
+   "beaker"
+  ]
+ },
+ "atlas-061": {
+  "name": "圆底烧瓶（装液）",
+  "category": "glass",
+  "devices": [
+   "flask"
+  ]
+ },
+ "atlas-062": {
+  "name": "圆底烧瓶（空）",
+  "category": "glass",
+  "devices": [
+   "flask"
+  ]
+ },
+ "atlas-063": {
+  "name": "圆底烧瓶（长颈空）",
+  "category": "glass",
+  "devices": [
+   "flask"
+  ]
+ },
+ "atlas-064": {
+  "name": "圆底烧瓶（装液，长颈）",
+  "category": "glass",
+  "devices": [
+   "flask"
+  ]
+ },
+ "atlas-065": {
+  "name": "容量瓶（100 mL）",
+  "category": "glass",
+  "devices": [
+   "volumetric_flask"
+  ]
+ },
+ "atlas-066": {
+  "name": "蒸馏烧瓶（装液）",
+  "category": "glass",
+  "devices": [
+   "distilling_flask"
+  ]
+ },
+ "atlas-067": {
+  "name": "蒸馏烧瓶（空）",
+  "category": "glass",
+  "devices": [
+   "distilling_flask"
+  ]
+ },
+ "atlas-068": {
+  "name": "培养皿",
+  "category": "glass",
+  "devices": [
+   "petri_dish"
+  ]
+ },
+ "atlas-069": {
+  "name": "玻璃水槽（带刻度）",
+  "category": "glass",
+  "devices": [
+   "trough"
+  ]
+ },
+ "atlas-070": {
+  "name": "玻璃水槽（空）",
+  "category": "glass",
+  "devices": [
+   "trough"
+  ]
+ },
+ "atlas-071": {
+  "name": "玻璃棒",
+  "category": "glass",
+  "devices": [
+   "glass_rod"
+  ]
+ },
+ "atlas-072": {
+  "name": "温度计（细长直形）",
+  "category": "glass",
+  "devices": [
+   "thermometer"
+  ]
+ },
+ "atlas-073": {
+  "name": "锥形瓶",
+  "category": "glass",
+  "devices": [
+   "bottle"
+  ]
+ },
+ "atlas-074": {
+  "name": "细口瓶（空）",
+  "category": "glass",
+  "devices": [
+   "bottle"
+  ]
+ },
+ "atlas-075": {
+  "name": "棕色试剂瓶",
+  "category": "glass",
+  "devices": [
+   "bottle"
+  ]
+ },
+ "atlas-076": {
+  "name": "细口瓶（装液）",
+  "category": "glass",
+  "devices": [
+   "bottle"
+  ]
+ },
+ "atlas-077": {
+  "name": "导管（单弯）",
+  "category": "glass",
+  "devices": [
+   "tube"
+  ]
+ },
+ "atlas-078": {
+  "name": "导管（直角弯）",
+  "category": "glass",
+  "devices": [
+   "tube"
+  ]
+ },
+ "atlas-079": {
+  "name": "导管（U 形）",
+  "category": "glass",
+  "devices": [
+   "tube"
+  ]
+ },
+ "atlas-080": {
+  "name": "直形冷凝管",
+  "category": "glass",
+  "devices": [
+   "condenser"
+  ]
+ },
+ "atlas-081": {
+  "name": "U 形管",
+  "category": "glass",
+  "devices": [
+   "u_tube"
+  ]
+ },
+ "atlas-082": {
+  "name": "U 形管（双孔塞）",
+  "category": "glass",
+  "devices": [
+   "u_tube"
+  ]
+ },
+ "atlas-083": {
+  "name": "弯管接头（90°）",
+  "category": "glass",
+  "devices": [
+   "tube"
+  ]
+ },
+ "atlas-084": {
+  "name": "蒸馏头",
+  "category": "glass",
+  "devices": [
+   "distillation_head"
+  ]
+ },
+ "atlas-085": {
+  "name": "球形干燥管（装干燥剂）",
+  "category": "glass",
+  "devices": [
+   "drying_tube"
+  ]
+ },
+ "atlas-086": {
+  "name": "温度计（横放带刻度）",
+  "category": "glass",
+  "devices": [
+   "thermometer"
+  ]
+ },
+ "atlas-087": {
+  "name": "温度计（横放带球泡）",
+  "category": "glass",
+  "devices": [
+   "thermometer"
+  ]
+ },
+ "atlas-088": {
+  "name": "分液漏斗（球形）",
+  "category": "glass",
+  "devices": [
+   "separating_funnel"
+  ]
+ },
+ "atlas-089": {
+  "name": "橡胶塞（两只）",
+  "category": "glass",
+  "devices": [
+   "stopper"
+  ]
+ },
+ "atlas-090": {
+  "name": "玻璃棒（细）",
+  "category": "glass",
+  "devices": [
+   "glass_rod"
+  ]
+ },
+ "atlas-091": {
+  "name": "酒精灯（点燃）",
+  "category": "inst",
+  "devices": [
+   "burner"
+  ]
+ },
+ "atlas-092": {
+  "name": "酒精灯（点燃，侧视）",
+  "category": "inst",
+  "devices": [
+   "burner"
+  ]
+ },
+ "atlas-093": {
+  "name": "酒精灯（带灯帽）",
+  "category": "inst",
+  "devices": [
+   "burner"
+  ]
+ },
+ "atlas-094": {
+  "name": "酒精灯（垫石棉网加热）",
+  "category": "inst",
+  "devices": [
+   "burner"
+  ]
+ },
+ "atlas-095": {
+  "name": "铁架台（立柱+底座）",
+  "category": "inst",
+  "devices": [
+   "stand"
+  ]
+ },
+ "atlas-096": {
+  "name": "铁架台（带铁夹与铁圈）",
+  "category": "inst",
+  "devices": [
+   "stand"
+  ]
+ },
+ "atlas-097": {
+  "name": "铁夹/十字夹",
+  "category": "inst",
+  "devices": [
+   "clamp"
+  ]
+ },
+ "atlas-098": {
+  "name": "燃烧匙",
+  "category": "inst",
+  "devices": [
+   "combustion_spoon"
+  ]
+ },
+ "atlas-099": {
+  "name": "温度计（红液细型）",
+  "category": "inst",
+  "devices": [
+   "thermometer"
+  ]
+ },
+ "atlas-100": {
+  "name": "泥三角",
+  "category": "inst",
+  "devices": [
+   "clay_triangle"
+  ]
+ },
+ "atlas-101": {
+  "name": "原子结构示意图（+25，Mn）",
+  "category": "illus",
+  "devices": []
+ },
+ "atlas-102": {
+  "name": "原子结构示意图（+17，Cl）",
+  "category": "illus",
+  "devices": []
+ },
+ "atlas-103": {
+  "name": "三脚架",
+  "category": "inst",
+  "devices": [
+   "tripod"
+  ]
+ },
+ "atlas-104": {
+  "name": "坩埚（带盖）",
+  "category": "inst",
+  "devices": [
+   "crucible"
+  ]
+ },
+ "atlas-105": {
+  "name": "木块/砖",
+  "category": "illus",
+  "devices": []
+ },
+ "atlas-106": {
+  "name": "蒸发皿（盛液）",
+  "category": "glass",
+  "devices": [
+   "evaporating_dish"
+  ]
+ },
+ "atlas-107": {
+  "name": "蒸发皿（空，两只）",
+  "category": "glass",
+  "devices": [
+   "evaporating_dish"
+  ]
+ },
+ "atlas-108": {
+  "name": "正方体模型（物质结构示意）",
+  "category": "illus",
+  "devices": []
+ },
+ "atlas-109": {
+  "name": "C60 分子模型",
+  "category": "illus",
+  "devices": []
+ },
+ "atlas-110": {
+  "name": "二氧化碳的制取与收集",
+  "category": "experiment",
+  "devices": [
+   "bottle",
+   "long_neck_funnel",
+   "tube",
+   "gas_jar"
+  ],
+  "note": "长颈漏斗须液封、导管伸到瓶底"
+ },
+ "atlas-111": {
+  "name": "危险品标志（禁止烟火/禁止燃放鞭炮）",
+  "category": "illus",
+  "devices": []
+ },
+ "atlas-112": {
+  "name": "危险品标志（禁止吸烟/禁止放易燃物/当心爆炸/当心火灾）",
+  "category": "illus",
+  "devices": []
+ },
+ "atlas-113": {
+  "name": "一氧化碳还原氧化铁（含尾气处理）",
+  "category": "experiment",
+  "devices": [
+   "hard_glass_tube",
+   "burner",
+   "tube",
+   "beaker"
+  ],
+  "note": "硬质玻璃管尚未注册；尾气点燃/石灰水检验"
+ },
+ "atlas-114": {
+  "name": "炼铁高炉剖面图",
+  "category": "illus",
+  "devices": []
+ },
+ "atlas-115": {
+  "name": "金属与材料用途树状图",
+  "category": "illus",
+  "devices": []
+ },
+ "atlas-116": {
+  "name": "二氧化碳密度实验（倾倒灭烛）",
+  "category": "experiment",
+  "devices": [
+   "beaker",
+   "gas_jar"
+  ]
+ },
+ "atlas-117": {
+  "name": "自然界中二氧化碳循环",
+  "category": "illus",
+  "devices": []
+ },
+ "atlas-118": {
+  "name": "制取二氧化碳·典型错误装置",
+  "category": "experiment",
+  "devices": [
+   "bottle",
+   "long_neck_funnel",
+   "tube",
+   "gas_jar"
+  ],
+  "note": "教学用错例：长颈漏斗未液封、导管伸入过短"
+ },
+ "atlas-119": {
+  "name": "制取氢气装置（试管+长颈漏斗）",
+  "category": "experiment",
+  "devices": [
+   "test_tube",
+   "long_neck_funnel",
+   "tube"
+  ]
+ },
+ "atlas-120": {
+  "name": "制取氢气装置（集气瓶型）",
+  "category": "experiment",
+  "devices": [
+   "test_tube",
+   "long_neck_funnel",
+   "tube"
+  ]
+ },
+ "atlas-121": {
+  "name": "简易气体发生装置（集气瓶+长颈漏斗）",
+  "category": "experiment",
+  "devices": [
+   "gas_jar",
+   "long_neck_funnel",
+   "tube"
+  ]
+ },
+ "atlas-122": {
+  "name": "氢气还原氧化铜",
+  "category": "experiment",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner",
+   "tube"
+  ],
+  "note": "导管须伸到管内 CuO 上方"
+ },
+ "atlas-123": {
+  "name": "加热高锰酸钾制氧气·排水法",
+  "category": "experiment",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner",
+   "tube",
+   "trough",
+   "gas_jar"
+  ]
+ },
+ "atlas-124": {
+  "name": "溶解度曲线 + 空气成分示意图（两图合版）",
+  "category": "illus",
+  "devices": []
+ },
+ "atlas-125": {
+  "name": "加热高锰酸钾制氧气·排水法（变体）",
+  "category": "experiment",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner",
+   "tube",
+   "trough",
+   "gas_jar"
+  ]
+ },
+ "atlas-126": {
+  "name": "加热氯酸钾制氧气·排水法",
+  "category": "experiment",
+  "devices": [
+   "test_tube",
+   "stand",
+   "burner",
+   "tube",
+   "trough",
+   "gas_jar"
+  ]
+ },
+ "atlas-127": {
+  "name": "燃烧条件的探究",
+  "category": "experiment",
+  "devices": [
+   "beaker",
+   "copper_plate"
+  ],
+  "note": "铜片、白磷/红磷均为特殊器材，尚未注册"
+ },
+ "atlas-128": {
+  "name": "红磷燃烧测定空气中氧气含量",
+  "category": "experiment",
+  "devices": [
+   "gas_jar",
+   "trough",
+   "combustion_spoon"
+  ],
+  "note": "钟罩可用倒扣集气瓶近似"
+ }
+}

@@ -1,0 +1,4322 @@
+{
+ "source": "chem-atlas.pdf",
+ "total": 128,
+ "byCategory": {
+  "成套装置": 25,
+  "仪器与用品": 14,
+  "单个装置": 6,
+  "课本插图": 12,
+  "彩色装置": 16,
+  "页眉/图例": 2,
+  "玻璃仪器": 40,
+  "课本实验装置": 13
+ },
+ "missingTypes": [],
+ "items": [
+  {
+   "id": "atlas-001",
+   "file": "p1-001.png",
+   "page": 1,
+   "section": null,
+   "name": "简易蒸馏装置",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "温度计水银球位于支管口测蒸气温度；冷凝管倾斜放置，冷却水下进上出；锥形瓶接收馏出液",
+   "aliases": [
+    "蒸馏装置",
+    "简易蒸馏"
+   ],
+   "devices": [
+    "flask",
+    "condenser",
+    "thermometer",
+    "burner",
+    "stand",
+    "tube"
+   ],
+   "devicesCn": [
+    "圆底烧瓶",
+    "蒸馏头",
+    "冷凝管",
+    "温度计",
+    "锥形瓶",
+    "酒精灯"
+   ],
+   "missing": [],
+   "note": "蒸馏烧瓶支管接冷凝管，冷凝管下进上出，末端接锥形瓶接收",
+   "text": "",
+   "size": [
+    110,
+    74
+   ],
+   "bbox": [
+    213.4,
+    106.2,
+    323.7,
+    179.7
+   ]
+  },
+  {
+   "id": "atlas-002",
+   "file": "p1-002.png",
+   "page": 1,
+   "section": null,
+   "name": "气体通过灼热固体·硬质玻璃管",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "硬质玻璃管横放，两支铁架台夹持两端；酒精灯在管中部加热；气体左进右出",
+   "aliases": [
+    "硬质玻璃管",
+    "灼热固体",
+    "高温反应"
+   ],
+   "devices": [
+    "hard_glass_tube",
+    "burner",
+    "stand",
+    "tube",
+    "gas_jar"
+   ],
+   "devicesCn": [
+    "硬质玻璃管",
+    "铁架台",
+    "酒精灯",
+    "导管",
+    "集气瓶"
+   ],
+   "missing": [],
+   "note": "横放的硬质玻璃管由两支铁架台夹持，酒精灯加热管中部，右侧导管通入集气瓶",
+   "text": "C C (O C",
+   "size": [
+    157,
+    74
+   ],
+   "bbox": [
+    343,
+    103.3,
+    500.1,
+    176.8
+   ]
+  },
+  {
+   "id": "atlas-003",
+   "file": "p1-003.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "固固加热·排水法收集",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "固体装在试管底部，管口略向下倾斜；铁架台夹持，酒精灯预热后集中加热；排水法收集",
+   "aliases": [
+    "固固加热发生装置",
+    "加热固体"
+   ],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner",
+    "tube",
+    "gas_jar"
+   ],
+   "devicesCn": [
+    "试管",
+    "铁架台",
+    "酒精灯",
+    "导管",
+    "水槽",
+    "集气瓶"
+   ],
+   "missing": [],
+   "note": "试管口向下倾斜、酒精灯加热管底、导管从管口引出伸到集气瓶底部",
+   "text": "",
+   "size": [
+    86,
+    72
+   ],
+   "bbox": [
+    158.7,
+    220.6,
+    245.2,
+    292.7
+   ]
+  },
+  {
+   "id": "atlas-004",
+   "file": "p1-004.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "固液常温发生装置（锥形瓶+分液漏斗）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "分液漏斗可以控制液体滴加速度；固体放在瓶底，漏斗下端不需液封（活塞可关）；导管导出气体",
+   "aliases": [
+    "固液常温发生装置",
+    "分液漏斗滴加",
+    "锥形瓶制气"
+   ],
+   "devices": [
+    "bottle",
+    "separating_funnel",
+    "tube",
+    "gas_jar"
+   ],
+   "devicesCn": [
+    "锥形瓶",
+    "分液漏斗",
+    "双孔塞",
+    "导管",
+    "集气瓶"
+   ],
+   "missing": [],
+   "note": "分液漏斗滴加液体，导管伸到集气瓶底",
+   "text": "",
+   "size": [
+    99,
+    67
+   ],
+   "bbox": [
+    261.7,
+    230.7,
+    361.1,
+    297.8
+   ]
+  },
+  {
+   "id": "atlas-005",
+   "file": "p1-005.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "圆底烧瓶+分液漏斗·制气（垫石棉网）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "烧瓶用铁架台铁圈托住、下面垫石棉网；分液漏斗插在瓶口塞子上。图中未画酒精灯，需要加热时在石棉网下加酒精灯",
+   "aliases": [
+    "圆底烧瓶制气",
+    "分液漏斗滴加"
+   ],
+   "devices": [
+    "flask",
+    "separating_funnel",
+    "stand",
+    "burner",
+    "tube"
+   ],
+   "devicesCn": [
+    "圆底烧瓶",
+    "分液漏斗",
+    "铁架台",
+    "石棉网"
+   ],
+   "missing": [],
+   "note": "铁圈托烧瓶、分液漏斗自上方插入、支管导出",
+   "text": "",
+   "size": [
+    58,
+    103
+   ],
+   "bbox": [
+    408.6,
+    225,
+    467,
+    328
+   ]
+  },
+  {
+   "id": "atlas-006",
+   "file": "p1-006.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "固固加热·导管引出（无收集）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner",
+    "tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    116,
+    77
+   ],
+   "bbox": [
+    91.8,
+    328.6,
+    207.8,
+    405.8
+   ]
+  },
+  {
+   "id": "atlas-007",
+   "file": "p1-007.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "固固加热·导管引出（镜像版）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner",
+    "tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    68,
+    66
+   ],
+   "bbox": [
+    243,
+    331.5,
+    311.4,
+    397.8
+   ]
+  },
+  {
+   "id": "atlas-008",
+   "file": "p1-008.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "竖直试管加热·导管向上（B 方案）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner",
+    "tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": "管口朝上，作对照用",
+   "text": "B",
+   "size": [
+    74,
+    89
+   ],
+   "bbox": [
+    389.1,
+    326.5,
+    462.6,
+    415.8
+   ]
+  },
+  {
+   "id": "atlas-009",
+   "file": "p1-009.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "加热试管·排水法收集",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "试管口略向下倾斜，铁夹夹在距管口 1/3 处；导管伸到倒扣集气瓶口，不要伸进瓶内",
+   "aliases": [
+    "加热试管排水法",
+    "排水法收集气体"
+   ],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner",
+    "tube",
+    "trough"
+   ],
+   "devicesCn": [
+    "试管",
+    "铁架台",
+    "酒精灯",
+    "导管",
+    "水槽",
+    "集气瓶"
+   ],
+   "missing": [],
+   "note": "两支试管：左加热发生，右倒扣集气",
+   "text": "",
+   "size": [
+    116,
+    79
+   ],
+   "bbox": [
+    226.4,
+    405.7,
+    342.4,
+    484.2
+   ]
+  },
+  {
+   "id": "atlas-010",
+   "file": "p1-010.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "U 形管装置（两端塞）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "u_tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": "u_tube 尚未注册",
+   "text": "",
+   "size": [
+    87,
+    55
+   ],
+   "bbox": [
+    101.8,
+    423.7,
+    189,
+    478.5
+   ]
+  },
+  {
+   "id": "atlas-011",
+   "file": "p1-011.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "长颈漏斗+温度计·常温反应装置",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "长颈漏斗下端伸到液面以下液封；温度计插在双孔塞上测反应液温度。图中未加热，适合放热反应或常温制气",
+   "aliases": [
+    "长颈漏斗温度计",
+    "带温度计的反应装置"
+   ],
+   "devices": [
+    "long_neck_funnel",
+    "test_tube",
+    "stand",
+    "burner",
+    "thermometer"
+   ],
+   "devicesCn": [
+    "试管",
+    "长颈漏斗",
+    "温度计",
+    "双孔塞",
+    "铁架台"
+   ],
+   "missing": [],
+   "note": "thermometer 尚未注册",
+   "text": "多",
+   "size": [
+    65,
+    73
+   ],
+   "bbox": [
+    385.5,
+    419.4,
+    450.4,
+    492.2
+   ]
+  },
+  {
+   "id": "atlas-012",
+   "file": "p1-012.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "温度计（竖放）",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "thermometer"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    22,
+    133
+   ],
+   "bbox": [
+    488.5,
+    476.2,
+    510.2,
+    609.5
+   ]
+  },
+  {
+   "id": "atlas-013",
+   "file": "p1-013.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "分液漏斗滴加·试管反应",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "分液漏斗垂直插在试管口的双孔塞上；适合少量气体的制取或性质实验",
+   "aliases": [
+    "分液漏斗滴加",
+    "试管反应装置"
+   ],
+   "devices": [
+    "separating_funnel",
+    "test_tube",
+    "stand",
+    "tube"
+   ],
+   "devicesCn": [
+    "试管",
+    "分液漏斗",
+    "双孔塞",
+    "铁架台"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    53,
+    79
+   ],
+   "bbox": [
+    127.8,
+    505,
+    181.1,
+    584.3
+   ]
+  },
+  {
+   "id": "atlas-014",
+   "file": "p1-014.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "水槽+烧瓶+分液漏斗（发生与收集）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "flask",
+    "separating_funnel",
+    "burner",
+    "trough",
+    "tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    92,
+    89
+   ],
+   "bbox": [
+    181.8,
+    504.3,
+    274,
+    593.7
+   ]
+  },
+  {
+   "id": "atlas-015",
+   "file": "p1-015.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "圆底烧瓶+分液漏斗·导管导出",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "分液漏斗滴加液体，导管从瓶口导出气体",
+   "aliases": [
+    "圆底烧瓶制气",
+    "分液漏斗导出气体"
+   ],
+   "devices": [
+    "flask",
+    "separating_funnel",
+    "tube"
+   ],
+   "devicesCn": [
+    "圆底烧瓶",
+    "分液漏斗",
+    "导管",
+    "铁架台"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    60,
+    73
+   ],
+   "bbox": [
+    315.7,
+    510.1,
+    375.5,
+    582.9
+   ]
+  },
+  {
+   "id": "atlas-016",
+   "file": "p1-016.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "圆底烧瓶·回流冷凝装置",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "冷凝管竖直插在烧瓶口，冷却水下进上出；温度计测蒸气温度；属于回流装置，产物不蒸出",
+   "aliases": [
+    "回流装置",
+    "冷凝回流"
+   ],
+   "devices": [
+    "flask",
+    "stand",
+    "burner",
+    "condenser"
+   ],
+   "devicesCn": [
+    "圆底烧瓶",
+    "冷凝管",
+    "温度计",
+    "铁架台",
+    "酒精灯"
+   ],
+   "missing": [],
+   "note": "冷凝管尚未注册（condenser）",
+   "text": "",
+   "size": [
+    75,
+    85
+   ],
+   "bbox": [
+    407.1,
+    509.4,
+    482.1,
+    594.4
+   ]
+  },
+  {
+   "id": "atlas-017",
+   "file": "p1-017.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "集气瓶·短导管进气（向下排空气法）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "part",
+   "assembly": "进气导管只到瓶口，空气从瓶底被压出——适合密度比空气小的气体（H2、NH3）",
+   "aliases": [
+    "向下排空气法",
+    "短导管进气"
+   ],
+   "devices": [
+    "gas_jar",
+    "tube"
+   ],
+   "devicesCn": [
+    "集气瓶",
+    "双孔塞",
+    "导管"
+   ],
+   "missing": [],
+   "note": "向下排空气法（短进长出）",
+   "text": "",
+   "size": [
+    46,
+    51
+   ],
+   "bbox": [
+    116.2,
+    603.7,
+    162.4,
+    654.9
+   ]
+  },
+  {
+   "id": "atlas-018",
+   "file": "p1-018.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "集气瓶·长导管进气（向上排空气法）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "part",
+   "assembly": "进气导管伸到集气瓶底部，把瓶内空气从上方压出——适合密度比空气大的气体（CO2、O2）",
+   "aliases": [
+    "向上排空气法",
+    "长导管进气"
+   ],
+   "devices": [
+    "gas_jar",
+    "tube"
+   ],
+   "devicesCn": [
+    "集气瓶",
+    "双孔塞",
+    "导管"
+   ],
+   "missing": [],
+   "note": "向上排空气法（长进短出）",
+   "text": "",
+   "size": [
+    58,
+    43
+   ],
+   "bbox": [
+    186.8,
+    608,
+    244.5,
+    651.3
+   ]
+  },
+  {
+   "id": "atlas-019",
+   "file": "p1-019.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "试管·双孔塞两根导管（一进一出）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "part",
+   "assembly": "双孔橡皮塞上有两根导管：一根进气（伸到底）、一根出气，可做洗气或导气用",
+   "aliases": [
+    "双孔塞",
+    "试管导气",
+    "一进一出"
+   ],
+   "devices": [
+    "test_tube",
+    "tube"
+   ],
+   "devicesCn": [
+    "试管",
+    "双孔塞",
+    "导管"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    56,
+    56
+   ],
+   "bbox": [
+    279.7,
+    608,
+    335.9,
+    664.2
+   ]
+  },
+  {
+   "id": "atlas-020",
+   "file": "p1-020.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "集气瓶串联（洗气/收集）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "洗气时\"长进短出\"：进气导管伸到液面以下，出气导管只到瓶口；顺序不能反",
+   "aliases": [
+    "洗气装置",
+    "气体净化",
+    "集气瓶串联"
+   ],
+   "devices": [
+    "gas_jar",
+    "tube"
+   ],
+   "devicesCn": [
+    "集气瓶",
+    "双孔塞",
+    "导管"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    51,
+    56
+   ],
+   "bbox": [
+    371.8,
+    605.8,
+    423,
+    662.1
+   ]
+  },
+  {
+   "id": "atlas-021",
+   "file": "p1-021.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "水槽·倒扣试管（排水法）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "part",
+   "assembly": "试管装满水倒扣在水槽中，导管从下方伸入管口",
+   "aliases": [
+    "排水法倒扣试管",
+    "排水法收集"
+   ],
+   "devices": [
+    "trough",
+    "test_tube",
+    "tube"
+   ],
+   "devicesCn": [
+    "水槽",
+    "试管",
+    "导管"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    63,
+    56
+   ],
+   "bbox": [
+    446,
+    613,
+    508.7,
+    669.3
+   ]
+  },
+  {
+   "id": "atlas-022",
+   "file": "p1-022.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "排水法·倒扣集气瓶",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "trough",
+    "gas_jar",
+    "tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    61,
+    45
+   ],
+   "bbox": [
+    103.3,
+    675.7,
+    164.6,
+    721.1
+   ]
+  },
+  {
+   "id": "atlas-023",
+   "file": "p1-023.png",
+   "page": 1,
+   "section": "一、成套装置",
+   "name": "导管通入烧杯（气体验证）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": true,
+   "kind": "part",
+   "assembly": "导管末端伸入液面以下，气体与液体充分接触；如 CO2 通入澄清石灰水变浑浊",
+   "aliases": [
+    "导管通入液体",
+    "气体验证",
+    "检验气体"
+   ],
+   "devices": [
+    "beaker",
+    "tube"
+   ],
+   "devicesCn": [
+    "烧杯",
+    "导管"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    58,
+    39
+   ],
+   "bbox": [
+    189,
+    675,
+    247.4,
+    713.9
+   ]
+  },
+  {
+   "id": "atlas-024",
+   "file": "p2-024.png",
+   "page": 2,
+   "section": "二、单个装置",
+   "name": "锥形瓶",
+   "category": "part",
+   "categoryCn": "单个装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "bottle"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    31,
+    45
+   ],
+   "bbox": [
+    166.6,
+    99.7,
+    197.7,
+    145.1
+   ]
+  },
+  {
+   "id": "atlas-025",
+   "file": "p2-025.png",
+   "page": 2,
+   "section": "二、单个装置",
+   "name": "细口试剂瓶（棕色）",
+   "category": "part",
+   "categoryCn": "单个装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "bottle"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    25,
+    40
+   ],
+   "bbox": [
+    228.6,
+    104,
+    253.8,
+    144.4
+   ]
+  },
+  {
+   "id": "atlas-026",
+   "file": "p2-026.png",
+   "page": 2,
+   "section": "二、单个装置",
+   "name": "烧杯+分液漏斗+速率曲线",
+   "category": "part",
+   "categoryCn": "单个装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "beaker",
+    "separating_funnel"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": "图内混排 v-t 曲线，宜拆开使用",
+   "text": "",
+   "size": [
+    78,
+    112
+   ],
+   "bbox": [
+    266,
+    100.4,
+    343.8,
+    212.8
+   ]
+  },
+  {
+   "id": "atlas-027",
+   "file": "p2-027.png",
+   "page": 2,
+   "section": "二、单个装置",
+   "name": "分液漏斗（球形带活塞）",
+   "category": "part",
+   "categoryCn": "单个装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "separating_funnel"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    25,
+    49
+   ],
+   "bbox": [
+    348.1,
+    103.3,
+    372.6,
+    152.3
+   ]
+  },
+  {
+   "id": "atlas-028",
+   "file": "p2-028.png",
+   "page": 2,
+   "section": "二、单个装置",
+   "name": "平底烧瓶（带支管）",
+   "category": "part",
+   "categoryCn": "单个装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "flask"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    32,
+    39
+   ],
+   "bbox": [
+    382.6,
+    107.6,
+    414.4,
+    146.6
+   ]
+  },
+  {
+   "id": "atlas-029",
+   "file": "p2-029.png",
+   "page": 2,
+   "section": "二、单个装置",
+   "name": "速率-时间曲线 v=1/t",
+   "category": "illus",
+   "categoryCn": "课本插图",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    56,
+    46
+   ],
+   "bbox": [
+    165.9,
+    155.1,
+    222.2,
+    201.3
+   ]
+  },
+  {
+   "id": "atlas-030",
+   "file": "p2-030.png",
+   "page": 2,
+   "section": "二、单个装置",
+   "name": "球形干燥管（横放）",
+   "category": "part",
+   "categoryCn": "单个装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "drying_tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": "drying_tube 尚未注册",
+   "text": "",
+   "size": [
+    106,
+    36
+   ],
+   "bbox": [
+    366.8,
+    165.9,
+    472.7,
+    202
+   ]
+  },
+  {
+   "id": "atlas-031",
+   "file": "p2-031.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "蒸馏装置（标注进出水口）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "温度计水银球在支管口；冷凝水从下端进水口进、上端出水口出（下进上出，保证冷凝管充满水）",
+   "aliases": [
+    "蒸馏装置",
+    "冷凝管进出水",
+    "蒸馏"
+   ],
+   "devices": [
+    "distilling_flask",
+    "condenser",
+    "burner",
+    "stand",
+    "bottle",
+    "thermometer"
+   ],
+   "devicesCn": [
+    "蒸馏烧瓶",
+    "冷凝管",
+    "温度计",
+    "锥形瓶",
+    "铁架台",
+    "酒精灯"
+   ],
+   "missing": [],
+   "note": "distilling_flask / condenser / thermometer 均待注册",
+   "text": "",
+   "size": [
+    107,
+    74
+   ],
+   "bbox": [
+    96.1,
+    228.6,
+    202.7,
+    302.1
+   ]
+  },
+  {
+   "id": "atlas-032",
+   "file": "p2-032.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "加热氯化铵与氢氧化钙制氨气（A：没加热）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "wrong",
+   "assembly": "A 方案错在没有酒精灯——这是\"固体+固体加热\"制气，不加热根本不反应；管口向下、管口塞棉花这两点本身是对的",
+   "aliases": [
+    "制氨气A",
+    "NH4Cl和Ca(OH)2"
+   ],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner",
+    "tube"
+   ],
+   "devicesCn": [
+    "试管",
+    "导管",
+    "棉花"
+   ],
+   "missing": [],
+   "note": "与 B（正确）对照，差别只在有没有加热",
+   "text": "",
+   "size": [
+    55,
+    70
+   ],
+   "bbox": [
+    243,
+    240.1,
+    297.8,
+    310
+   ]
+  },
+  {
+   "id": "atlas-033",
+   "file": "p2-033.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "加热氯化铵与氢氧化钙制氨气（B：正确）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "正确装置：试管口略向下倾斜（防冷凝水倒流炸裂）；管口塞一团棉花（减少 NH3 与空气对流，收集得更纯）；酒精灯加热；氨气密度比空气小，用向下排空气法收集",
+   "aliases": [
+    "制氨气B",
+    "制氨气正确装置",
+    "加热氯化铵和氢氧化钙"
+   ],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner",
+    "tube"
+   ],
+   "devicesCn": [
+    "试管",
+    "酒精灯",
+    "导管",
+    "棉花",
+    "铁架台"
+   ],
+   "missing": [],
+   "note": "与 A、C 对照，用于讲\"装置正误辨析\"",
+   "text": "",
+   "size": [
+    54,
+    69
+   ],
+   "bbox": [
+    313.5,
+    240.1,
+    367.6,
+    309.3
+   ]
+  },
+  {
+   "id": "atlas-034",
+   "file": "p2-034.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "加热氯化铵与氢氧化钙制氨气（C：管口向上）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "wrong",
+   "assembly": "C 方案错在试管口向上倾斜——加热固体产生的水会倒流到管底，使试管炸裂",
+   "aliases": [
+    "制氨气C"
+   ],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner",
+    "tube"
+   ],
+   "devicesCn": [
+    "试管",
+    "酒精灯",
+    "导管",
+    "棉花"
+   ],
+   "missing": [],
+   "note": "与 B（正确）对照，用于讲\"加热固体时管口为什么必须略向下\"",
+   "text": "",
+   "size": [
+    56,
+    69
+   ],
+   "bbox": [
+    384.8,
+    240.1,
+    440.3,
+    309.3
+   ]
+  },
+  {
+   "id": "atlas-035",
+   "file": "p2-035.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "加热试管·排水法收集（彩色）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "同黑白版：管口向下、铁夹夹在管口 1/3 处、排水法收集",
+   "aliases": [
+    "加热试管排水法",
+    "排水法收集"
+   ],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner",
+    "trough",
+    "tube"
+   ],
+   "devicesCn": [
+    "试管",
+    "铁架台",
+    "酒精灯",
+    "导管",
+    "水槽",
+    "集气瓶"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    87,
+    48
+   ],
+   "bbox": [
+    81,
+    304.9,
+    168.2,
+    352.5
+   ]
+  },
+  {
+   "id": "atlas-036",
+   "file": "p2-036.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "铁架台夹持试管加热",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "part",
+   "assembly": "铁夹夹在距试管口 1/3 处（太靠下会夹裂管底）；试管口略向下倾斜",
+   "aliases": [
+    "铁架台夹持",
+    "试管固定"
+   ],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner"
+   ],
+   "devicesCn": [
+    "铁架台",
+    "铁夹",
+    "试管",
+    "酒精灯"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    56,
+    66
+   ],
+   "bbox": [
+    214.2,
+    314.2,
+    269.7,
+    379.8
+   ]
+  },
+  {
+   "id": "atlas-037",
+   "file": "p2-037.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "启普发生器（固液常温·随开随用）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "固体放在葫芦形反应室、液体在下部半球；关闭活塞时气压把液体压下，固液分离反应停止，打开活塞又能继续——随开随用",
+   "aliases": [
+    "启普发生器",
+    "简易启普发生器",
+    "随开随用"
+   ],
+   "devices": [
+    "drying_tube"
+   ],
+   "devicesCn": [
+    "启普发生器",
+    "长颈漏斗"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    41,
+    66
+   ],
+   "bbox": [
+    289.8,
+    325.8,
+    330.9,
+    391.4
+   ]
+  },
+  {
+   "id": "atlas-038",
+   "file": "p2-038.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "双孔塞反应瓶（加热，双导管）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "bottle",
+    "tube",
+    "burner"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    47,
+    55
+   ],
+   "bbox": [
+    373.3,
+    322.2,
+    420.2,
+    377
+   ]
+  },
+  {
+   "id": "atlas-039",
+   "file": "p2-039.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "集气瓶（倒置）·双孔塞",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "gas_jar",
+    "tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    41,
+    57
+   ],
+   "bbox": [
+    121.3,
+    415,
+    162.4,
+    472
+   ]
+  },
+  {
+   "id": "atlas-040",
+   "file": "p2-040.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "试管加热·导管通入烧杯（气体验证）",
+   "category": "set",
+   "categoryCn": "成套装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "test_tube",
+    "tube",
+    "beaker",
+    "burner"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    90,
+    60
+   ],
+   "bbox": [
+    394.9,
+    414.3,
+    485,
+    474.2
+   ]
+  },
+  {
+   "id": "atlas-041",
+   "file": "p2-041.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "水槽（盛水）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "trough"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    52,
+    26
+   ],
+   "bbox": [
+    73,
+    423,
+    125,
+    449
+   ]
+  },
+  {
+   "id": "atlas-042",
+   "file": "p2-042.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "水槽·倒扣集气瓶（排水法）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "part",
+   "assembly": "集气瓶先装满水倒扣在水槽中，气体从瓶口进入把水排出；瓶内水面下降到瓶口即收集满",
+   "aliases": [
+    "排水法",
+    "倒扣集气瓶"
+   ],
+   "devices": [
+    "trough",
+    "gas_jar",
+    "tube"
+   ],
+   "devicesCn": [
+    "水槽",
+    "集气瓶",
+    "导管"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    79,
+    53
+   ],
+   "bbox": [
+    206.2,
+    417.9,
+    285.5,
+    471.3
+   ]
+  },
+  {
+   "id": "atlas-043",
+   "file": "p2-043.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "集气瓶·双孔塞洗气（彩色）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "长导管进气伸入液体、短导管出气在液面上方；瓶内装吸收液（如浓硫酸、氢氧化钠溶液）",
+   "aliases": [
+    "洗气瓶",
+    "气体干燥净化"
+   ],
+   "devices": [
+    "gas_jar",
+    "tube"
+   ],
+   "devicesCn": [
+    "集气瓶",
+    "双孔塞",
+    "导管"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    38,
+    53
+   ],
+   "bbox": [
+    329.4,
+    423,
+    367.6,
+    475.6
+   ]
+  },
+  {
+   "id": "atlas-044",
+   "file": "p2-044.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "氢气还原氧化铜（彩色）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "与黑白版同构：氢气从管口通入伸到氧化铜上方，酒精灯加热固体处，试管口向下倾斜",
+   "aliases": [
+    "H2还原CuO",
+    "氢气还原氧化铜"
+   ],
+   "devices": [
+    "test_tube",
+    "burner",
+    "stand",
+    "tube"
+   ],
+   "devicesCn": [
+    "试管",
+    "铁架台",
+    "酒精灯",
+    "导管"
+   ],
+   "missing": [],
+   "note": "导管须伸到管内固体上方",
+   "text": "",
+   "size": [
+    64,
+    76
+   ],
+   "bbox": [
+    86,
+    476.2,
+    150.2,
+    551.9
+   ]
+  },
+  {
+   "id": "atlas-045",
+   "file": "p2-045.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "木炭还原氧化铜（彩色）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "木炭粉与氧化铜混合加热；导管导出生成的二氧化碳通入澄清石灰水检验",
+   "aliases": [
+    "C还原CuO",
+    "碳还原氧化铜",
+    "木炭还原氧化铜"
+   ],
+   "devices": [
+    "test_tube",
+    "burner",
+    "stand",
+    "tube"
+   ],
+   "devicesCn": [
+    "试管",
+    "铁架台",
+    "酒精灯",
+    "导管"
+   ],
+   "missing": [],
+   "note": "同上，导管伸到管内",
+   "text": "",
+   "size": [
+    68,
+    79
+   ],
+   "bbox": [
+    184.6,
+    476.2,
+    253.1,
+    554.8
+   ]
+  },
+  {
+   "id": "atlas-046",
+   "file": "p2-046.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "分液漏斗",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "part",
+   "assembly": "带活塞可控制液体滴加速度；下端长管便于插进容器",
+   "aliases": [
+    "分液漏斗",
+    "带活塞漏斗"
+   ],
+   "devices": [
+    "separating_funnel"
+   ],
+   "devicesCn": [
+    "分液漏斗"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    27,
+    91
+   ],
+   "bbox": [
+    321.4,
+    498.6,
+    348.9,
+    589.4
+   ]
+  },
+  {
+   "id": "atlas-047",
+   "file": "p2-047.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "坩埚（含泥三角）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "part",
+   "assembly": "坩埚放在泥三角上，泥三角架在铁圈或三脚架上，用酒精灯外焰灼烧",
+   "aliases": [
+    "坩埚",
+    "泥三角",
+    "灼烧固体"
+   ],
+   "devices": [
+    "crucible"
+   ],
+   "devicesCn": [
+    "坩埚",
+    "泥三角"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    41,
+    42
+   ],
+   "bbox": [
+    372.6,
+    519.4,
+    413.7,
+    561.3
+   ]
+  },
+  {
+   "id": "atlas-048",
+   "file": "p2-048.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "酒精灯（点燃）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "part",
+   "assembly": "用火柴点燃，禁止用一盏酒精灯引燃另一盏；外焰温度最高，加热用外焰",
+   "aliases": [
+    "酒精灯",
+    "加热工具"
+   ],
+   "devices": [
+    "burner"
+   ],
+   "devicesCn": [
+    "酒精灯"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    37,
+    56
+   ],
+   "bbox": [
+    423.7,
+    507.9,
+    460.5,
+    563.4
+   ]
+  },
+  {
+   "id": "atlas-049",
+   "file": "p2-049.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "导管（弯管，气流标识）",
+   "category": "color",
+   "categoryCn": "彩色装置",
+   "inLibrary": true,
+   "kind": "part",
+   "assembly": "橡皮塞连接的玻璃导管，用于导出或导入气体",
+   "aliases": [
+    "导管",
+    "弯管"
+   ],
+   "devices": [
+    "tube"
+   ],
+   "devicesCn": [
+    "导管"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    89,
+    66
+   ],
+   "bbox": [
+    470.5,
+    516.6,
+    559.1,
+    582.2
+   ]
+  },
+  {
+   "id": "atlas-050",
+   "file": "p2-050.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "文字标注“H2还原CuO装置图”",
+   "category": "meta",
+   "categoryCn": "页眉/图例",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    74,
+    17
+   ],
+   "bbox": [
+    87.4,
+    563.4,
+    161.7,
+    580.7
+   ]
+  },
+  {
+   "id": "atlas-051",
+   "file": "p2-051.png",
+   "page": 2,
+   "section": "三、彩色装置",
+   "name": "文字标注“木炭还原CuO装置图”",
+   "category": "meta",
+   "categoryCn": "页眉/图例",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    82,
+    19
+   ],
+   "bbox": [
+    177.4,
+    561.9,
+    259.6,
+    580.7
+   ]
+  },
+  {
+   "id": "atlas-052",
+   "file": "p2-052.png",
+   "page": 2,
+   "section": "四、玻璃仪器",
+   "name": "量筒（10 mL）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "cylinder"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    32,
+    126
+   ],
+   "bbox": [
+    208.4,
+    608.7,
+    240.9,
+    734.8
+   ]
+  },
+  {
+   "id": "atlas-053",
+   "file": "p2-053.png",
+   "page": 2,
+   "section": "四、玻璃仪器",
+   "name": "温度计（红液）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "thermometer"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    16,
+    147
+   ],
+   "bbox": [
+    297,
+    607.3,
+    312.9,
+    754.2
+   ]
+  },
+  {
+   "id": "atlas-054",
+   "file": "p2-054.png",
+   "page": 2,
+   "section": "四、玻璃仪器",
+   "name": "量筒（大容量）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "cylinder"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    35,
+    97
+   ],
+   "bbox": [
+    88.2,
+    623.1,
+    123.5,
+    720.4
+   ]
+  },
+  {
+   "id": "atlas-055",
+   "file": "p2-055.png",
+   "page": 2,
+   "section": "四、玻璃仪器",
+   "name": "托盘天平",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "balance"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    104,
+    66
+   ],
+   "bbox": [
+    351,
+    630.3,
+    454.7,
+    695.9
+   ]
+  },
+  {
+   "id": "atlas-056",
+   "file": "p2-056.png",
+   "page": 2,
+   "section": "四、玻璃仪器",
+   "name": "量筒（细长）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "cylinder"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    34,
+    84
+   ],
+   "bbox": [
+    491.4,
+    630.3,
+    525.3,
+    713.9
+   ]
+  },
+  {
+   "id": "atlas-057",
+   "file": "p2-057.png",
+   "page": 2,
+   "section": "四、玻璃仪器",
+   "name": "烧杯（250 mL 带刻度）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "beaker"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    52,
+    60
+   ],
+   "bbox": [
+    413.6,
+    770,
+    465.5,
+    829.8
+   ]
+  },
+  {
+   "id": "atlas-058",
+   "file": "p3-058.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "烧杯（空）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "beaker"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    50,
+    54
+   ],
+   "bbox": [
+    114.1,
+    69.4,
+    164.6,
+    123.5
+   ]
+  },
+  {
+   "id": "atlas-059",
+   "file": "p3-059.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "烧杯（100 mL 带刻度）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "beaker"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    68,
+    78
+   ],
+   "bbox": [
+    194.7,
+    70.9,
+    262.5,
+    148.7
+   ]
+  },
+  {
+   "id": "atlas-060",
+   "file": "p3-060.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "烧杯（装水）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "beaker"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    51,
+    55
+   ],
+   "bbox": [
+    289.8,
+    64.4,
+    341,
+    119.2
+   ]
+  },
+  {
+   "id": "atlas-061",
+   "file": "p3-061.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "圆底烧瓶（装液）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "flask"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    40,
+    78
+   ],
+   "bbox": [
+    218.5,
+    162.3,
+    258.9,
+    240.2
+   ]
+  },
+  {
+   "id": "atlas-062",
+   "file": "p3-062.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "圆底烧瓶（空）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "flask"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    40,
+    78
+   ],
+   "bbox": [
+    294.8,
+    160.9,
+    335.2,
+    238.7
+   ]
+  },
+  {
+   "id": "atlas-063",
+   "file": "p3-063.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "圆底烧瓶（长颈空）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "flask"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    40,
+    79
+   ],
+   "bbox": [
+    366.1,
+    155.1,
+    405.8,
+    234.4
+   ]
+  },
+  {
+   "id": "atlas-064",
+   "file": "p3-064.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "圆底烧瓶（装液，长颈）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "flask"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    40,
+    79
+   ],
+   "bbox": [
+    455.4,
+    162.3,
+    495,
+    241.6
+   ]
+  },
+  {
+   "id": "atlas-065",
+   "file": "p3-065.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "容量瓶（100 mL）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "volumetric_flask"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    68,
+    92
+   ],
+   "bbox": [
+    125.6,
+    248,
+    194.1,
+    339.5
+   ]
+  },
+  {
+   "id": "atlas-066",
+   "file": "p3-066.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "蒸馏烧瓶（装液）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "distilling_flask"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    47,
+    78
+   ],
+   "bbox": [
+    315.7,
+    269.6,
+    362.6,
+    347.4
+   ]
+  },
+  {
+   "id": "atlas-067",
+   "file": "p3-067.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "蒸馏烧瓶（空）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "distilling_flask"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    47,
+    79
+   ],
+   "bbox": [
+    382.6,
+    271,
+    429.5,
+    350.3
+   ]
+  },
+  {
+   "id": "atlas-068",
+   "file": "p3-068.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "培养皿",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "petri_dish"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    128,
+    71
+   ],
+   "bbox": [
+    397.8,
+    410,
+    525.3,
+    480.6
+   ]
+  },
+  {
+   "id": "atlas-069",
+   "file": "p3-069.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "玻璃水槽（带刻度）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "trough"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    108,
+    61
+   ],
+   "bbox": [
+    114.1,
+    431.6,
+    222.2,
+    492.9
+   ]
+  },
+  {
+   "id": "atlas-070",
+   "file": "p3-070.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "玻璃水槽（空）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "trough"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    108,
+    61
+   ],
+   "bbox": [
+    245.1,
+    438.8,
+    353.2,
+    500.1
+   ]
+  },
+  {
+   "id": "atlas-071",
+   "file": "p3-071.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "玻璃棒",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "glass_rod"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    26,
+    56
+   ],
+   "bbox": [
+    302,
+    533.1,
+    328,
+    589.4
+   ]
+  },
+  {
+   "id": "atlas-072",
+   "file": "p3-072.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "温度计（细长直形）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "thermometer"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    27,
+    126
+   ],
+   "bbox": [
+    466.9,
+    532.4,
+    494.3,
+    658.5
+   ]
+  },
+  {
+   "id": "atlas-073",
+   "file": "p3-073.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "锥形瓶",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "bottle"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    45,
+    60
+   ],
+   "bbox": [
+    150.8,
+    603,
+    196.2,
+    662.8
+   ]
+  },
+  {
+   "id": "atlas-074",
+   "file": "p3-074.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "细口瓶（空）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "bottle"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    39,
+    61
+   ],
+   "bbox": [
+    229.3,
+    595.8,
+    268.2,
+    657
+   ]
+  },
+  {
+   "id": "atlas-075",
+   "file": "p3-075.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "棕色试剂瓶",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "bottle"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    30,
+    56
+   ],
+   "bbox": [
+    299.8,
+    602.2,
+    330.2,
+    657.8
+   ]
+  },
+  {
+   "id": "atlas-076",
+   "file": "p3-076.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "细口瓶（装液）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "bottle"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    39,
+    61
+   ],
+   "bbox": [
+    392,
+    588.6,
+    431,
+    649.8
+   ]
+  },
+  {
+   "id": "atlas-077",
+   "file": "p3-077.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "导管（单弯）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    42,
+    82
+   ],
+   "bbox": [
+    450.3,
+    684.3,
+    492.2,
+    766.5
+   ]
+  },
+  {
+   "id": "atlas-078",
+   "file": "p3-078.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "导管（直角弯）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    43,
+    43
+   ],
+   "bbox": [
+    294.1,
+    698.7,
+    336.6,
+    741.3
+   ]
+  },
+  {
+   "id": "atlas-079",
+   "file": "p3-079.png",
+   "page": 3,
+   "section": "四、玻璃仪器",
+   "name": "导管（U 形）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    75,
+    42
+   ],
+   "bbox": [
+    277.5,
+    740.5,
+    352.5,
+    782.3
+   ]
+  },
+  {
+   "id": "atlas-080",
+   "file": "p4-080.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "直形冷凝管",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "condenser"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    133,
+    32
+   ],
+   "bbox": [
+    155.8,
+    96.1,
+    289.1,
+    128.6
+   ]
+  },
+  {
+   "id": "atlas-081",
+   "file": "p4-081.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "U 形管",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "u_tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    44,
+    55
+   ],
+   "bbox": [
+    292.6,
+    147.2,
+    336.6,
+    202
+   ]
+  },
+  {
+   "id": "atlas-082",
+   "file": "p4-082.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "U 形管（双孔塞）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "u_tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    59,
+    55
+   ],
+   "bbox": [
+    412.9,
+    138.6,
+    472,
+    193.4
+   ]
+  },
+  {
+   "id": "atlas-083",
+   "file": "p4-083.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "弯管接头（90°）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    35,
+    35
+   ],
+   "bbox": [
+    197.6,
+    181,
+    232.2,
+    216.4
+   ]
+  },
+  {
+   "id": "atlas-084",
+   "file": "p4-084.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "蒸馏头",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "distillation_head"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    71,
+    35
+   ],
+   "bbox": [
+    279.7,
+    244.4,
+    350.3,
+    279
+   ]
+  },
+  {
+   "id": "atlas-085",
+   "file": "p4-085.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "球形干燥管（装干燥剂）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "drying_tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    79,
+    43
+   ],
+   "bbox": [
+    425.8,
+    241.5,
+    504.4,
+    284.1
+   ]
+  },
+  {
+   "id": "atlas-086",
+   "file": "p4-086.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "温度计（横放带刻度）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "thermometer"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    120,
+    20
+   ],
+   "bbox": [
+    103.3,
+    312.8,
+    222.9,
+    332.3
+   ]
+  },
+  {
+   "id": "atlas-087",
+   "file": "p4-087.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "温度计（横放带球泡）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "thermometer"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    158,
+    25
+   ],
+   "bbox": [
+    255.2,
+    313.5,
+    413,
+    338.1
+   ]
+  },
+  {
+   "id": "atlas-088",
+   "file": "p4-088.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "分液漏斗（球形）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "separating_funnel"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    70,
+    81
+   ],
+   "bbox": [
+    145,
+    412.9,
+    215,
+    493.6
+   ]
+  },
+  {
+   "id": "atlas-089",
+   "file": "p4-089.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "橡胶塞（两只）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "stopper"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    24,
+    27
+   ],
+   "bbox": [
+    366.1,
+    376.9,
+    389.9,
+    403.6
+   ]
+  },
+  {
+   "id": "atlas-090",
+   "file": "p4-090.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "玻璃棒（细）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "glass_rod"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    12,
+    89
+   ],
+   "bbox": [
+    297.7,
+    420.1,
+    309.3,
+    508.7
+   ]
+  },
+  {
+   "id": "atlas-091",
+   "file": "p4-091.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "酒精灯（点燃）",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "burner"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    50,
+    53
+   ],
+   "bbox": [
+    348.8,
+    419.4,
+    398.6,
+    472
+   ]
+  },
+  {
+   "id": "atlas-092",
+   "file": "p4-092.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "酒精灯（点燃，侧视）",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "burner"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    42,
+    48
+   ],
+   "bbox": [
+    428.7,
+    416.5,
+    470.6,
+    464.8
+   ]
+  },
+  {
+   "id": "atlas-093",
+   "file": "p4-093.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "酒精灯（带灯帽）",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "burner"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    48,
+    43
+   ],
+   "bbox": [
+    422.2,
+    483.4,
+    469.8,
+    526.7
+   ]
+  },
+  {
+   "id": "atlas-094",
+   "file": "p4-094.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "酒精灯（垫石棉网加热）",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "burner"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    47,
+    38
+   ],
+   "bbox": [
+    329.4,
+    500,
+    376.2,
+    537.5
+   ]
+  },
+  {
+   "id": "atlas-095",
+   "file": "p4-095.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "铁架台（立柱+底座）",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "stand"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    56,
+    86
+   ],
+   "bbox": [
+    171.7,
+    561.9,
+    227.2,
+    648.4
+   ]
+  },
+  {
+   "id": "atlas-096",
+   "file": "p4-096.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "铁架台（带铁夹与铁圈）",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "stand"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    77,
+    109
+   ],
+   "bbox": [
+    281.1,
+    557.6,
+    358.2,
+    666.4
+   ]
+  },
+  {
+   "id": "atlas-097",
+   "file": "p4-097.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "铁夹/十字夹",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "clamp"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    78,
+    25
+   ],
+   "bbox": [
+    392,
+    587.1,
+    469.8,
+    612.4
+   ]
+  },
+  {
+   "id": "atlas-098",
+   "file": "p4-098.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "燃烧匙",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "combustion_spoon"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    27,
+    41
+   ],
+   "bbox": [
+    170.2,
+    718.9,
+    197.7,
+    760
+   ]
+  },
+  {
+   "id": "atlas-099",
+   "file": "p4-099.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "温度计（红液细型）",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "thermometer"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    16,
+    50
+   ],
+   "bbox": [
+    305.6,
+    713.8,
+    321.5,
+    764.3
+   ]
+  },
+  {
+   "id": "atlas-100",
+   "file": "p4-100.png",
+   "page": 4,
+   "section": "四、玻璃仪器",
+   "name": "泥三角",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "clay_triangle"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    72,
+    41
+   ],
+   "bbox": [
+    387,
+    725.4,
+    459,
+    766.5
+   ]
+  },
+  {
+   "id": "atlas-101",
+   "file": "p5-101.png",
+   "page": 5,
+   "section": "四、玻璃仪器",
+   "name": "原子结构示意图（+25，Mn）",
+   "category": "illus",
+   "categoryCn": "课本插图",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "+25  2  8  8  7",
+   "size": [
+    109,
+    101
+   ],
+   "bbox": [
+    124.2,
+    65.1,
+    233,
+    166
+   ]
+  },
+  {
+   "id": "atlas-102",
+   "file": "p5-102.png",
+   "page": 5,
+   "section": "四、玻璃仪器",
+   "name": "原子结构示意图（+17，Cl）",
+   "category": "illus",
+   "categoryCn": "课本插图",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "+17  2  8  7",
+   "size": [
+    89,
+    91
+   ],
+   "bbox": [
+    263.1,
+    57.2,
+    352.5,
+    148
+   ]
+  },
+  {
+   "id": "atlas-103",
+   "file": "p5-103.png",
+   "page": 5,
+   "section": "四、玻璃仪器",
+   "name": "三脚架",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "tripod"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    53,
+    41
+   ],
+   "bbox": [
+    379.8,
+    70.9,
+    432.4,
+    112
+   ]
+  },
+  {
+   "id": "atlas-104",
+   "file": "p5-104.png",
+   "page": 5,
+   "section": "四、玻璃仪器",
+   "name": "坩埚（带盖）",
+   "category": "inst",
+   "categoryCn": "仪器与用品",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "crucible"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    35,
+    26
+   ],
+   "bbox": [
+    451.8,
+    78.1,
+    486.4,
+    104.1
+   ]
+  },
+  {
+   "id": "atlas-105",
+   "file": "p5-105.png",
+   "page": 5,
+   "section": "四、玻璃仪器",
+   "name": "木块/砖",
+   "category": "illus",
+   "categoryCn": "课本插图",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    38,
+    30
+   ],
+   "bbox": [
+    437.4,
+    136.4,
+    474.9,
+    166.7
+   ]
+  },
+  {
+   "id": "atlas-106",
+   "file": "p5-106.png",
+   "page": 5,
+   "section": "四、玻璃仪器",
+   "name": "蒸发皿（盛液）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "evaporating_dish"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    58,
+    37
+   ],
+   "bbox": [
+    111.9,
+    196.2,
+    170.3,
+    233
+   ]
+  },
+  {
+   "id": "atlas-107",
+   "file": "p5-107.png",
+   "page": 5,
+   "section": "四、玻璃仪器",
+   "name": "蒸发皿（空，两只）",
+   "category": "glass",
+   "categoryCn": "玻璃仪器",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "evaporating_dish"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    102,
+    25
+   ],
+   "bbox": [
+    213.4,
+    204.1,
+    315.8,
+    229.4
+   ]
+  },
+  {
+   "id": "atlas-108",
+   "file": "p5-108.png",
+   "page": 5,
+   "section": "四、玻璃仪器",
+   "name": "正方体模型（物质结构示意）",
+   "category": "illus",
+   "categoryCn": "课本插图",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    56,
+    56
+   ],
+   "bbox": [
+    353.1,
+    198.3,
+    409.4,
+    254.6
+   ]
+  },
+  {
+   "id": "atlas-109",
+   "file": "p5-109.png",
+   "page": 5,
+   "section": "五、课本插图",
+   "name": "C60 分子模型",
+   "category": "illus",
+   "categoryCn": "课本插图",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    83,
+    81
+   ],
+   "bbox": [
+    219.9,
+    290.5,
+    302.8,
+    371.9
+   ]
+  },
+  {
+   "id": "atlas-110",
+   "file": "p5-110.png",
+   "page": 5,
+   "section": "五、课本插图",
+   "name": "二氧化碳的制取与收集",
+   "category": "experiment",
+   "categoryCn": "课本实验装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "长颈漏斗下端伸入液面以下形成液封；导管伸到集气瓶底部；瓶口盖玻璃片（向上排空气法）",
+   "aliases": [
+    "实验室制取二氧化碳",
+    "CO2制取",
+    "大理石和稀盐酸",
+    "制取二氧化碳",
+    "二氧化碳制取"
+   ],
+   "devices": [
+    "bottle",
+    "long_neck_funnel",
+    "tube",
+    "gas_jar"
+   ],
+   "devicesCn": [
+    "锥形瓶",
+    "长颈漏斗",
+    "双孔塞",
+    "导管",
+    "集气瓶",
+    "玻璃片"
+   ],
+   "missing": [],
+   "note": "长颈漏斗须液封、导管伸到瓶底",
+   "text": "",
+   "size": [
+    94,
+    81
+   ],
+   "bbox": [
+    379.8,
+    272.5,
+    474.2,
+    353.9
+   ]
+  },
+  {
+   "id": "atlas-111",
+   "file": "p5-111.png",
+   "page": 5,
+   "section": "五、课本插图",
+   "name": "危险品标志（禁止烟火/禁止燃放鞭炮）",
+   "category": "illus",
+   "categoryCn": "课本插图",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    74,
+    46
+   ],
+   "bbox": [
+    103.3,
+    297,
+    176.8,
+    343.1
+   ]
+  },
+  {
+   "id": "atlas-112",
+   "file": "p5-112.png",
+   "page": 5,
+   "section": "五、课本插图",
+   "name": "危险品标志（禁止吸烟/禁止放易燃物/当心爆炸/当心火灾）",
+   "category": "illus",
+   "categoryCn": "课本插图",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    76,
+    122
+   ],
+   "bbox": [
+    100.4,
+    339.4,
+    176.8,
+    461.2
+   ]
+  },
+  {
+   "id": "atlas-113",
+   "file": "p5-113.png",
+   "page": 5,
+   "section": "五、课本插图",
+   "name": "一氧化碳还原氧化铁（含尾气处理）",
+   "category": "experiment",
+   "categoryCn": "课本实验装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "一氧化碳进入硬质玻璃管与氧化铁反应；尾气中的一氧化碳必须点燃或收集，不能直接排空（有毒）",
+   "aliases": [
+    "CO还原Fe2O3",
+    "一氧化碳还原氧化铁",
+    "炼铁原理"
+   ],
+   "devices": [
+    "hard_glass_tube",
+    "burner",
+    "tube",
+    "beaker"
+   ],
+   "devicesCn": [
+    "硬质玻璃管",
+    "铁架台",
+    "酒精灯",
+    "导管",
+    "尾气处理装置"
+   ],
+   "missing": [],
+   "note": "硬质玻璃管尚未注册；尾气点燃/石灰水检验",
+   "text": "",
+   "size": [
+    125,
+    75
+   ],
+   "bbox": [
+    393.4,
+    374,
+    518.1,
+    449
+   ]
+  },
+  {
+   "id": "atlas-114",
+   "file": "p5-114.png",
+   "page": 5,
+   "section": "五、课本插图",
+   "name": "炼铁高炉剖面图",
+   "category": "illus",
+   "categoryCn": "课本插图",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    188,
+    146
+   ],
+   "bbox": [
+    209.1,
+    409.3,
+    397.1,
+    555.5
+   ]
+  },
+  {
+   "id": "atlas-115",
+   "file": "p5-115.png",
+   "page": 5,
+   "section": "五、课本插图",
+   "name": "金属与材料用途树状图",
+   "category": "illus",
+   "categoryCn": "课本插图",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    159,
+    116
+   ],
+   "bbox": [
+    413.6,
+    475.5,
+    572.8,
+    591.5
+   ]
+  },
+  {
+   "id": "atlas-116",
+   "file": "p5-116.png",
+   "page": 5,
+   "section": "五、课本插图",
+   "name": "二氧化碳密度实验（倾倒灭烛）",
+   "category": "experiment",
+   "categoryCn": "课本实验装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "二氧化碳沿烧杯壁慢慢倒入，下层蜡烛先熄灭、上层后熄灭，说明密度比空气大且不支持燃烧",
+   "aliases": [
+    "CO2灭火",
+    "倾倒二氧化碳",
+    "二氧化碳密度"
+   ],
+   "devices": [
+    "beaker",
+    "gas_jar"
+   ],
+   "devicesCn": [
+    "烧杯",
+    "集气瓶",
+    "阶梯蜡烛"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    82,
+    71
+   ],
+   "bbox": [
+    202.6,
+    628.9,
+    284.8,
+    699.5
+   ]
+  },
+  {
+   "id": "atlas-117",
+   "file": "p5-117.png",
+   "page": 5,
+   "section": "五、课本插图",
+   "name": "自然界中二氧化碳循环",
+   "category": "illus",
+   "categoryCn": "课本插图",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    78,
+    117
+   ],
+   "bbox": [
+    431.6,
+    694.4,
+    509.4,
+    811.1
+   ]
+  },
+  {
+   "id": "atlas-118",
+   "file": "p6-118.png",
+   "page": 6,
+   "section": "五、课本插图",
+   "name": "制取二氧化碳·典型错误装置",
+   "category": "experiment",
+   "categoryCn": "课本实验装置",
+   "inLibrary": true,
+   "kind": "wrong",
+   "assembly": "错在三点：集气瓶倒放（那是向下排空气法，CO2 比空气重，必须正放向上排空气）；瓶口没有塞子、长颈漏斗没液封，气体会从瓶口和漏斗跑掉；导管没伸到瓶底",
+   "aliases": [
+    "二氧化碳制取错误",
+    "典型错误装置",
+    "CO2装置纠错"
+   ],
+   "devices": [
+    "bottle",
+    "long_neck_funnel",
+    "tube",
+    "gas_jar"
+   ],
+   "devicesCn": [
+    "锥形瓶",
+    "长颈漏斗",
+    "导管",
+    "集气瓶"
+   ],
+   "missing": [],
+   "note": "这是反例图，讲解时必须明确指出错在哪里，不能当作正确装置使用",
+   "text": "",
+   "size": [
+    112,
+    87
+   ],
+   "bbox": [
+    320.7,
+    58.6,
+    432.4,
+    145.8
+   ]
+  },
+  {
+   "id": "atlas-119",
+   "file": "p6-119.png",
+   "page": 6,
+   "section": "五、课本插图",
+   "name": "制取氢气装置（试管+长颈漏斗）",
+   "category": "experiment",
+   "categoryCn": "课本实验装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "test_tube",
+    "long_neck_funnel",
+    "tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    30,
+    110
+   ],
+   "bbox": [
+    343.8,
+    181.8,
+    373.4,
+    292
+   ]
+  },
+  {
+   "id": "atlas-120",
+   "file": "p6-120.png",
+   "page": 6,
+   "section": "五、课本插图",
+   "name": "制取氢气装置（集气瓶型）",
+   "category": "experiment",
+   "categoryCn": "课本实验装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "固体放在瓶底，长颈漏斗液封，导管从另一孔导出",
+   "aliases": [
+    "制取氢气",
+    "简易启普发生器"
+   ],
+   "devices": [
+    "test_tube",
+    "long_neck_funnel",
+    "tube"
+   ],
+   "devicesCn": [
+    "集气瓶",
+    "长颈漏斗",
+    "双孔塞",
+    "导管"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    33,
+    91
+   ],
+   "bbox": [
+    391.3,
+    195.4,
+    424.5,
+    286.2
+   ]
+  },
+  {
+   "id": "atlas-121",
+   "file": "p6-121.png",
+   "page": 6,
+   "section": "五、课本插图",
+   "name": "简易气体发生装置（集气瓶+长颈漏斗）",
+   "category": "experiment",
+   "categoryCn": "课本实验装置",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [
+    "gas_jar",
+    "long_neck_funnel",
+    "tube"
+   ],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    36,
+    91
+   ],
+   "bbox": [
+    440.2,
+    195.4,
+    476.3,
+    286.2
+   ]
+  },
+  {
+   "id": "atlas-122",
+   "file": "p6-122.png",
+   "page": 6,
+   "section": "五、课本插图",
+   "name": "氢气还原氧化铜",
+   "category": "experiment",
+   "categoryCn": "课本实验装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "试管口略向下倾斜；氧化铜铺在管底；氢气导管穿过塞子伸到管内固体上方；先通氢气排尽空气再加热，实验后先停止加热继续通氢气至冷却",
+   "aliases": [
+    "H2还原CuO",
+    "氢气还原氧化铜",
+    "还原反应"
+   ],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner",
+    "tube"
+   ],
+   "devicesCn": [
+    "试管",
+    "铁架台",
+    "酒精灯",
+    "单孔塞",
+    "导管"
+   ],
+   "missing": [],
+   "note": "导管须伸到管内 CuO 上方",
+   "text": "",
+   "size": [
+    103,
+    87
+   ],
+   "bbox": [
+    303.4,
+    294.8,
+    406.5,
+    382
+   ]
+  },
+  {
+   "id": "atlas-123",
+   "file": "p6-123.png",
+   "page": 6,
+   "section": "五、课本插图",
+   "name": "加热高锰酸钾制氧气·排水法",
+   "category": "experiment",
+   "categoryCn": "课本实验装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "试管口略向下倾斜（防冷凝水倒流炸裂）；管口塞一团棉花（防高锰酸钾粉末进导管）；酒精灯外焰先预热再对准药品加热；导管伸到集气瓶口，集气瓶倒扣在装满水的水槽中",
+   "aliases": [
+    "高锰酸钾制氧气",
+    "KMnO4制氧",
+    "加热固体制氧气",
+    "实验室制取氧气"
+   ],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner",
+    "tube",
+    "trough",
+    "gas_jar"
+   ],
+   "devicesCn": [
+    "试管",
+    "铁架台",
+    "酒精灯",
+    "单孔塞",
+    "导管",
+    "水槽",
+    "集气瓶"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    130,
+    91
+   ],
+   "bbox": [
+    173.8,
+    302.7,
+    303.5,
+    393.5
+   ]
+  },
+  {
+   "id": "atlas-124",
+   "file": "p6-124.png",
+   "page": 6,
+   "section": "五、课本插图",
+   "name": "溶解度曲线 + 空气成分示意图（两图合版）",
+   "category": "illus",
+   "categoryCn": "课本插图",
+   "inLibrary": false,
+   "kind": null,
+   "assembly": null,
+   "aliases": [],
+   "devices": [],
+   "devicesCn": [],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    146,
+    212
+   ],
+   "bbox": [
+    448.2,
+    304.2,
+    593.7,
+    515.9
+   ]
+  },
+  {
+   "id": "atlas-125",
+   "file": "p6-125.png",
+   "page": 6,
+   "section": "五、课本插图",
+   "name": "加热高锰酸钾制氧气·排水法（变体）",
+   "category": "experiment",
+   "categoryCn": "课本实验装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "与标准装置相同：管口略向下、塞棉花、排水法收集；差别在于集气瓶的固定方式",
+   "aliases": [
+    "高锰酸钾制氧气",
+    "制取氧气"
+   ],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner",
+    "tube",
+    "trough",
+    "gas_jar"
+   ],
+   "devicesCn": [
+    "试管",
+    "铁架台",
+    "酒精灯",
+    "单孔塞",
+    "导管",
+    "水槽",
+    "集气瓶"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    102,
+    75
+   ],
+   "bbox": [
+    160.2,
+    389.8,
+    261.8,
+    464.8
+   ]
+  },
+  {
+   "id": "atlas-126",
+   "file": "p6-126.png",
+   "page": 6,
+   "section": "五、课本插图",
+   "name": "加热氯酸钾制氧气·排水法",
+   "category": "experiment",
+   "categoryCn": "课本实验装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "氯酸钾与二氧化锰混合加热，管口略向下倾斜；不需要塞棉花（无粉末），其余同高锰酸钾法",
+   "aliases": [
+    "氯酸钾制氧气",
+    "KClO3制氧",
+    "二氧化锰催化"
+   ],
+   "devices": [
+    "test_tube",
+    "stand",
+    "burner",
+    "tube",
+    "trough",
+    "gas_jar"
+   ],
+   "devicesCn": [
+    "试管",
+    "铁架台",
+    "酒精灯",
+    "单孔塞",
+    "导管",
+    "水槽",
+    "集气瓶"
+   ],
+   "missing": [],
+   "note": null,
+   "text": "",
+   "size": [
+    81,
+    60
+   ],
+   "bbox": [
+    307.8,
+    410,
+    389.2,
+    469.8
+   ]
+  },
+  {
+   "id": "atlas-127",
+   "file": "p6-127.png",
+   "page": 6,
+   "section": "五、课本插图",
+   "name": "燃烧条件的探究",
+   "category": "experiment",
+   "categoryCn": "课本实验装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "铜片上的白磷燃烧、红磷不燃烧；水中的白磷不燃烧（隔绝氧气）；通氧气后水中白磷燃烧——三组对照说明燃烧需要可燃物、氧气、达到着火点",
+   "aliases": [
+    "燃烧条件",
+    "白磷红磷铜片热水",
+    "探究燃烧条件"
+   ],
+   "devices": [
+    "beaker",
+    "copper_plate"
+   ],
+   "devicesCn": [
+    "烧杯",
+    "铜片",
+    "白磷",
+    "红磷",
+    "热水"
+   ],
+   "missing": [],
+   "note": "铜片、白磷/红磷均为特殊器材，尚未注册",
+   "text": "",
+   "size": [
+    116,
+    76
+   ],
+   "bbox": [
+    375.4,
+    525.2,
+    491.4,
+    600.9
+   ]
+  },
+  {
+   "id": "atlas-128",
+   "file": "p6-128.png",
+   "page": 6,
+   "section": "五、课本插图",
+   "name": "红磷燃烧测定空气中氧气含量",
+   "category": "experiment",
+   "categoryCn": "课本实验装置",
+   "inLibrary": true,
+   "kind": "setup",
+   "assembly": "钟罩倒扣在水槽中，红磷在罩内燃烧消耗氧气；冷却后罩内压强减小、水面上升约 1/5 体积",
+   "aliases": [
+    "测定空气中氧气含量",
+    "钟罩实验",
+    "红磷燃烧"
+   ],
+   "devices": [
+    "gas_jar",
+    "trough",
+    "combustion_spoon"
+   ],
+   "devicesCn": [
+    "钟罩",
+    "燃烧匙",
+    "水槽",
+    "红磷"
+   ],
+   "missing": [],
+   "note": "钟罩可用倒扣集气瓶近似",
+   "text": "",
+   "size": [
+    67,
+    84
+   ],
+   "bbox": [
+    214.2,
+    554.7,
+    281.2,
+    639
+   ]
+  }
+ ]
+}

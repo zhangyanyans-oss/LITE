@@ -1,0 +1,33 @@
+% ============================================================
+%  tikz-chemlab.sty
+%  化学实验器材 TikZ 绘图包 (LaTeX 包封装 / wrapper)
+%  原作者 : D. Girou / C. Jorsen / M. Luque / H. Voss
+%  TikZ 改写 : Aihua Wang(王爱华)
+% ============================================================
+%
+%  本包由 pst-labo 改写而来, 改名为 tikz-chemlab
+%  本文件 (wrapper) 仅做两件事 :
+%    1. \RequirePackage{tikz}          -- 加载 TikZ
+%    2. \input{tikz-chemlab.tex}       -- 加载主实现
+%
+%  依赖 (三个文件需放在同一目录或 TeX 搜索路径中) :
+%    tikz-chemlab.sty      <-- 本文件 (LaTeX 包封装)
+%    tikz-chemlab.tex      <-- 主实现 (参数系统 + 高级命令)
+%    tikz-chemlabObj.tex   <-- 形状宏库 (由 tikz-chemlab.tex 自动加载)
+%
+%  使用方式 :
+%    \usepackage{tikz-chemlab}    % 在导言区
+%    ...
+%    \begin{tikzpicture}
+%       \pstTubeEssais[glassType=becher,niveauLiquide1=50]
+%    \end{tikzpicture}
+%
+%  注 : 用户命令名 (\pstTubeEssais 等) 保持与原 pst-labo 兼容,
+%       仅文件名/包名/键族名/内部宏名前缀更改为 tikz-chemlab
+% ============================================================
+
+\RequirePackage{tikz}
+\ProvidesPackage{tikz-chemlab}[2026/08/03 v1.0.0]
+
+\input{tikz-chemlab.tex}
+\endinput

@@ -1,0 +1,1288 @@
+{
+  "chemistry": {
+    "subject": "chemistry",
+    "types": {
+      "beaker": {
+        "display_name": "烧杯",
+        "default_size": [
+          80,
+          100
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "side_left_in": {
+            "x": 0,
+            "y": 0.3
+          },
+          "side_right_out": {
+            "x": 1,
+            "y": 0.3
+          },
+          "liquid_inside": {
+            "x": 0.5,
+            "y": 0.75
+          },
+          "bottom": {
+            "x": 0.5,
+            "y": 0.9
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "flask": {
+        "display_name": "烧瓶",
+        "default_size": [
+          90,
+          110
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "top_out": {
+            "x": 0.5,
+            "y": 0
+          },
+          "side_left_in": {
+            "x": 0,
+            "y": 0.3
+          },
+          "side_right_out": {
+            "x": 1,
+            "y": 0.3
+          },
+          "liquid_inside": {
+            "x": 0.5,
+            "y": 0.75
+          },
+          "bottom": {
+            "x": 0.5,
+            "y": 0.9
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "test_tube": {
+        "display_name": "试管",
+        "default_size": [
+          30,
+          100
+        ],
+        "interfaces": {
+          "mouth_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "side_right_out": {
+            "x": 1,
+            "y": 0.1
+          },
+          "liquid_inside": {
+            "x": 0.5,
+            "y": 0.7
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "tube": {
+        "display_name": "导管",
+        "default_size": [
+          120,
+          20
+        ],
+        "interfaces": {
+          "left_end": {
+            "x": 0,
+            "y": 0.5
+          },
+          "right_end": {
+            "x": 1,
+            "y": 0.5
+          }
+        },
+        "mount": "insert",
+        "apparatus": true
+      },
+      "stand": {
+        "display_name": "铁架台",
+        "default_size": [
+          60,
+          160
+        ],
+        "interfaces": {
+          "clamp": {
+            "x": 1,
+            "y": 0.25
+          },
+          "base": {
+            "x": 0.5,
+            "y": 1
+          }
+        },
+        "mount": "fixture",
+        "apparatus": true
+      },
+      "burner": {
+        "display_name": "酒精灯",
+        "default_size": [
+          40,
+          60
+        ],
+        "interfaces": {
+          "flame": {
+            "x": 0.5,
+            "y": 0
+          }
+        },
+        "mount": "fixture",
+        "apparatus": true
+      },
+      "separating_funnel": {
+        "display_name": "分液漏斗",
+        "default_size": [
+          50,
+          80
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "bottom_out": {
+            "x": 0.5,
+            "y": 1
+          }
+        },
+        "mount": "insert",
+        "apparatus": true
+      },
+      "inverted_funnel": {
+        "display_name": "倒置漏斗",
+        "default_size": [
+          50,
+          70
+        ],
+        "interfaces": {
+          "stem_out": {
+            "x": 0.5,
+            "y": 0
+          },
+          "wide_bottom": {
+            "x": 0.5,
+            "y": 1
+          }
+        },
+        "mount": "insert",
+        "apparatus": true
+      },
+      "glass_rod": {
+        "display_name": "玻璃棒",
+        "default_size": [
+          100,
+          10
+        ],
+        "interfaces": {
+          "end_1": {
+            "x": 0,
+            "y": 0.5
+          },
+          "end_2": {
+            "x": 1,
+            "y": 0.5
+          }
+        },
+        "mount": "insert",
+        "apparatus": true
+      },
+      "bottle": {
+        "display_name": "试剂瓶",
+        "default_size": [
+          70,
+          90
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "top_out": {
+            "x": 0.5,
+            "y": 0
+          },
+          "side_out": {
+            "x": 1,
+            "y": 0.3
+          },
+          "side_right_out": {
+            "x": 1,
+            "y": 0.3
+          },
+          "liquid_inside": {
+            "x": 0.5,
+            "y": 0.75
+          },
+          "bottom": {
+            "x": 0.5,
+            "y": 0.9
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "gas_jar": {
+        "display_name": "集气瓶",
+        "default_size": [
+          60,
+          90
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "top_in": {
+            "x": 0.5,
+            "y": 0
+          },
+          "top_out": {
+            "x": 0.5,
+            "y": 0
+          },
+          "bottom_in": {
+            "x": 0.5,
+            "y": 1
+          }
+        },
+        "auto_plate": {
+          "when_iface": "bottom_in"
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "trough": {
+        "display_name": "水槽",
+        "default_size": [
+          150,
+          70
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0.2
+          },
+          "liquid_inside": {
+            "x": 0.5,
+            "y": 0.6
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "long_neck_funnel": {
+        "display_name": "长颈漏斗",
+        "default_size": [
+          36,
+          110
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "bottom_out": {
+            "x": 0.5,
+            "y": 1
+          }
+        },
+        "mount": "insert",
+        "apparatus": true
+      },
+      "solid_chunks": {
+        "display_name": "固体药品",
+        "default_size": [
+          44,
+          18
+        ],
+        "interfaces": {},
+        "mount": "fixture",
+        "apparatus": true
+      },
+      "glass_plate": {
+        "display_name": "玻璃片",
+        "default_size": [
+          70,
+          8
+        ],
+        "interfaces": {},
+        "is_plate": true,
+        "mount": "fixture",
+        "apparatus": true
+      },
+      "electrode": {
+        "display_name": "电极",
+        "default_size": [
+          14,
+          70
+        ],
+        "mount": "insert",
+        "apparatus": true,
+        "interfaces": {
+          "top": {
+            "x": 0.5,
+            "y": 0
+          },
+          "tip": {
+            "x": 0.5,
+            "y": 1
+          }
+        }
+      },
+      "battery": {
+        "display_name": "直流电源",
+        "default_size": [
+          80,
+          30
+        ],
+        "mount": "fixture",
+        "apparatus": true,
+        "interfaces": {
+          "positive": {
+            "x": 0,
+            "y": 0.5
+          },
+          "negative": {
+            "x": 1,
+            "y": 0.5
+          }
+        }
+      },
+      "combustion_spoon": {
+        "display_name": "燃烧匙",
+        "default_size": [
+          16,
+          80
+        ],
+        "mount": "insert",
+        "apparatus": true,
+        "interfaces": {
+          "handle": {
+            "x": 0.5,
+            "y": 0
+          },
+          "bowl": {
+            "x": 0.5,
+            "y": 1
+          }
+        }
+      },
+      "funnel": {
+        "display_name": "漏斗",
+        "default_size": [
+          56,
+          66
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "stem_bottom": {
+            "x": 0.5,
+            "y": 1
+          },
+          "liquid_inside": {
+            "x": 0.5,
+            "y": 0.55
+          }
+        },
+        "mount": "insert",
+        "apparatus": true
+      },
+      "thermometer": {
+        "display_name": "温度计",
+        "default_size": [
+          11,
+          100
+        ],
+        "interfaces": {
+          "top": {
+            "x": 0.5,
+            "y": 0
+          },
+          "bulb": {
+            "x": 0.5,
+            "y": 1
+          },
+          "liquid_inside": {
+            "x": 0.5,
+            "y": 0.88
+          }
+        },
+        "mount": "insert",
+        "apparatus": true
+      },
+      "evaporating_dish": {
+        "display_name": "蒸发皿",
+        "default_size": [
+          78,
+          42
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "liquid_inside": {
+            "x": 0.5,
+            "y": 0.55
+          },
+          "bottom": {
+            "x": 0.5,
+            "y": 0.92
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "crucible": {
+        "display_name": "坩埚",
+        "default_size": [
+          40,
+          42
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "liquid_inside": {
+            "x": 0.5,
+            "y": 0.55
+          },
+          "bottom": {
+            "x": 0.5,
+            "y": 0.92
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "cylinder": {
+        "display_name": "量筒",
+        "default_size": [
+          40,
+          120
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "liquid_inside": {
+            "x": 0.5,
+            "y": 0.6
+          },
+          "bottom": {
+            "x": 0.5,
+            "y": 0.95
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "volumetric_flask": {
+        "display_name": "容量瓶",
+        "default_size": [
+          64,
+          110
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "liquid_inside": {
+            "x": 0.5,
+            "y": 0.55
+          },
+          "mark": {
+            "x": 0.5,
+            "y": 0.2
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "distilling_flask": {
+        "display_name": "蒸馏烧瓶",
+        "default_size": [
+          92,
+          96
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "side_out": {
+            "x": 0.9,
+            "y": 0.22
+          },
+          "liquid_inside": {
+            "x": 0.5,
+            "y": 0.72
+          },
+          "bottom": {
+            "x": 0.5,
+            "y": 0.95
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "hard_glass_tube": {
+        "display_name": "硬质玻璃管",
+        "default_size": [
+          132,
+          26
+        ],
+        "interfaces": {
+          "left_open": {
+            "x": 0.02,
+            "y": 0.5
+          },
+          "right_open": {
+            "x": 0.98,
+            "y": 0.5
+          },
+          "left_end": {
+            "x": 0.02,
+            "y": 0.5
+          },
+          "right_end": {
+            "x": 0.98,
+            "y": 0.5
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "u_tube": {
+        "display_name": "U形管",
+        "default_size": [
+          74,
+          82
+        ],
+        "interfaces": {
+          "left_open": {
+            "x": 0.14,
+            "y": 0
+          },
+          "right_open": {
+            "x": 0.86,
+            "y": 0
+          },
+          "liquid_inside": {
+            "x": 0.5,
+            "y": 0.72
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "drying_tube": {
+        "display_name": "干燥管",
+        "default_size": [
+          86,
+          76
+        ],
+        "interfaces": {
+          "left_open": {
+            "x": 0.04,
+            "y": 0
+          },
+          "right_open": {
+            "x": 0.96,
+            "y": 0
+          },
+          "inner": {
+            "x": 0.5,
+            "y": 0.55
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "condenser": {
+        "display_name": "冷凝管",
+        "default_size": [
+          118,
+          42
+        ],
+        "interfaces": {
+          "in_left": {
+            "x": 0.01,
+            "y": 0.5
+          },
+          "out_right": {
+            "x": 0.99,
+            "y": 0.5
+          },
+          "water_in": {
+            "x": 0.2,
+            "y": 1
+          },
+          "water_out": {
+            "x": 0.8,
+            "y": 0
+          }
+        },
+        "mount": "fixture",
+        "apparatus": true
+      },
+      "distillation_head": {
+        "display_name": "蒸馏头",
+        "default_size": [
+          62,
+          56
+        ],
+        "interfaces": {
+          "bottom_in": {
+            "x": 0.5,
+            "y": 1
+          },
+          "top_out": {
+            "x": 0.5,
+            "y": 0
+          },
+          "slant_out": {
+            "x": 0.96,
+            "y": 0.56
+          }
+        },
+        "mount": "fixture",
+        "apparatus": true
+      },
+      "balance": {
+        "display_name": "托盘天平",
+        "default_size": [
+          124,
+          76
+        ],
+        "interfaces": {
+          "left_pan": {
+            "x": 0.24,
+            "y": 0.18
+          },
+          "right_pan": {
+            "x": 0.76,
+            "y": 0.18
+          },
+          "base": {
+            "x": 0.5,
+            "y": 0.95
+          }
+        },
+        "mount": "fixture",
+        "apparatus": true
+      },
+      "tripod": {
+        "display_name": "三脚架",
+        "default_size": [
+          88,
+          52
+        ],
+        "interfaces": {
+          "top": {
+            "x": 0.5,
+            "y": 0.06
+          },
+          "bottom": {
+            "x": 0.5,
+            "y": 1
+          }
+        },
+        "mount": "fixture",
+        "apparatus": true
+      },
+      "clay_triangle": {
+        "display_name": "泥三角",
+        "default_size": [
+          66,
+          26
+        ],
+        "interfaces": {
+          "top": {
+            "x": 0.5,
+            "y": 0.12
+          },
+          "bottom": {
+            "x": 0.5,
+            "y": 0.9
+          }
+        },
+        "mount": "fixture",
+        "apparatus": true
+      },
+      "watch_glass": {
+        "display_name": "表面皿",
+        "default_size": [
+          62,
+          22
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "inside": {
+            "x": 0.5,
+            "y": 0.55
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "petri_dish": {
+        "display_name": "培养皿",
+        "default_size": [
+          68,
+          22
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          },
+          "inside": {
+            "x": 0.5,
+            "y": 0.6
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "copper_plate": {
+        "display_name": "铜片",
+        "default_size": [
+          56,
+          10
+        ],
+        "interfaces": {
+          "surface": {
+            "x": 0.5,
+            "y": 0.12
+          }
+        },
+        "mount": "fixture",
+        "apparatus": true
+      },
+      "stopper": {
+        "display_name": "橡胶塞",
+        "default_size": [
+          30,
+          18
+        ],
+        "interfaces": {
+          "top": {
+            "x": 0.5,
+            "y": 0
+          },
+          "bottom": {
+            "x": 0.5,
+            "y": 1
+          }
+        },
+        "mount": "fixture",
+        "apparatus": true
+      },
+      "clamp": {
+        "display_name": "铁夹",
+        "default_size": [
+          42,
+          26
+        ],
+        "interfaces": {
+          "arm": {
+            "x": 0.0,
+            "y": 0.5
+          },
+          "jaw": {
+            "x": 1.0,
+            "y": 0.5
+          }
+        },
+        "mount": "fixture",
+        "apparatus": true
+      }
+    }
+  },
+  "physics": {
+    "subject": "physics",
+    "types": {
+      "stand": {
+        "display_name": "铁架台",
+        "default_size": [
+          60,
+          160
+        ],
+        "interfaces": {
+          "clamp": {
+            "x": 1,
+            "y": 0.25
+          },
+          "base": {
+            "x": 0.5,
+            "y": 1
+          }
+        },
+        "mount": "fixture"
+      },
+      "timer": {
+        "display_name": "打点计时器",
+        "default_size": [
+          60,
+          50
+        ],
+        "interfaces": {
+          "paper_in": {
+            "x": 0,
+            "y": 0.6
+          },
+          "paper_out": {
+            "x": 0.5,
+            "y": 1
+          },
+          "power": {
+            "x": 1,
+            "y": 0.5
+          }
+        },
+        "mount": "fixture"
+      },
+      "paper_tape": {
+        "display_name": "纸带",
+        "default_size": [
+          140,
+          15
+        ],
+        "interfaces": {
+          "left_end": {
+            "x": 0,
+            "y": 0.5
+          },
+          "right_end": {
+            "x": 1,
+            "y": 0.5
+          }
+        },
+        "mount": "fixture"
+      },
+      "weight": {
+        "display_name": "重锤",
+        "default_size": [
+          30,
+          40
+        ],
+        "interfaces": {
+          "top_hook": {
+            "x": 0.5,
+            "y": 0
+          }
+        },
+        "mount": "fixture"
+      },
+      "pulley": {
+        "display_name": "滑轮",
+        "default_size": [
+          40,
+          40
+        ],
+        "interfaces": {
+          "axle": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "rope_left": {
+            "x": 0,
+            "y": 0.5
+          },
+          "rope_right": {
+            "x": 1,
+            "y": 0.5
+          }
+        },
+        "mount": "fixture"
+      },
+      "spring_scale": {
+        "display_name": "弹簧测力计",
+        "default_size": [
+          25,
+          90
+        ],
+        "interfaces": {
+          "top_ring": {
+            "x": 0.5,
+            "y": 0
+          },
+          "bottom_hook": {
+            "x": 0.5,
+            "y": 1
+          }
+        },
+        "mount": "fixture"
+      },
+      "battery": {
+        "display_name": "电源",
+        "default_size": [
+          60,
+          30
+        ],
+        "interfaces": {
+          "positive": {
+            "x": 0.7,
+            "y": 0.5
+          },
+          "negative": {
+            "x": 0.3,
+            "y": 0.5
+          }
+        },
+        "mount": "fixture"
+      },
+      "light_bulb": {
+        "display_name": "小灯泡",
+        "default_size": [
+          25,
+          35
+        ],
+        "interfaces": {
+          "terminal_1": {
+            "x": 0,
+            "y": 0.7
+          },
+          "terminal_2": {
+            "x": 1,
+            "y": 0.7
+          }
+        },
+        "mount": "fixture"
+      },
+      "switch": {
+        "display_name": "开关",
+        "default_size": [
+          40,
+          25
+        ],
+        "interfaces": {
+          "in": {
+            "x": 0,
+            "y": 0.5
+          },
+          "out": {
+            "x": 1,
+            "y": 0.5
+          }
+        },
+        "mount": "fixture"
+      },
+      "rheostat": {
+        "display_name": "滑动变阻器",
+        "default_size": [
+          80,
+          30
+        ],
+        "interfaces": {
+          "left_end": {
+            "x": 0,
+            "y": 0.5
+          },
+          "right_end": {
+            "x": 1,
+            "y": 0.5
+          },
+          "slider": {
+            "x": 0.5,
+            "y": 0
+          }
+        },
+        "mount": "fixture"
+      }
+    }
+  },
+  "biology": {
+    "subject": "biology",
+    "types": {
+      "microscope": {
+        "display_name": "显微镜",
+        "default_size": [
+          70,
+          120
+        ],
+        "interfaces": {
+          "stage": {
+            "x": 0.5,
+            "y": 0.55
+          },
+          "eyepiece": {
+            "x": 0.5,
+            "y": 0
+          },
+          "objective": {
+            "x": 0.5,
+            "y": 0.4
+          }
+        },
+        "mount": "fixture"
+      },
+      "slide": {
+        "display_name": "载玻片",
+        "default_size": [
+          50,
+          20
+        ],
+        "interfaces": {
+          "surface": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        "mount": "fixture",
+        "apparatus": true
+      },
+      "cover_slip": {
+        "display_name": "盖玻片",
+        "default_size": [
+          20,
+          20
+        ],
+        "interfaces": {
+          "surface": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        "mount": "fixture",
+        "apparatus": true
+      },
+      "petri_dish": {
+        "display_name": "培养皿",
+        "default_size": [
+          60,
+          60
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "beaker": {
+        "display_name": "烧杯",
+        "default_size": [
+          70,
+          90
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "test_tube": {
+        "display_name": "试管",
+        "default_size": [
+          25,
+          100
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      },
+      "dropper": {
+        "display_name": "滴管",
+        "default_size": [
+          15,
+          60
+        ],
+        "interfaces": {
+          "tip": {
+            "x": 0.5,
+            "y": 1
+          },
+          "bulb": {
+            "x": 0.5,
+            "y": 0
+          }
+        },
+        "mount": "insert",
+        "apparatus": true
+      },
+      "glass_rod": {
+        "display_name": "玻璃棒",
+        "default_size": [
+          100,
+          10
+        ],
+        "interfaces": {
+          "end_1": {
+            "x": 0,
+            "y": 0.5
+          },
+          "end_2": {
+            "x": 1,
+            "y": 0.5
+          }
+        },
+        "mount": "insert",
+        "apparatus": true
+      },
+      "mortar": {
+        "display_name": "研钵",
+        "default_size": [
+          60,
+          50
+        ],
+        "interfaces": {
+          "top_open": {
+            "x": 0.5,
+            "y": 0
+          }
+        },
+        "mount": "vessel",
+        "apparatus": true
+      }
+    }
+  },
+  "geography": {
+    "subject": "geography",
+    "types": {
+      "map_frame": {
+        "display_name": "图框",
+        "default_size": [
+          300,
+          200
+        ],
+        "interfaces": {
+          "north": {
+            "x": 0.5,
+            "y": 0
+          },
+          "south": {
+            "x": 0.5,
+            "y": 1
+          },
+          "east": {
+            "x": 1,
+            "y": 0.5
+          },
+          "west": {
+            "x": 0,
+            "y": 0.5
+          }
+        },
+        "region_capacity": 1,
+        "mount": "fixture"
+      },
+      "legend": {
+        "display_name": "图例",
+        "default_size": [
+          80,
+          60
+        ],
+        "interfaces": {},
+        "mount": "fixture"
+      },
+      "compass": {
+        "display_name": "方向标",
+        "default_size": [
+          30,
+          30
+        ],
+        "interfaces": {},
+        "mount": "fixture"
+      },
+      "scale_bar": {
+        "display_name": "比例尺",
+        "default_size": [
+          100,
+          15
+        ],
+        "interfaces": {},
+        "mount": "fixture"
+      },
+      "arrow": {
+        "display_name": "箭头",
+        "default_size": [
+          40,
+          15
+        ],
+        "interfaces": {
+          "tail": {
+            "x": 0,
+            "y": 0.5
+          },
+          "head": {
+            "x": 1,
+            "y": 0.5
+          }
+        },
+        "mount": "fixture"
+      },
+      "section_line": {
+        "display_name": "剖面线",
+        "default_size": [
+          150,
+          5
+        ],
+        "interfaces": {
+          "start": {
+            "x": 0,
+            "y": 0.5
+          },
+          "end": {
+            "x": 1,
+            "y": 0.5
+          }
+        },
+        "mount": "fixture"
+      },
+      "label_box": {
+        "display_name": "标注框",
+        "default_size": [
+          60,
+          25
+        ],
+        "interfaces": {
+          "anchor": {
+            "x": 0.5,
+            "y": 1
+          }
+        },
+        "mount": "fixture"
+      }
+    }
+  }
+}

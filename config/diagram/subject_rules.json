@@ -1,0 +1,208 @@
+{
+  "chemistry": [
+    {
+      "id": "heater_below",
+      "kind": "position_relation",
+      "a_type": "burner",
+      "b_type": [
+        "flask",
+        "beaker",
+        "test_tube",
+        "evaporating_dish",
+        "crucible"
+      ],
+      "relation": "below",
+      "message": "加热源必须在被加热装置下方"
+    },
+    {
+      "id": "stand_adjacent",
+      "kind": "must_be_adjacent",
+      "a_type": "stand",
+      "b_type": [
+        "*"
+      ],
+      "message": "铁架台必须与被支撑装置相邻"
+    },
+    {
+      "id": "flow_left_to_right",
+      "kind": "connection_direction",
+      "from_type": "beaker",
+      "to_type": "beaker",
+      "direction": "left_of",
+      "message": "液体流向应从左到右"
+    },
+    {
+      "id": "connected_test_tube",
+      "kind": "must_be_connected",
+      "a_type": "test_tube",
+      "message": "试管没有任何连接——图上看不出它和谁相通（试管悬空是最常见的错图）"
+    },
+    {
+      "id": "connected_beaker",
+      "kind": "must_be_connected",
+      "a_type": "beaker",
+      "message": "烧杯没有任何连接——它和别的装置的关系丢失了"
+    },
+    {
+      "id": "connected_flask",
+      "kind": "must_be_connected",
+      "a_type": "flask",
+      "message": "烧瓶没有任何连接——管道/导管该连的没连"
+    },
+    {
+      "id": "connected_bottle",
+      "kind": "must_be_connected",
+      "a_type": "bottle",
+      "message": "试剂瓶/锥形瓶没有任何连接——进液、出气都没画"
+    },
+    {
+      "id": "connected_gas_jar",
+      "kind": "must_be_connected",
+      "a_type": "gas_jar",
+      "message": "集气瓶没有任何连接——进气口/瓶口都没连上"
+    },
+    {
+      "id": "connected_long_neck_funnel",
+      "kind": "must_be_connected",
+      "a_type": "long_neck_funnel",
+      "message": "长颈漏斗没有任何连接——没接反应容器"
+    },
+    {
+      "id": "connected_separating_funnel",
+      "kind": "must_be_connected",
+      "a_type": "separating_funnel",
+      "message": "分液漏斗没有任何连接——没接反应容器"
+    },
+    {
+      "id": "connected_electrode",
+      "kind": "must_be_connected",
+      "a_type": "electrode",
+      "message": "电极没有接线也没有插入容器——孤立的电极没有意义"
+    },
+    {
+      "id": "connected_combustion_spoon",
+      "kind": "must_be_connected",
+      "a_type": "combustion_spoon",
+      "message": "燃烧匙没有连到集气瓶——不知道它插在哪里"
+    },
+    {
+      "id": "connected_funnel",
+      "kind": "must_be_connected",
+      "a_type": "funnel",
+      "message": "漏斗没有任何连接——它没架在烧杯上、也没接反应容器，图上就是一支悬空的漏斗"
+    },
+    {
+      "id": "connected_thermometer",
+      "kind": "must_be_connected",
+      "a_type": "thermometer",
+      "message": "温度计没有插进任何容器——温度计必须插在液体里或蒸馏头上，孤立摆放没有意义"
+    },
+    {
+      "id": "connected_drying_tube",
+      "kind": "must_be_connected",
+      "a_type": "drying_tube",
+      "message": "干燥管没有接在管路里——它必须两端各接一根导管（左进右出）"
+    },
+    {
+      "id": "connected_u_tube",
+      "kind": "must_be_connected",
+      "a_type": "u_tube",
+      "message": "U形管没有接在管路里——它必须两端各接一根导管"
+    },
+    {
+      "id": "connected_condenser",
+      "kind": "must_be_connected",
+      "a_type": "condenser",
+      "message": "冷凝管没有接在装置里——冷凝管必须一端接蒸馏头、另一端接接收瓶"
+    },
+    {
+      "id": "connected_distilling_flask",
+      "kind": "must_be_connected",
+      "a_type": "distilling_flask",
+      "message": "蒸馏烧瓶没有任何连接——支管该接冷凝管、瓶口该接蒸馏头"
+    },
+    {
+      "id": "connected_hard_glass_tube",
+      "kind": "must_be_connected",
+      "a_type": "hard_glass_tube",
+      "message": "硬质玻璃管两端都没接管——气体从哪进、从哪出看不出来"
+    },
+    {
+      "id": "tripod_below_dish",
+      "kind": "must_be_adjacent",
+      "a_type": "tripod",
+      "b_type": [
+        "evaporating_dish",
+        "crucible"
+      ],
+      "message": "三脚架必须紧挨着蒸发皿/坩埚（它要架住器皿，不能放在别处）"
+    }
+  ],
+  "physics": [
+    {
+      "id": "timer_adjacent_stand",
+      "kind": "must_be_adjacent",
+      "a_type": "timer",
+      "b_type": [
+        "stand"
+      ],
+      "message": "打点计时器必须与铁架台相邻"
+    },
+    {
+      "id": "weight_below_tape",
+      "kind": "position_relation",
+      "a_type": "weight",
+      "b_type": [
+        "paper_tape"
+      ],
+      "relation": "below",
+      "message": "重锤应在纸带下方"
+    }
+  ],
+  "biology": [
+    {
+      "id": "microscope_center",
+      "kind": "position_in",
+      "a_type": "microscope",
+      "allowed": [
+        "center",
+        "center_top"
+      ],
+      "message": "显微镜应位于中央区域"
+    }
+  ],
+  "geography": [
+    {
+      "id": "compass_corner",
+      "kind": "position_in",
+      "a_type": "compass",
+      "allowed": [
+        "right_top",
+        "left_top"
+      ],
+      "message": "方向标应在顶部角落"
+    },
+    {
+      "id": "scale_bottom",
+      "kind": "position_in",
+      "a_type": "scale_bar",
+      "allowed": [
+        "center_bottom",
+        "bottom_center",
+        "bottom_right"
+      ],
+      "message": "比例尺应在底部"
+    },
+    {
+      "id": "legend_bottom",
+      "kind": "position_in",
+      "a_type": "legend",
+      "allowed": [
+        "left_bottom",
+        "bottom_left",
+        "bottom_right"
+      ],
+      "message": "图例应在底部"
+    }
+  ]
+}

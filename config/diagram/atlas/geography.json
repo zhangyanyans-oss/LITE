@@ -1,0 +1,2061 @@
+{
+  "version": 1,
+  "subject": "geography",
+  "source": "初中地理图库 PDF（自动抽取内嵌位图，每页一张，图内标注随图栅格化）",
+  "baseUrl": "/atlas/",
+  "note": "kind: setup=实验/操作图（讲步骤、器材时引用）；principle=示意图/地图（讲结构、分布、过程时引用）。由 scripts/atlas-figures.py 自动抽取，name 取 OCR 标题、按章节打 tag；assembly 为通用占位，可后续细化。",
+  "items": [
+    {
+      "id": "geo-001",
+      "file": "geo-001.png",
+      "name": "地球的大小（极半径与赤道半径）",
+      "kind": "principle",
+      "aliases": [
+        "地球的大小（极半径与赤道半径）"
+      ],
+      "tags": [
+        "地球与地图"
+      ],
+      "devices": [],
+      "assembly": "地球与地图地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 797,
+      "height": 670,
+      "chapter": "地球与地图",
+      "source": "p1"
+    },
+    {
+      "id": "geo-002",
+      "file": "geo-002.png",
+      "name": "纬线和纬度",
+      "kind": "principle",
+      "aliases": [
+        "纬线和纬度"
+      ],
+      "tags": [
+        "地球与地图"
+      ],
+      "devices": [],
+      "assembly": "地球与地图地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 532,
+      "height": 400,
+      "chapter": "地球与地图",
+      "source": "p2"
+    },
+    {
+      "id": "geo-003",
+      "file": "geo-003.png",
+      "name": "经线和经度",
+      "kind": "principle",
+      "aliases": [
+        "经线和经度"
+      ],
+      "tags": [
+        "地球与地图"
+      ],
+      "devices": [],
+      "assembly": "地球与地图地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 473,
+      "height": 486,
+      "chapter": "地球与地图",
+      "source": "p3"
+    },
+    {
+      "id": "geo-004",
+      "file": "geo-004.png",
+      "name": "经纬网与经线圈判读图（图A·B·C）",
+      "kind": "principle",
+      "aliases": [
+        "经纬网与经线圈判读图（图A·B·C）"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 828,
+      "height": 369,
+      "chapter": "其他",
+      "source": "p5"
+    },
+    {
+      "id": "geo-005",
+      "file": "geo-005.png",
+      "name": "经纬网球面判读图（标注A·B·C·D）",
+      "kind": "principle",
+      "aliases": [
+        "经纬网球面判读图（标注A·B·C·D）"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 414,
+      "height": 446,
+      "chapter": "其他",
+      "source": "p6"
+    },
+    {
+      "id": "geo-006",
+      "file": "geo-006.png",
+      "name": "从甲到乙的最短距离：先向东北，再向东南方向",
+      "kind": "principle",
+      "aliases": [
+        "从甲到乙的最短距离：先向东北，再向东南方向"
+      ],
+      "tags": [
+        "地球与地图"
+      ],
+      "devices": [],
+      "assembly": "地球与地图地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 961,
+      "height": 576,
+      "chapter": "地球与地图",
+      "source": "p7"
+    },
+    {
+      "id": "geo-007",
+      "file": "geo-007.png",
+      "name": "中国地图",
+      "kind": "principle",
+      "aliases": [
+        "中国地图"
+      ],
+      "tags": [
+        "中国地理分区"
+      ],
+      "devices": [],
+      "assembly": "中国地理分区地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 1055,
+      "chapter": "中国地理分区",
+      "source": "p8"
+    },
+    {
+      "id": "geo-008",
+      "file": "geo-008.png",
+      "name": "等高线绘法示意图",
+      "kind": "principle",
+      "aliases": [
+        "等高线绘法示意图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 591,
+      "height": 546,
+      "chapter": "其他",
+      "source": "p9"
+    },
+    {
+      "id": "geo-009",
+      "file": "geo-009.png",
+      "name": "等高线地形图",
+      "kind": "principle",
+      "aliases": [
+        "等高线地形图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 591,
+      "height": 449,
+      "chapter": "其他",
+      "source": "p10"
+    },
+    {
+      "id": "geo-010",
+      "file": "geo-010.png",
+      "name": "地形剖面图",
+      "kind": "principle",
+      "aliases": [
+        "地形剖面图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 591,
+      "height": 536,
+      "chapter": "其他",
+      "source": "p11"
+    },
+    {
+      "id": "geo-011",
+      "file": "geo-011.png",
+      "name": "等高线与凹形坡、凸形坡剖面图",
+      "kind": "principle",
+      "aliases": [
+        "等高线与凹形坡、凸形坡剖面图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 510,
+      "height": 412,
+      "chapter": "其他",
+      "source": "p12"
+    },
+    {
+      "id": "geo-012",
+      "file": "geo-012.png",
+      "name": "世界大陆和大洋分布图",
+      "kind": "principle",
+      "aliases": [
+        "世界大陆和大洋分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 632,
+      "height": 336,
+      "chapter": "其他",
+      "source": "p13"
+    },
+    {
+      "id": "geo-013",
+      "file": "geo-013.png",
+      "name": "东半球海陆分布图",
+      "kind": "principle",
+      "aliases": [
+        "东半球海陆分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 591,
+      "height": 699,
+      "chapter": "其他",
+      "source": "p14"
+    },
+    {
+      "id": "geo-014",
+      "file": "geo-014.png",
+      "name": "陆地地形示意图",
+      "kind": "principle",
+      "aliases": [
+        "陆地地形示意图"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 650,
+      "height": 239,
+      "chapter": "地形与地貌",
+      "source": "p15"
+    },
+    {
+      "id": "geo-015",
+      "file": "geo-015.png",
+      "name": "西半球海陆分布图",
+      "kind": "principle",
+      "aliases": [
+        "西半球海陆分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 591,
+      "height": 722,
+      "chapter": "其他",
+      "source": "p16"
+    },
+    {
+      "id": "geo-016",
+      "file": "geo-016.png",
+      "name": "六大板块示意图",
+      "kind": "principle",
+      "aliases": [
+        "六大板块示意图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 650,
+      "height": 398,
+      "chapter": "其他",
+      "source": "p17"
+    },
+    {
+      "id": "geo-017",
+      "file": "geo-017.png",
+      "name": "海底地形示意图",
+      "kind": "principle",
+      "aliases": [
+        "海底地形示意图"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 233,
+      "chapter": "地形与地貌",
+      "source": "p18"
+    },
+    {
+      "id": "geo-018",
+      "file": "geo-018.png",
+      "name": "大陆架与大陆坡海底地形剖面图",
+      "kind": "principle",
+      "aliases": [
+        "大陆架与大陆坡海底地形剖面图"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 768,
+      "height": 439,
+      "chapter": "地形与地貌",
+      "source": "p19"
+    },
+    {
+      "id": "geo-019",
+      "file": "geo-019.png",
+      "name": "世界年平均气温分布图",
+      "kind": "principle",
+      "aliases": [
+        "世界年平均气温分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 922,
+      "height": 616,
+      "chapter": "其他",
+      "source": "p20"
+    },
+    {
+      "id": "geo-020",
+      "file": "geo-020.png",
+      "name": "四种降水类型示意图",
+      "kind": "principle",
+      "aliases": [
+        "四种降水类型示意图"
+      ],
+      "tags": [
+        "气候与天气"
+      ],
+      "devices": [],
+      "assembly": "气候与天气地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 655,
+      "chapter": "气候与天气",
+      "source": "p21"
+    },
+    {
+      "id": "geo-021",
+      "file": "geo-021.png",
+      "name": "世界年降水量分布图",
+      "kind": "principle",
+      "aliases": [
+        "世界年降水量分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 887,
+      "height": 702,
+      "chapter": "其他",
+      "source": "p22"
+    },
+    {
+      "id": "geo-022",
+      "file": "geo-022.png",
+      "name": "世界气候类型分布图",
+      "kind": "principle",
+      "aliases": [
+        "世界气候类型分布图"
+      ],
+      "tags": [
+        "地球与地图"
+      ],
+      "devices": [],
+      "assembly": "地球与地图地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 838,
+      "height": 717,
+      "chapter": "地球与地图",
+      "source": "p23"
+    },
+    {
+      "id": "geo-023",
+      "file": "geo-023.png",
+      "name": "世界人口分布图",
+      "kind": "principle",
+      "aliases": [
+        "世界人口分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 550,
+      "chapter": "其他",
+      "source": "p25"
+    },
+    {
+      "id": "geo-024",
+      "file": "geo-024.png",
+      "name": "世界上面积位于前列的国家",
+      "kind": "principle",
+      "aliases": [
+        "世界上面积位于前列的国家"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 617,
+      "height": 905,
+      "chapter": "其他",
+      "source": "p26"
+    },
+    {
+      "id": "geo-025",
+      "file": "geo-025.png",
+      "name": "亚洲的范围",
+      "kind": "principle",
+      "aliases": [
+        "亚洲的范围"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 686,
+      "height": 469,
+      "chapter": "其他",
+      "source": "p27"
+    },
+    {
+      "id": "geo-026",
+      "file": "geo-026.png",
+      "name": "亚洲的地形",
+      "kind": "principle",
+      "aliases": [
+        "亚洲的地形"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 591,
+      "height": 580,
+      "chapter": "其他",
+      "source": "p28"
+    },
+    {
+      "id": "geo-027",
+      "file": "geo-027.png",
+      "name": "亚洲地理分区的人口分布",
+      "kind": "principle",
+      "aliases": [
+        "亚洲地理分区的人口分布"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 686,
+      "height": 479,
+      "chapter": "其他",
+      "source": "p29"
+    },
+    {
+      "id": "geo-028",
+      "file": "geo-028.png",
+      "name": "亚洲的气候类型",
+      "kind": "principle",
+      "aliases": [
+        "亚洲的气候类型"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 576,
+      "height": 584,
+      "chapter": "其他",
+      "source": "p30"
+    },
+    {
+      "id": "geo-029",
+      "file": "geo-029.png",
+      "name": "热带雨林气候",
+      "kind": "principle",
+      "aliases": [
+        "热带雨林气候"
+      ],
+      "tags": [
+        "地球与地图"
+      ],
+      "devices": [],
+      "assembly": "地球与地图地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 899,
+      "height": 600,
+      "chapter": "地球与地图",
+      "source": "p31"
+    },
+    {
+      "id": "geo-030",
+      "file": "geo-030.png",
+      "name": "东亚的国家和地区",
+      "kind": "principle",
+      "aliases": [
+        "东亚的国家和地区"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 767,
+      "chapter": "其他",
+      "source": "p32"
+    },
+    {
+      "id": "geo-031",
+      "file": "geo-031.png",
+      "name": "日本（国家轮廓与位置图）",
+      "kind": "principle",
+      "aliases": [
+        "日本（国家轮廓与位置图）"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 686,
+      "height": 827,
+      "chapter": "其他",
+      "source": "p33"
+    },
+    {
+      "id": "geo-032",
+      "file": "geo-032.png",
+      "name": "中亚主要农业生产和主要矿产分布图",
+      "kind": "principle",
+      "aliases": [
+        "中亚主要农业生产和主要矿产分布图"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 686,
+      "height": 583,
+      "chapter": "地形与地貌",
+      "source": "p35"
+    },
+    {
+      "id": "geo-033",
+      "file": "geo-033.png",
+      "name": "亚欧大陆桥示意图",
+      "kind": "principle",
+      "aliases": [
+        "亚欧大陆桥示意图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 686,
+      "height": 317,
+      "chapter": "其他",
+      "source": "p36"
+    },
+    {
+      "id": "geo-034",
+      "file": "geo-034.png",
+      "name": "日本山河分布与富山气温降水直方图",
+      "kind": "principle",
+      "aliases": [
+        "日本山河分布与富山气温降水直方图"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 946,
+      "height": 631,
+      "chapter": "地形与地貌",
+      "source": "p37"
+    },
+    {
+      "id": "geo-035",
+      "file": "geo-035.png",
+      "name": "东南亚地区图",
+      "kind": "principle",
+      "aliases": [
+        "东南亚地区图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 686,
+      "height": 601,
+      "chapter": "其他",
+      "source": "p38"
+    },
+    {
+      "id": "geo-036",
+      "file": "geo-036.png",
+      "name": "东南亚主要物产的分布",
+      "kind": "principle",
+      "aliases": [
+        "东南亚主要物产的分布"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 686,
+      "height": 711,
+      "chapter": "其他",
+      "source": "p39"
+    },
+    {
+      "id": "geo-037",
+      "file": "geo-037.png",
+      "name": "泛亚铁路示意图",
+      "kind": "principle",
+      "aliases": [
+        "泛亚铁路示意图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 591,
+      "height": 888,
+      "chapter": "其他",
+      "source": "p40"
+    },
+    {
+      "id": "geo-038",
+      "file": "geo-038.png",
+      "name": "南亚地形图",
+      "kind": "principle",
+      "aliases": [
+        "南亚地形图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 847,
+      "chapter": "其他",
+      "source": "p41"
+    },
+    {
+      "id": "geo-039",
+      "file": "geo-039.png",
+      "name": "南亚地区图",
+      "kind": "principle",
+      "aliases": [
+        "南亚地区图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 929,
+      "chapter": "其他",
+      "source": "p42"
+    },
+    {
+      "id": "geo-040",
+      "file": "geo-040.png",
+      "name": "印度主要农作物分布图",
+      "kind": "principle",
+      "aliases": [
+        "印度主要农作物分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 686,
+      "height": 819,
+      "chapter": "其他",
+      "source": "p43"
+    },
+    {
+      "id": "geo-041",
+      "file": "geo-041.png",
+      "name": "印度主要工业区和工业城市分布图",
+      "kind": "principle",
+      "aliases": [
+        "印度主要工业区和工业城市分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 686,
+      "height": 947,
+      "chapter": "其他",
+      "source": "p44"
+    },
+    {
+      "id": "geo-042",
+      "file": "geo-042.png",
+      "name": "中东地理位置图",
+      "kind": "principle",
+      "aliases": [
+        "中东地理位置图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 674,
+      "height": 558,
+      "chapter": "其他",
+      "source": "p45"
+    },
+    {
+      "id": "geo-043",
+      "file": "geo-043.png",
+      "name": "中东地形图",
+      "kind": "principle",
+      "aliases": [
+        "中东地形图"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 680,
+      "height": 603,
+      "chapter": "地形与地貌",
+      "source": "p46"
+    },
+    {
+      "id": "geo-044",
+      "file": "geo-044.png",
+      "name": "埃及农业分布示意图",
+      "kind": "principle",
+      "aliases": [
+        "埃及农业分布示意图"
+      ],
+      "tags": [
+        "地球与地图"
+      ],
+      "devices": [],
+      "assembly": "地球与地图地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 591,
+      "height": 496,
+      "chapter": "地球与地图",
+      "source": "p47"
+    },
+    {
+      "id": "geo-045",
+      "file": "geo-045.png",
+      "name": "非洲地形图",
+      "kind": "principle",
+      "aliases": [
+        "非洲地形图"
+      ],
+      "tags": [
+        "地球与地图"
+      ],
+      "devices": [],
+      "assembly": "地球与地图地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 627,
+      "height": 695,
+      "chapter": "地球与地图",
+      "source": "p48"
+    },
+    {
+      "id": "geo-046",
+      "file": "geo-046.png",
+      "name": "非洲气候带分布图",
+      "kind": "principle",
+      "aliases": [
+        "非洲气候带分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 627,
+      "height": 709,
+      "chapter": "其他",
+      "source": "p49"
+    },
+    {
+      "id": "geo-047",
+      "file": "geo-047.png",
+      "name": "非洲主要矿产分布图",
+      "kind": "principle",
+      "aliases": [
+        "非洲主要矿产分布图"
+      ],
+      "tags": [
+        "资源与能源"
+      ],
+      "devices": [],
+      "assembly": "资源与能源地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 627,
+      "height": 727,
+      "chapter": "资源与能源",
+      "source": "p50"
+    },
+    {
+      "id": "geo-048",
+      "file": "geo-048.png",
+      "name": "寒带气候",
+      "kind": "principle",
+      "aliases": [
+        "寒带气候"
+      ],
+      "tags": [
+        "气候与天气"
+      ],
+      "devices": [],
+      "assembly": "气候与天气地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 784,
+      "height": 947,
+      "chapter": "气候与天气",
+      "source": "p51"
+    },
+    {
+      "id": "geo-049",
+      "file": "geo-049.png",
+      "name": "俄罗斯图",
+      "kind": "principle",
+      "aliases": [
+        "俄罗斯图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 862,
+      "height": 659,
+      "chapter": "其他",
+      "source": "p52"
+    },
+    {
+      "id": "geo-050",
+      "file": "geo-050.png",
+      "name": "欧洲西部地形图",
+      "kind": "principle",
+      "aliases": [
+        "欧洲西部地形图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 783,
+      "height": 992,
+      "chapter": "其他",
+      "source": "p53"
+    },
+    {
+      "id": "geo-051",
+      "file": "geo-051.png",
+      "name": "俄罗斯地形图",
+      "kind": "principle",
+      "aliases": [
+        "俄罗斯地形图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 814,
+      "height": 570,
+      "chapter": "其他",
+      "source": "p54"
+    },
+    {
+      "id": "geo-052",
+      "file": "geo-052.png",
+      "name": "地中海气候",
+      "kind": "principle",
+      "aliases": [
+        "地中海气候"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 808,
+      "height": 568,
+      "chapter": "地形与地貌",
+      "source": "p55"
+    },
+    {
+      "id": "geo-053",
+      "file": "geo-053.png",
+      "name": "俄罗斯资源、工业分布图",
+      "kind": "principle",
+      "aliases": [
+        "俄罗斯资源、工业分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 857,
+      "height": 566,
+      "chapter": "其他",
+      "source": "p56"
+    },
+    {
+      "id": "geo-054",
+      "file": "geo-054.png",
+      "name": "俄罗斯交通分布图",
+      "kind": "principle",
+      "aliases": [
+        "俄罗斯交通分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 829,
+      "height": 623,
+      "chapter": "其他",
+      "source": "p57"
+    },
+    {
+      "id": "geo-055",
+      "file": "geo-055.png",
+      "name": "美国政区图",
+      "kind": "principle",
+      "aliases": [
+        "美国政区图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 830,
+      "height": 727,
+      "chapter": "其他",
+      "source": "p58"
+    },
+    {
+      "id": "geo-056",
+      "file": "geo-056.png",
+      "name": "美国地形图",
+      "kind": "principle",
+      "aliases": [
+        "美国地形图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 879,
+      "height": 601,
+      "chapter": "其他",
+      "source": "p59"
+    },
+    {
+      "id": "geo-057",
+      "file": "geo-057.png",
+      "name": "美国气候图",
+      "kind": "principle",
+      "aliases": [
+        "美国气候图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 863,
+      "height": 556,
+      "chapter": "其他",
+      "source": "p60"
+    },
+    {
+      "id": "geo-058",
+      "file": "geo-058.png",
+      "name": "美国本土农业带分布图",
+      "kind": "principle",
+      "aliases": [
+        "美国本土农业带分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 841,
+      "height": 668,
+      "chapter": "其他",
+      "source": "p61"
+    },
+    {
+      "id": "geo-059",
+      "file": "geo-059.png",
+      "name": "美国主要工业区和工业城市分布图",
+      "kind": "principle",
+      "aliases": [
+        "美国主要工业区和工业城市分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 828,
+      "height": 648,
+      "chapter": "其他",
+      "source": "p62"
+    },
+    {
+      "id": "geo-060",
+      "file": "geo-060.png",
+      "name": "巴西地形图",
+      "kind": "principle",
+      "aliases": [
+        "巴西地形图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 698,
+      "height": 746,
+      "chapter": "其他",
+      "source": "p63"
+    },
+    {
+      "id": "geo-061",
+      "file": "geo-061.png",
+      "name": "巴西气候类型分布图",
+      "kind": "principle",
+      "aliases": [
+        "巴西气候类型分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 747,
+      "chapter": "其他",
+      "source": "p64"
+    },
+    {
+      "id": "geo-062",
+      "file": "geo-062.png",
+      "name": "巴西的人口、主要城市分布图",
+      "kind": "principle",
+      "aliases": [
+        "巴西的人口、主要城市分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 746,
+      "height": 854,
+      "chapter": "其他",
+      "source": "p65"
+    },
+    {
+      "id": "geo-063",
+      "file": "geo-063.png",
+      "name": "澳大利亚地形图",
+      "kind": "principle",
+      "aliases": [
+        "澳大利亚地形图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 532,
+      "height": 598,
+      "chapter": "其他",
+      "source": "p66"
+    },
+    {
+      "id": "geo-064",
+      "file": "geo-064.png",
+      "name": "澳大利亚气候分布图",
+      "kind": "principle",
+      "aliases": [
+        "澳大利亚气候分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 532,
+      "height": 537,
+      "chapter": "其他",
+      "source": "p67"
+    },
+    {
+      "id": "geo-065",
+      "file": "geo-065.png",
+      "name": "南极地区图（矿产分布）",
+      "kind": "principle",
+      "aliases": [
+        "南极地区图（矿产分布）"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 627,
+      "height": 559,
+      "chapter": "其他",
+      "source": "p69"
+    },
+    {
+      "id": "geo-066",
+      "file": "geo-066.png",
+      "name": "北极地区图",
+      "kind": "principle",
+      "aliases": [
+        "北极地区图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 584,
+      "height": 551,
+      "chapter": "其他",
+      "source": "p70"
+    },
+    {
+      "id": "geo-067",
+      "file": "geo-067.png",
+      "name": "中国的疆域",
+      "kind": "principle",
+      "aliases": [
+        "中国的疆域"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 773,
+      "height": 870,
+      "chapter": "其他",
+      "source": "p71"
+    },
+    {
+      "id": "geo-068",
+      "file": "geo-068.png",
+      "name": "中国的行政区划",
+      "kind": "principle",
+      "aliases": [
+        "中国的行政区划"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 871,
+      "height": 692,
+      "chapter": "其他",
+      "source": "p72"
+    },
+    {
+      "id": "geo-069",
+      "file": "geo-069.png",
+      "name": "中国的人口分布",
+      "kind": "principle",
+      "aliases": [
+        "中国的人口分布"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 890,
+      "height": 704,
+      "chapter": "其他",
+      "source": "p73"
+    },
+    {
+      "id": "geo-070",
+      "file": "geo-070.png",
+      "name": "中国的民族分布",
+      "kind": "principle",
+      "aliases": [
+        "中国的民族分布"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 887,
+      "height": 738,
+      "chapter": "其他",
+      "source": "p74"
+    },
+    {
+      "id": "geo-071",
+      "file": "geo-071.png",
+      "name": "中国地势三级阶梯示意图",
+      "kind": "principle",
+      "aliases": [
+        "中国地势三级阶梯示意图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 888,
+      "height": 993,
+      "chapter": "其他",
+      "source": "p75"
+    },
+    {
+      "id": "geo-072",
+      "file": "geo-072.png",
+      "name": "中国地形分布大势",
+      "kind": "principle",
+      "aliases": [
+        "中国地形分布大势"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 898,
+      "height": 769,
+      "chapter": "其他",
+      "source": "p76"
+    },
+    {
+      "id": "geo-073",
+      "file": "geo-073.png",
+      "name": "中国主要地震带和泥石流分布",
+      "kind": "principle",
+      "aliases": [
+        "中国主要地震带和泥石流分布"
+      ],
+      "tags": [
+        "中国地理分区"
+      ],
+      "devices": [],
+      "assembly": "中国地理分区地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 926,
+      "height": 803,
+      "chapter": "中国地理分区",
+      "source": "p77"
+    },
+    {
+      "id": "geo-074",
+      "file": "geo-074.png",
+      "name": "中国的温度带的划分",
+      "kind": "principle",
+      "aliases": [
+        "中国的温度带的划分"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 745,
+      "height": 657,
+      "chapter": "其他",
+      "source": "p78"
+    },
+    {
+      "id": "geo-075",
+      "file": "geo-075.png",
+      "name": "中国年降水量分布",
+      "kind": "principle",
+      "aliases": [
+        "中国年降水量分布"
+      ],
+      "tags": [
+        "气候与天气"
+      ],
+      "devices": [],
+      "assembly": "气候与天气地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 632,
+      "chapter": "气候与天气",
+      "source": "p79"
+    },
+    {
+      "id": "geo-076",
+      "file": "geo-076.png",
+      "name": "中国的干湿地区",
+      "kind": "principle",
+      "aliases": [
+        "中国的干湿地区"
+      ],
+      "tags": [
+        "气候与天气"
+      ],
+      "devices": [],
+      "assembly": "气候与天气地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 887,
+      "height": 779,
+      "chapter": "气候与天气",
+      "source": "p80"
+    },
+    {
+      "id": "geo-077",
+      "file": "geo-077.png",
+      "name": "冬季风移动路线",
+      "kind": "principle",
+      "aliases": [
+        "冬季风移动路线"
+      ],
+      "tags": [
+        "气候与天气"
+      ],
+      "devices": [],
+      "assembly": "气候与天气地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 834,
+      "height": 707,
+      "chapter": "气候与天气",
+      "source": "p81"
+    },
+    {
+      "id": "geo-078",
+      "file": "geo-078.png",
+      "name": "中国的季风区与非季风区",
+      "kind": "principle",
+      "aliases": [
+        "中国的季风区与非季风区"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 815,
+      "height": 680,
+      "chapter": "其他",
+      "source": "p82"
+    },
+    {
+      "id": "geo-079",
+      "file": "geo-079.png",
+      "name": "中国气候类型分布",
+      "kind": "principle",
+      "aliases": [
+        "中国气候类型分布"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 843,
+      "height": 768,
+      "chapter": "其他",
+      "source": "p83"
+    },
+    {
+      "id": "geo-080",
+      "file": "geo-080.png",
+      "name": "中国的主要河流和湖泊",
+      "kind": "principle",
+      "aliases": [
+        "中国的主要河流和湖泊"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 835,
+      "height": 696,
+      "chapter": "其他",
+      "source": "p84"
+    },
+    {
+      "id": "geo-081",
+      "file": "geo-081.png",
+      "name": "长江流域水系图",
+      "kind": "principle",
+      "aliases": [
+        "长江流域水系图"
+      ],
+      "tags": [
+        "河流与水文"
+      ],
+      "devices": [],
+      "assembly": "河流与水文地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 834,
+      "height": 484,
+      "chapter": "河流与水文",
+      "source": "p85"
+    },
+    {
+      "id": "geo-082",
+      "file": "geo-082.png",
+      "name": "黄河流域水系图",
+      "kind": "principle",
+      "aliases": [
+        "黄河流域水系图"
+      ],
+      "tags": [
+        "河流与水文"
+      ],
+      "devices": [],
+      "assembly": "河流与水文地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 846,
+      "height": 452,
+      "chapter": "河流与水文",
+      "source": "p87"
+    },
+    {
+      "id": "geo-083",
+      "file": "geo-083.png",
+      "name": "中国主要土地利用类型的分布",
+      "kind": "principle",
+      "aliases": [
+        "中国主要土地利用类型的分布"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 875,
+      "height": 729,
+      "chapter": "其他",
+      "source": "p88"
+    },
+    {
+      "id": "geo-084",
+      "file": "geo-084.png",
+      "name": "中国河流流量分布示意图",
+      "kind": "principle",
+      "aliases": [
+        "中国河流流量分布示意图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 838,
+      "height": 704,
+      "chapter": "其他",
+      "source": "p89"
+    },
+    {
+      "id": "geo-085",
+      "file": "geo-085.png",
+      "name": "中国主要能源矿产资源分布图",
+      "kind": "principle",
+      "aliases": [
+        "中国主要能源矿产资源分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 635,
+      "chapter": "其他",
+      "source": "p90"
+    },
+    {
+      "id": "geo-086",
+      "file": "geo-086.png",
+      "name": "中国非能源矿产资源分布图",
+      "kind": "principle",
+      "aliases": [
+        "中国非能源矿产资源分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 587,
+      "chapter": "其他",
+      "source": "p91"
+    },
+    {
+      "id": "geo-087",
+      "file": "geo-087.png",
+      "name": "中国近海盐场分布图",
+      "kind": "principle",
+      "aliases": [
+        "中国近海盐场分布图"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 585,
+      "height": 993,
+      "chapter": "地形与地貌",
+      "source": "p92"
+    },
+    {
+      "id": "geo-088",
+      "file": "geo-088.png",
+      "name": "中国风能资源分布图",
+      "kind": "principle",
+      "aliases": [
+        "中国风能资源分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 796,
+      "height": 648,
+      "chapter": "其他",
+      "source": "p93"
+    },
+    {
+      "id": "geo-089",
+      "file": "geo-089.png",
+      "name": "中国的农业类型及耕作制度",
+      "kind": "principle",
+      "aliases": [
+        "中国的农业类型及耕作制度"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 552,
+      "chapter": "其他",
+      "source": "p94"
+    },
+    {
+      "id": "geo-090",
+      "file": "geo-090.png",
+      "name": "中国的商品粮棉基地",
+      "kind": "principle",
+      "aliases": [
+        "中国的商品粮棉基地"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 758,
+      "height": 652,
+      "chapter": "其他",
+      "source": "p95"
+    },
+    {
+      "id": "geo-091",
+      "file": "geo-091.png",
+      "name": "中国的草场和森林资源的分布",
+      "kind": "principle",
+      "aliases": [
+        "中国的草场和森林资源的分布"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 696,
+      "height": 609,
+      "chapter": "其他",
+      "source": "p96"
+    },
+    {
+      "id": "geo-092",
+      "file": "geo-092.png",
+      "name": "中国的能源工业分布",
+      "kind": "principle",
+      "aliases": [
+        "中国的能源工业分布"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 922,
+      "height": 813,
+      "chapter": "地形与地貌",
+      "source": "p97"
+    },
+    {
+      "id": "geo-093",
+      "file": "geo-093.png",
+      "name": "中国的大型钢铁工业分布",
+      "kind": "principle",
+      "aliases": [
+        "中国的大型钢铁工业分布"
+      ],
+      "tags": [
+        "农业与工业交通"
+      ],
+      "devices": [],
+      "assembly": "农业与工业交通地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 922,
+      "height": 777,
+      "chapter": "农业与工业交通",
+      "source": "p98"
+    },
+    {
+      "id": "geo-094",
+      "file": "geo-094.png",
+      "name": "四大工业基地",
+      "kind": "principle",
+      "aliases": [
+        "四大工业基地"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 887,
+      "height": 391,
+      "chapter": "其他",
+      "source": "p100"
+    },
+    {
+      "id": "geo-095",
+      "file": "geo-095.png",
+      "name": "中国高新技术产业开发区的分布",
+      "kind": "principle",
+      "aliases": [
+        "中国高新技术产业开发区的分布"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 828,
+      "height": 702,
+      "chapter": "其他",
+      "source": "p101"
+    },
+    {
+      "id": "geo-096",
+      "file": "geo-096.png",
+      "name": "中国的铁路干线分布图",
+      "kind": "principle",
+      "aliases": [
+        "中国的铁路干线分布图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 577,
+      "chapter": "其他",
+      "source": "p102"
+    },
+    {
+      "id": "geo-097",
+      "file": "geo-097.png",
+      "name": "北方地区位置和地形图",
+      "kind": "principle",
+      "aliases": [
+        "北方地区位置和地形图"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 856,
+      "height": 881,
+      "chapter": "地形与地貌",
+      "source": "p103"
+    },
+    {
+      "id": "geo-098",
+      "file": "geo-098.png",
+      "name": "北方地区矿产、交通分布示意图",
+      "kind": "principle",
+      "aliases": [
+        "北方地区矿产、交通分布示意图"
+      ],
+      "tags": [
+        "人口与聚落"
+      ],
+      "devices": [],
+      "assembly": "人口与聚落地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 724,
+      "chapter": "人口与聚落",
+      "source": "p104"
+    },
+    {
+      "id": "geo-099",
+      "file": "geo-099.png",
+      "name": "南方地区位置和地形图",
+      "kind": "principle",
+      "aliases": [
+        "南方地区位置和地形图"
+      ],
+      "tags": [
+        "河流与水文"
+      ],
+      "devices": [],
+      "assembly": "河流与水文地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 520,
+      "chapter": "河流与水文",
+      "source": "p105"
+    },
+    {
+      "id": "geo-100",
+      "file": "geo-100.png",
+      "name": "南方地区水系图",
+      "kind": "principle",
+      "aliases": [
+        "南方地区水系图"
+      ],
+      "tags": [
+        "河流与水文"
+      ],
+      "devices": [],
+      "assembly": "河流与水文地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 425,
+      "chapter": "河流与水文",
+      "source": "p106"
+    },
+    {
+      "id": "geo-101",
+      "file": "geo-101.png",
+      "name": "南方地区矿产、交通分布示意图",
+      "kind": "principle",
+      "aliases": [
+        "南方地区矿产、交通分布示意图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 484,
+      "chapter": "其他",
+      "source": "p107"
+    },
+    {
+      "id": "geo-102",
+      "file": "geo-102.png",
+      "name": "西北地区位置和地形图",
+      "kind": "principle",
+      "aliases": [
+        "西北地区位置和地形图"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 926,
+      "height": 575,
+      "chapter": "地形与地貌",
+      "source": "p108"
+    },
+    {
+      "id": "geo-103",
+      "file": "geo-103.png",
+      "name": "西北地区年降水量分布图",
+      "kind": "principle",
+      "aliases": [
+        "西北地区年降水量分布图"
+      ],
+      "tags": [
+        "气候与天气"
+      ],
+      "devices": [],
+      "assembly": "气候与天气地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 926,
+      "height": 435,
+      "chapter": "气候与天气",
+      "source": "p109"
+    },
+    {
+      "id": "geo-104",
+      "file": "geo-104.png",
+      "name": "西北地区交通示意图",
+      "kind": "principle",
+      "aliases": [
+        "西北地区交通示意图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 926,
+      "height": 517,
+      "chapter": "其他",
+      "source": "p110"
+    },
+    {
+      "id": "geo-105",
+      "file": "geo-105.png",
+      "name": "青藏地区位置和地形图",
+      "kind": "principle",
+      "aliases": [
+        "青藏地区位置和地形图"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 898,
+      "height": 632,
+      "chapter": "地形与地貌",
+      "source": "p111"
+    },
+    {
+      "id": "geo-106",
+      "file": "geo-106.png",
+      "name": "青藏地区工业、矿产分布图",
+      "kind": "principle",
+      "aliases": [
+        "青藏地区工业、矿产分布图"
+      ],
+      "tags": [
+        "资源与能源"
+      ],
+      "devices": [],
+      "assembly": "资源与能源地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 887,
+      "height": 689,
+      "chapter": "资源与能源",
+      "source": "p112"
+    },
+    {
+      "id": "geo-107",
+      "file": "geo-107.png",
+      "name": "香港、澳门位置图",
+      "kind": "principle",
+      "aliases": [
+        "香港、澳门位置图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 650,
+      "height": 640,
+      "chapter": "其他",
+      "source": "p113"
+    },
+    {
+      "id": "geo-108",
+      "file": "geo-108.png",
+      "name": "台湾位置、地形、交通、资源图",
+      "kind": "principle",
+      "aliases": [
+        "台湾位置、地形、交通、资源图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 579,
+      "height": 963,
+      "chapter": "其他",
+      "source": "p114"
+    },
+    {
+      "id": "geo-109",
+      "file": "geo-109.png",
+      "name": "新疆位置和地形图",
+      "kind": "principle",
+      "aliases": [
+        "新疆位置和地形图"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 621,
+      "chapter": "地形与地貌",
+      "source": "p115"
+    },
+    {
+      "id": "geo-110",
+      "file": "geo-110.png",
+      "name": "塔里木盆地交通与聚落分布图",
+      "kind": "principle",
+      "aliases": [
+        "塔里木盆地交通与聚落分布图"
+      ],
+      "tags": [
+        "地形与地貌"
+      ],
+      "devices": [],
+      "assembly": "地形与地貌地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 768,
+      "height": 452,
+      "chapter": "地形与地貌",
+      "source": "p116"
+    },
+    {
+      "id": "geo-111",
+      "file": "geo-111.png",
+      "name": "珠江三角洲位置图",
+      "kind": "principle",
+      "aliases": [
+        "珠江三角洲位置图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 628,
+      "chapter": "其他",
+      "source": "p117"
+    },
+    {
+      "id": "geo-112",
+      "file": "geo-112.png",
+      "name": "西双版纳位置图",
+      "kind": "principle",
+      "aliases": [
+        "西双版纳位置图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 622,
+      "chapter": "其他",
+      "source": "p118"
+    },
+    {
+      "id": "geo-113",
+      "file": "geo-113.png",
+      "name": "黄土高原位置、范围图",
+      "kind": "principle",
+      "aliases": [
+        "黄土高原位置、范围图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 590,
+      "chapter": "其他",
+      "source": "p119"
+    },
+    {
+      "id": "geo-114",
+      "file": "geo-114.png",
+      "name": "长江沿江地带范围、资源分布图",
+      "kind": "principle",
+      "aliases": [
+        "长江沿江地带范围、资源分布图"
+      ],
+      "tags": [
+        "资源与能源"
+      ],
+      "devices": [],
+      "assembly": "资源与能源地理示意图/地图，讲解时指出方向、分布特征、数值变化与区域差异。",
+      "width": 709,
+      "height": 400,
+      "chapter": "资源与能源",
+      "source": "p120"
+    }
+  ]
+}

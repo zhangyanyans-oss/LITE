@@ -1,0 +1,58 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# Environment variables
+.env
+.env.local
+.env.*.local
+# Database
+*.db
+*.sqlite
+*.sqlite3
+db/migrations/*.sql
+# TypeScript cache
+*.tsbuildinfo
+# Build outputs
+dist/
+build/
+# Test coverage
+coverage/
+.nyc_output/
+
+# ── 隐私与本地私有配置（不入库） ──────────────────────────
+.workbuddy/
+scripts/_local_paths.py
+.backend-features.json
+# 本地升级补丁说明（免安装版分发用，与源码无关）
+替换说明.txt
+瀹夎璇存槑.txt
+鏇挎崲璇存槑.txt
+
+# 乱码文件名的本地补丁说明（免安装版分发用）
+瀹夎璇存槑.txt
+鏇挎崲璇存槑.txt
+鏈湴杩愯璇存槑.md
+瀹夎璇存槑.txt
+鏇挎崲璇存槑.txt
+鏈湴杩愯璇存槑.md

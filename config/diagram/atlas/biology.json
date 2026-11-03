@@ -1,0 +1,585 @@
+{
+  "version": 1,
+  "subject": "biology",
+  "source": "初中生物图库 PDF（自动抽取内嵌位图，每页一张，图内标注随图栅格化）",
+  "baseUrl": "/atlas/",
+  "note": "kind: setup=实验/操作图（讲步骤、器材时引用）；principle=示意图/地图（讲结构、分布、过程时引用）。由 scripts/atlas-figures.py 自动抽取，name 取 OCR 标题、按章节打 tag；assembly 为通用占位，可后续细化。",
+  "items": [
+    {
+      "id": "bio-001",
+      "file": "bio-001.png",
+      "name": "生产者、消费者和分解者的关系示意图",
+      "kind": "principle",
+      "aliases": [
+        "生产者、消费者和分解者的关系示意图"
+      ],
+      "tags": [
+        "生态与食物链"
+      ],
+      "devices": [],
+      "assembly": "生态与食物链结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "生态与食物链",
+      "source": "p3"
+    },
+    {
+      "id": "bio-002",
+      "file": "bio-002.png",
+      "name": "普通光学显微镜",
+      "kind": "setup",
+      "aliases": [
+        "普通光学显微镜"
+      ],
+      "tags": [
+        "细胞与显微镜"
+      ],
+      "devices": [],
+      "assembly": "细胞与显微镜实验/观察图，讲解时按图说明器材、步骤与观察要点。",
+      "width": 1080,
+      "height": 607,
+      "chapter": "细胞与显微镜",
+      "source": "p4"
+    },
+    {
+      "id": "bio-003",
+      "file": "bio-003.png",
+      "name": "动、植物细胞的结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "动、植物细胞的结构示意图"
+      ],
+      "tags": [
+        "细胞与显微镜"
+      ],
+      "devices": [],
+      "assembly": "细胞与显微镜结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 612,
+      "chapter": "细胞与显微镜",
+      "source": "p5"
+    },
+    {
+      "id": "bio-004",
+      "file": "bio-004.png",
+      "name": "动、植物细胞分裂过程示意图",
+      "kind": "principle",
+      "aliases": [
+        "动、植物细胞分裂过程示意图"
+      ],
+      "tags": [
+        "细胞与显微镜"
+      ],
+      "devices": [],
+      "assembly": "细胞与显微镜结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 611,
+      "chapter": "细胞与显微镜",
+      "source": "p6"
+    },
+    {
+      "id": "bio-005",
+      "file": "bio-005.png",
+      "name": "细胞分裂、生长和分化示意图",
+      "kind": "principle",
+      "aliases": [
+        "细胞分裂、生长和分化示意图"
+      ],
+      "tags": [
+        "细胞与显微镜"
+      ],
+      "devices": [],
+      "assembly": "细胞与显微镜结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 597,
+      "chapter": "细胞与显微镜",
+      "source": "p7"
+    },
+    {
+      "id": "bio-006",
+      "file": "bio-006.png",
+      "name": "草履虫的结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "草履虫的结构示意图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 507,
+      "chapter": "其他",
+      "source": "p8"
+    },
+    {
+      "id": "bio-007",
+      "file": "bio-007.png",
+      "name": "种子的结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "种子的结构示意图"
+      ],
+      "tags": [
+        "植物体"
+      ],
+      "devices": [],
+      "assembly": "植物体结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 583,
+      "chapter": "植物体",
+      "source": "p9"
+    },
+    {
+      "id": "bio-008",
+      "file": "bio-008.png",
+      "name": "根尖的结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "根尖的结构示意图"
+      ],
+      "tags": [
+        "植物体"
+      ],
+      "devices": [],
+      "assembly": "植物体结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 515,
+      "chapter": "植物体",
+      "source": "p10"
+    },
+    {
+      "id": "bio-009",
+      "file": "bio-009.png",
+      "name": "叶芽的结构及其发育",
+      "kind": "principle",
+      "aliases": [
+        "叶芽的结构及其发育"
+      ],
+      "tags": [
+        "植物体"
+      ],
+      "devices": [],
+      "assembly": "植物体结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 445,
+      "chapter": "植物体",
+      "source": "p11"
+    },
+    {
+      "id": "bio-010",
+      "file": "bio-010.png",
+      "name": "叶片结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "叶片结构示意图"
+      ],
+      "tags": [
+        "植物体"
+      ],
+      "devices": [],
+      "assembly": "植物体结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 583,
+      "chapter": "植物体",
+      "source": "p12"
+    },
+    {
+      "id": "bio-011",
+      "file": "bio-011.png",
+      "name": "花的基本结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "花的基本结构示意图"
+      ],
+      "tags": [
+        "植物体"
+      ],
+      "devices": [],
+      "assembly": "植物体结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 598,
+      "chapter": "植物体",
+      "source": "p13"
+    },
+    {
+      "id": "bio-012",
+      "file": "bio-012.png",
+      "name": "光合作用和呼吸作用示意图",
+      "kind": "principle",
+      "aliases": [
+        "光合作用和呼吸作用示意图"
+      ],
+      "tags": [
+        "植物体"
+      ],
+      "devices": [],
+      "assembly": "植物体结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 562,
+      "chapter": "植物体",
+      "source": "p14"
+    },
+    {
+      "id": "bio-013",
+      "file": "bio-013.png",
+      "name": "消化系统组成示意图",
+      "kind": "principle",
+      "aliases": [
+        "消化系统组成示意图"
+      ],
+      "tags": [
+        "人体的结构与生理"
+      ],
+      "devices": [],
+      "assembly": "人体的结构与生理结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 581,
+      "chapter": "人体的结构与生理",
+      "source": "p15"
+    },
+    {
+      "id": "bio-014",
+      "file": "bio-014.png",
+      "name": "呼吸系统组成示意图",
+      "kind": "principle",
+      "aliases": [
+        "呼吸系统组成示意图"
+      ],
+      "tags": [
+        "人体的结构与生理"
+      ],
+      "devices": [],
+      "assembly": "人体的结构与生理结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1075,
+      "height": 582,
+      "chapter": "人体的结构与生理",
+      "source": "p16"
+    },
+    {
+      "id": "bio-015",
+      "file": "bio-015.png",
+      "name": "膈肌运动示意图",
+      "kind": "principle",
+      "aliases": [
+        "膈肌运动示意图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 555,
+      "chapter": "其他",
+      "source": "p17"
+    },
+    {
+      "id": "bio-016",
+      "file": "bio-016.png",
+      "name": "显微镜下的血细胞示意图",
+      "kind": "setup",
+      "aliases": [
+        "显微镜下的血细胞示意图"
+      ],
+      "tags": [
+        "细胞与显微镜"
+      ],
+      "devices": [],
+      "assembly": "细胞与显微镜实验/观察图，讲解时按图说明器材、步骤与观察要点。",
+      "width": 1080,
+      "height": 571,
+      "chapter": "细胞与显微镜",
+      "source": "p18"
+    },
+    {
+      "id": "bio-017",
+      "file": "bio-017.png",
+      "name": "三种血管的关系示意图",
+      "kind": "principle",
+      "aliases": [
+        "三种血管的关系示意图"
+      ],
+      "tags": [
+        "人体的结构与生理"
+      ],
+      "devices": [],
+      "assembly": "人体的结构与生理结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1067,
+      "height": 567,
+      "chapter": "人体的结构与生理",
+      "source": "p19"
+    },
+    {
+      "id": "bio-018",
+      "file": "bio-018.png",
+      "name": "心脏结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "心脏结构示意图"
+      ],
+      "tags": [
+        "人体的结构与生理"
+      ],
+      "devices": [],
+      "assembly": "人体的结构与生理结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1076,
+      "height": 573,
+      "chapter": "人体的结构与生理",
+      "source": "p20"
+    },
+    {
+      "id": "bio-019",
+      "file": "bio-019.png",
+      "name": "泌尿系统的组成",
+      "kind": "principle",
+      "aliases": [
+        "泌尿系统的组成"
+      ],
+      "tags": [
+        "人体的结构与生理"
+      ],
+      "devices": [],
+      "assembly": "人体的结构与生理结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "人体的结构与生理",
+      "source": "p21"
+    },
+    {
+      "id": "bio-020",
+      "file": "bio-020.png",
+      "name": "肾单位结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "肾单位结构示意图"
+      ],
+      "tags": [
+        "人体的结构与生理"
+      ],
+      "devices": [],
+      "assembly": "人体的结构与生理结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "人体的结构与生理",
+      "source": "p22"
+    },
+    {
+      "id": "bio-021",
+      "file": "bio-021.png",
+      "name": "尿的形成过程示意图",
+      "kind": "principle",
+      "aliases": [
+        "尿的形成过程示意图"
+      ],
+      "tags": [
+        "人体的结构与生理"
+      ],
+      "devices": [],
+      "assembly": "人体的结构与生理结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "人体的结构与生理",
+      "source": "p23"
+    },
+    {
+      "id": "bio-022",
+      "file": "bio-022.png",
+      "name": "眼球的基本结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "眼球的基本结构示意图"
+      ],
+      "tags": [
+        "人体的结构与生理"
+      ],
+      "devices": [],
+      "assembly": "人体的结构与生理结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "人体的结构与生理",
+      "source": "p24"
+    },
+    {
+      "id": "bio-023",
+      "file": "bio-023.png",
+      "name": "耳的基本结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "耳的基本结构示意图"
+      ],
+      "tags": [
+        "人体的结构与生理"
+      ],
+      "devices": [],
+      "assembly": "人体的结构与生理结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "人体的结构与生理",
+      "source": "p25"
+    },
+    {
+      "id": "bio-024",
+      "file": "bio-024.png",
+      "name": "脑的纵剖图（大脑·小脑·脑干）",
+      "kind": "principle",
+      "aliases": [
+        "脑的纵剖图（大脑·小脑·脑干）"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "其他",
+      "source": "p26"
+    },
+    {
+      "id": "bio-025",
+      "file": "bio-025.png",
+      "name": "神经元的结构及神经元之间的相互联系示意图",
+      "kind": "principle",
+      "aliases": [
+        "神经元的结构及神经元之间的相互联系示意图"
+      ],
+      "tags": [
+        "人体的结构与生理"
+      ],
+      "devices": [],
+      "assembly": "人体的结构与生理结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "人体的结构与生理",
+      "source": "p27"
+    },
+    {
+      "id": "bio-026",
+      "file": "bio-026.png",
+      "name": "反射弧的结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "反射弧的结构示意图"
+      ],
+      "tags": [
+        "人体的结构与生理"
+      ],
+      "devices": [],
+      "assembly": "人体的结构与生理结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "人体的结构与生理",
+      "source": "p28"
+    },
+    {
+      "id": "bio-027",
+      "file": "bio-027.png",
+      "name": "关节结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "关节结构示意图"
+      ],
+      "tags": [
+        "人体的结构与生理"
+      ],
+      "devices": [],
+      "assembly": "人体的结构与生理结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "人体的结构与生理",
+      "source": "p29"
+    },
+    {
+      "id": "bio-028",
+      "file": "bio-028.png",
+      "name": "屈肘动作和伸肘动作示意图",
+      "kind": "principle",
+      "aliases": [
+        "屈肘动作和伸肘动作示意图"
+      ],
+      "tags": [
+        "其他"
+      ],
+      "devices": [],
+      "assembly": "其他结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "其他",
+      "source": "p30"
+    },
+    {
+      "id": "bio-029",
+      "file": "bio-029.png",
+      "name": "细菌结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "细菌结构示意图"
+      ],
+      "tags": [
+        "细胞与显微镜"
+      ],
+      "devices": [],
+      "assembly": "细胞与显微镜结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "细胞与显微镜",
+      "source": "p31"
+    },
+    {
+      "id": "bio-030",
+      "file": "bio-030.png",
+      "name": "酵母菌结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "酵母菌结构示意图"
+      ],
+      "tags": [
+        "细胞与显微镜"
+      ],
+      "devices": [],
+      "assembly": "细胞与显微镜结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "细胞与显微镜",
+      "source": "p32"
+    },
+    {
+      "id": "bio-031",
+      "file": "bio-031.png",
+      "name": "病毒结构示意图",
+      "kind": "principle",
+      "aliases": [
+        "病毒结构示意图"
+      ],
+      "tags": [
+        "微生物与生物圈"
+      ],
+      "devices": [],
+      "assembly": "微生物与生物圈结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "微生物与生物圈",
+      "source": "p33"
+    },
+    {
+      "id": "bio-032",
+      "file": "bio-032.png",
+      "name": "DNA与染色体关系示意图",
+      "kind": "principle",
+      "aliases": [
+        "DNA与染色体关系示意图"
+      ],
+      "tags": [
+        "生殖发育与遗传"
+      ],
+      "devices": [],
+      "assembly": "生殖发育与遗传结构示意图，讲解时点出图中各结构的名称、位置与功能对应关系。",
+      "width": 1080,
+      "height": 608,
+      "chapter": "生殖发育与遗传",
+      "source": "p34"
+    }
+  ]
+}

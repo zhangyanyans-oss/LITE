@@ -1,0 +1,1310 @@
+% ============================================================
+%  tikz-chemlabObj.tex
+%  化学实验器材 TikZ 绘图包 - 形状宏库
+%  原作者 : D. Girou / C. Jorsen / M. Luque / H. Voss
+%  TikZ 改写 : Aihua Wang(王爱华) (原 PSTricks 包 pst-laboObj)
+% ============================================================
+%
+%  使用说明 :
+%    \usepackage{tikz}
+%    \usetikzlibrary{arrows.meta,calc,patterns,patterns.meta,shadings}
+%    \input{tikz-chemlabObj}
+%    \begin{tikzpicture}
+%       \BuretteCorps  ... 等等
+%    \end{tikzpicture}
+%
+%  映射规则 :
+%    \psline(A)(B)(C)              -> \draw (A) -- (B) -- (C);
+%    \psline{->}(A)(B)             -> \draw[->] (A) -- (B);
+%    \pspolygon(A)(B)(C)           -> \filldraw (A) -- (B) -- (C) -- cycle;
+%    \psframe(x1,y1)(x2,y2)        -> \draw (x1,y1) rectangle (x2,y2);
+%    \psframe*[linecolor=c]        -> \fill[c] (..) rectangle (..);
+%    \psframe[framearc=r]          -> \draw[rounded corners=r] (...) rectangle (...);
+%    \pscircle(c){r}               -> \draw (c) circle (r);
+%    \pscircle*[linecolor=c](c){r} -> \fill[c] (c) circle (r);
+%    \psellipse(c)(a,b)            -> \draw (c) ellipse (a and b);
+%    \psarc(c){r}{a1}{a2}          -> \draw ([shift={(c)}]a1:r) arc[start angle=a1,end angle=a2,radius=r];
+%    \psarcn(c){r}{a1}{a2}         -> \draw ([shift={(c)}]a1:r) arc[start angle=a1,end angle=a2,radius=r];   (注意 : PSTricks 中 arcn 是逆时针 / 角度递减)
+%    \psbezier(A)(B)(C)(D)         -> \draw (A) .. controls (B) and (C) .. (D);
+%    \pscurve(P1)(P2)...(Pn)       -> \draw plot[smooth,tension=0.5] coordinates {(P1) (P2) ... (Pn)};
+%    \pscustom{ ... \fill}         -> \filldraw / \path[fill] (整段路径) -- cycle;
+%    \rput(x,y){...}               -> \begin{scope}[shift={(x,y)}] ... \end{scope}
+%    \rput{angle}(x,y){...}        -> \begin{scope}[shift={(x,y)},rotate=angle] ... \end{scope}
+%    \multido{\i=a+b}{n}{...}      -> \foreach \i in {a,a+b,...,a+(n-1)*b} {...}
+%    \psclip{<path>} ... \endpsclip-> \begin{scope} \clip <path>; ... \end{scope}
+%    fillstyle=solid,fillcolor=c   -> fill=c
+%    fillstyle=gradient,gradbegin=..,gradend=.. -> \shade[left color=..,right color=..]
+%    fillstyle=hlines              -> pattern=horizontal lines
+%    doubleline=true               -> double
+%    linestyle=dashed              -> dashed
+%    framearc=r                    -> rounded corners=r (近似)
+%    linearc=r                     -> rounded corners=r
+% ============================================================
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesFile{tikz-chemlabObj.tex}[2026/08/03 v1.0.0]
+
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns,patterns.meta,shadings,decorations.pathmorphing}
+
+% ------------------------------------------------------------
+% 颜色定义 (对应原包中使用的颜色)
+% ------------------------------------------------------------
+\definecolor{LightGray}{gray}{0.80}      % 浅灰
+\definecolor{VeryLightGray}{cmyk}{0,0,0,0.1}  % 极浅灰 (label 标签背景)
+\definecolor{LightBlue}{rgb}{0.68,0.85,0.90}
+\definecolor{LightBlue1}{rgb}{0.60,0.80,1.00}
+\definecolor{VeryPaleOrange}{cmyk}{0,0.1,0.3,0}  % 滴定管液体默认色
+\definecolor{PaleOrange}{rgb}{1.00,0.78,0.55}
+\definecolor{Brown}{rgb}{0.50,0.25,0.00}
+\definecolor{woodColor}{rgb}{0.957,0.84,0.69}
+\definecolor{darkWoodColor}{rgb}{0.50,0.25,0.00}
+\definecolor{flameAndGrill}{rgb}{0.95,0.55,0.10}  % 估算颜色
+\definecolor{Beige}{rgb}{0.96,0.96,0.86}  % Champagne 液体默认色
+
+% ------------------------------------------------------------
+% 公共缺省值 (供调用方按需修改)
+% ------------------------------------------------------------
+\tikzset{
+  Distillation/.cd,
+  DistillateColor/.store in=\DistillationDistillateColor,
+  DistillateColor=LightBlue1,
+  MixtureStyle/.style={fill=LightBlue},
+}
+\newcommand{\tkzDistillationDistillateColor}{LightBlue1}
+\newcommand{\tkzDistillationMixtureStyle}{LightBlue}
+\newcommand{\tkzTestTubeLiquidLevelI}{11}     % liquidLevel1
+\newcommand{\tkzTestTubeLiquidLevelII}{12}    % liquidLevel2
+\newif\ifTkzTapOpen
+\newif\ifTkzTestTubeStopper
+
+% ============================================================
+% 1. 滴定管 (Burette)
+% ============================================================
+\newcommand{\tkzBuretteBody}{%
+  \draw (-0.5,11.5) -- (-0.25,11) -- (-0.25,3) -- (0,2.75) -- (0,0.5);
+  \draw (0.2,0.7) -- (0.2,2.75) -- (0.5,3) -- (0.5,11) -- (0.75,11.5);
+}
+
+\newcommand{\tkzBuretteStopcock}{%
+  % pst-labo: \psframe[fillstyle=solid] → 填充默认白色 + 黑色边框
+  \filldraw[fill=white] (-.1,1.6) rectangle (.3,2.1);
+  \draw (-.1,1.5) rectangle (-.2,2.2);
+  \draw (.3,1.5) rectangle (.4,2.2);
+  \draw (.4,1.7) -- (.5,1.7) -- (.6,1.4) -- (.8,1.4)
+        -- (.8,2.3) -- (.6,2.3) -- (.5,2) -- (.4,2) -- cycle;
+  % 左侧旋钮: pst-labo \pspolygon + \psframe with fillstyle=solid,fillcolor=LightBlue
+  % 需要 LightBlue 填充 + 黑色外轮廓线
+  \begin{scope}[fill=LightBlue,draw=black]
+    \filldraw (-.5,1.5) -- (-.75,1.7) -- (-.75,2) -- (-.5,2.2)
+          -- (-.3,2.2) -- (-.3,1.5) -- cycle;
+    \filldraw (-.5,1.5) rectangle (-.2,2.2);
+  \end{scope}
+}
+
+\newcommand{\tkzBuretteGraduation}{%
+  % 滴定管刻度 (原 pst-labo 无显式线宽, 这里用细刻度线宽)
+  \foreach \n in {3.0,3.32,...,10.68} { \draw[line width=\chemlabGraduationLineWidth] (-0.25,\n) -- (0,\n); }
+}
+
+% ============================================================
+% 2. pH 计 (pH-mètre)
+% ============================================================
+\newcommand{\tkzTitrationPHMeter}{%
+  % boitier
+  \filldraw[fill=white,draw=black,rounded corners=0.125cm] (-1,0) rectangle (1,3);
+  \fill[LightGray] (-0.75,2) rectangle (0.75,2.75);
+  \node[white] at (0,2.375) {PH};
+  \draw (0,1.25) circle (0.3);
+  \draw[->] (0,1.25) -- (0,1.5);
+  \node at (0.65,1.5) {$^\circ$C};
+  \draw (-0.5,0.5) circle (0.2);
+  \draw (0.5,0.5) circle (0.2);
+  % électrode — 完全透明填充 (不遮挡烧杯刻度线)
+  % pst-labo: \psframe[framearc=0.5](2.25,2.5)(2.75,4.5) 外框圆角
+  %   顶部圆角被下方 \psframe[LightGray](sharp) 覆盖, 底部圆角被 \pscircle 覆盖
+  %   实际可见的外框是直角矩形, 此处用 sharp corners 匹配 pst-labo 可见效果
+  \draw (2.25,2.5) rectangle (2.75,4.5);
+  % 顶部 LightGray 填充 + 描边 (sharp corners)
+  \filldraw[fill=LightGray,draw=black] (2.25,4) rectangle (2.75,4.5);
+  \draw (2.5,2.25) circle (0.25);
+  % fil
+  \draw[line width=0.05cm,LightBlue,rounded corners=0.2cm]
+        (2.5,4.5) -- (2.5,5) -- (1.25,4.75) -- (0,5) -- (0,3);
+}
+
+% ============================================================
+% 3. 滴定支架 (Support dosage)
+% ============================================================
+\newcommand{\tkzTitrationStand}{%
+  % pst-labo: \psframe(-1.5,0)(1.5,1.5) + {\psset{doubleline=true} ...}
+  % 线宽: pst-labo 在 \tkzTitration 中设 linewidth=0.053 (×0.4cm = 0.0212cm ≈ 0.6pt)
+  \chemlabUpdateLineWidths
+  % 平台: 无填充, 只有边框
+  \draw[line width=\chemlabLineWidth] (-1.5,0) rectangle (1.5,1.5);
+  % 红色按钮: \pscircle*[linecolor=red] → 红色填充, 双线边框也是红色 (不可见)
+  \fill[red] (0,0.75) circle (0.2);
+  % 回字型矩形按钮: 无填充, 双线边框
+  % PSTricks doubleline: 指定坐标在内外线之间
+  % 实测: 外线向外偏移 0.085 units, 内线向内偏移 0.034 units
+  \draw[line width=\chemlabLineWidth] ({-1.25-0.085},{0.3-0.085}) rectangle ({-0.75+0.085},{1.2+0.085});
+  \draw[line width=\chemlabLineWidth] ({-1.25+0.034},{0.3+0.034}) rectangle ({-0.75-0.034},{1.2-0.034});
+  % 环形旋钮: 无填充, 双线边框
+  % 外线向外偏移, 内线向内偏移
+  \draw[line width=\chemlabLineWidth] (1,0.75) circle ({0.25+0.085});
+  \draw[line width=\chemlabLineWidth] (1,0.75) circle ({0.25-0.034});
+}
+
+% ============================================================
+% 4. 磁力搅拌子 (Aimant)
+% ============================================================
+\newcommand{\tkzTitrationStirBar}{%
+  % pst-labo: \psset{linewidth=0.053} 在外层 \tkzTitration 中设置, 随 scale 缩放
+  \chemlabUpdateLineWidths
+  \draw[line width=\chemlabLineWidth,rounded corners=0.075cm,fill=white] (-0.5,0.1) rectangle (0.5,0.4);
+  \draw[line width=\chemlabLineWidth,rounded corners=0.025cm,fill=white] (-0.05,0) rectangle (0.05,0.5);
+}
+
+% ============================================================
+% 5. 移液管 (Pipette)
+% ============================================================
+\newcommand{\tkzPipetteBody}{%
+  \chemlabUpdateLineWidths\begin{scope}[line width=\chemlabLineWidth,rounded corners=0.05cm]
+    \draw (-0.05,0) -- (-0.15,0.2) -- (-0.15,6)
+          -- (0.15,6) -- (0.15,0.2) -- (0.05,0) -- cycle;
+    \fill[white] (0,6) ellipse (0.15 and 0.05);
+    \foreach \Level in {0.5,1.0,...,5.0} {%
+      \draw[line width=\chemlabGraduationLineWidth] (0,\Level) -- (0.1,\Level);}
+  \end{scope}
+}
+
+\newcommand{\tkzLargePipetteBody}{%
+  \chemlabUpdateLineWidths\begin{scope}[line width=\chemlabLineWidth,rounded corners=0.05cm]
+    \draw (0,0) -- (0,1) -- (-0.23,2.5) -- (-0.23,22.5)
+          arc[start angle=-80,end angle=80,radius=0.45];
+  \end{scope}
+}
+
+% ============================================================
+% 6. 液滴 (Goutte)
+% ============================================================
+% 原文件中 \pst@goutte 被重复定义了两次, 此处使用后者 (unit=0.6 的版本)
+% pst-labo: \psset{unit=0.6}\psbezier[linewidth=0.017] — linewidth=0.017 是
+%   0.017 用户单位 = 0.017*0.6 = 0.0102cm (随 goutte 的 LOCAL unit=0.6 缩放, 
+%   不随外层 unit 变化, 因为 \psset{unit=0.6} 覆盖了外层设置)
+% TikZ: line width=0.0102cm (ABSOLUTE, 匹配 pst-labo 的固定 0.0102cm)
+\newcommand{\tkzDrop}{%
+  \begin{scope}[scale=0.6]
+    \draw[line width=0.0102cm]
+      (0,0) .. controls (0.25,-.4) and (-.25,-.4) .. (0,0);
+  \end{scope}
+}
+
+% ============================================================
+% 7. 量筒 (Eprouvette)
+% ============================================================
+\newcommand{\tkzGraduatedCylinderBody}{%
+  \draw (-0.5,5) -- (-0.5,0) -- (0.5,0) -- (0.5,4.9) -- (0.6,4.93);
+}
+
+\newcommand{\tkzGraduatedCylinderRim}{%
+  \draw plot[smooth,tension=0.5] coordinates {%
+    (0.6,-0.07) (0.498,0.008) (0.483,0.026) (0.433,0.05)
+    (0.353,0.0707) (0.25,0.0866) (0.13,0.0966) (0,0.1)
+    (-0.13,0.0966) (-0.25,0.0866) (-0.353,0.0707) (-0.433,0.05)
+    (-0.483,0.026) (-0.5,0) (-0.483,-0.026) (-0.353,-0.0707)
+    (-0.25,-0.0866) (-0.13,-0.096) (0,-0.1) (0.13,-0.096)
+    (0.25,-0.0866) (0.353,-0.0707) (0.433,-0.05)
+    (0.498,-0.026) (0.6,-0.07)};
+}
+
+\newcommand{\tkzGraduatedCylinderBase}{%
+  \fill[white]
+    ([shift={(-0.95,0.5)}]0:0.45) arc[start angle=0,end angle=-90,radius=0.45]
+    -- ([shift={(-0.95,0.025)}]90:0.025) arc[start angle=90,end angle=270,radius=0.025]
+    -- (-0.95,0) -- (0.95,0)
+    -- ([shift={(0.95,0.025)}]-90:0.025) arc[start angle=-90,end angle=90,radius=0.025]
+    -- ([shift={(0.95,0.5)}]-90:0.45) arc[start angle=-90,end angle=-180,radius=0.45]
+    -- plot[smooth,tension=0.5] coordinates {(0.5,0.4) (0,0.25) (-0.5,0.4)}
+    -- cycle;
+  \draw
+    ([shift={(-0.95,0.5)}]0:0.45) arc[start angle=0,end angle=-90,radius=0.45]
+    -- ([shift={(-0.95,0.025)}]90:0.025) arc[start angle=90,end angle=270,radius=0.025]
+    -- (-0.95,0) -- (0.95,0)
+    -- ([shift={(0.95,0.025)}]-90:0.025) arc[start angle=-90,end angle=90,radius=0.025]
+    -- ([shift={(0.95,0.5)}]-90:0.45) arc[start angle=-90,end angle=-180,radius=0.45]
+    -- plot[smooth,tension=0.5] coordinates {(0.5,0.4) (0,0.25) (-0.5,0.4)};
+}
+
+\newcommand{\tkzGraduatedCylinderGraduation}{%
+  % 量筒刻度 : 主刻度 1.5× 细刻度 (与烧杯一致)
+  \pgfmathsetlengthmacro{\chemlab@eprouvette@major}{1.5*\chemlabGraduationLineWidth}%
+  \foreach \nyD in {0.5,1.0,...,4.5} { \draw[line width=\chemlab@eprouvette@major] (-0.4,\nyD) -- (-0.1,\nyD); }
+  \foreach \nyd in {0.5,0.6,...,4.4} { \draw[line width=\chemlabGraduationLineWidth] (-0.4,\nyd) -- (-0.25,\nyd); }
+}
+
+% ============================================================
+% 8. 分馏装置 (Distillation fractionnée)
+% ============================================================
+% \pst@goutte 这里又被定义了一次, 在 TikZ 版中沿用同一个 \tkzDrop
+
+\newcommand{\tkzColumn}{%
+  % pst-labo: linearc=0.3 (×unit, 不是绝对值) → TikZ: rounded corners=0.12cm (= 0.3 × 0.4cm)
+  % 尖刺 (pointeG/D) 先画并用 clip 裁剪到蒸馏柱内部, 再画轮廓线覆盖切边。
+  %   pst-labo 中 linearc=0.3 (R=0.3 user units), 尖刺端点恰在圆弧切点附近, 几乎
+  %   不可见。TikZ 的 rounded corners 实际 R 比标称值大 ~2×, 圆弧切点更低,
+  %   尖刺端点 (在 y_col=8 和 7.9) 会突出到圆弧外侧形成多余线头。用 clip 将
+  %   尖刺裁剪到柱内, 再画轮廓线覆盖切边, 消除突出线头。
+  \begin{scope}
+    \clip[rounded corners=0.12cm]
+      (-.25,10.5) -- (-.25,8.5) -- (-.75,8) -- (-.75,2.5) -- (-.25,2) -- (-.25,0)
+      -- (0.25,0) -- (0.25,2) -- (.75,2.5) -- (.75,8) -- (0.25,8.5) -- (0.25,9.36)
+      -- (0.25,10.5) -- cycle;
+    % 左侧尖刺 (pointeG)
+    \foreach \i in {3,4,...,8} {%
+      \draw[line width=0.4\pgflinewidth] (-.75,\i) -- (-.25,\i-0.5)
+          -- (-.75,\i-0.1);}
+    % 右侧尖刺 (pointeD)
+    \foreach \i in {3,4,...,8} {%
+      \draw[line width=0.4\pgflinewidth] (.75,\i) -- (.25,\i-0.5)
+          -- (.75,\i-0.1);}
+  \end{scope}
+  \draw[rounded corners=0.12cm]
+    (-.25,10.5) -- (-.25,8.5) -- (-.75,8) -- (-.75,2.5)
+    -- (-.25,2) -- (-.25,0);
+  \draw[rounded corners=0.12cm]
+    (0.25,0) -- (0.25,2) -- (.75,2.5) -- (.75,8)
+    -- (0.25,8.5) -- (0.25,9.36);
+  % 上部断口 (line 3a/3b):
+  %   pst-labo 源码 line 3a: \psline(0.25,8.5)(0.25,9.30) 用于填充 linearc 圆角
+  %   留下的间隙。实测发现 TikZ 的 rounded corners 实际圆弧半径比标称值大
+  %   ~2× (在 scale=0.6 下 rounded corners=0.3cm 给出 R≈0.62cm), 圆弧已覆盖到
+  %   x=0.25 处 y_col=8.93 附近, 故 line 3a 在任何 scale/line width 下均被圆弧
+  %   覆盖, 不可见。为避免在编号图等彩色调试场景中残留多余线段, 此处不再
+  %   单独绘制 line 3a。
+  \draw (0.25,9.5) -- (0.25,10.5);
+  % 填充 / 阴影
+  \begin{scope}[pattern={Lines[angle=45,distance={1pt/sqrt(2)}]},pattern color=gray]
+    \fill (-.25,10) rectangle (-.05,10.5);
+    \fill (.25,10)  rectangle (0.05,10.5);
+  \end{scope}
+  \foreach \n in {2.5,3.5,...,7.5} {%
+    \begin{scope}[shift={(-.25,\n)}]\tkzDrop\end{scope}
+    \begin{scope}[shift={(.25,\n)}]\tkzDrop\end{scope}}
+  \begin{scope}[shift={(-0.25,-.1)}]\tkzDrop\end{scope}
+  \begin{scope}[shift={(0.25,-.1)}]\tkzDrop\end{scope}
+}
+
+% 公共别名: pst-labo 中 \tkzColumn 是用户可调用的公共宏 (小写)
+% tikz-chemlab 内部用 \tkzColumn (驼峰), 这里注册公共别名保持兼容
+\let\tkzColumn\tkzColumn
+
+% réfrigérant (condenseur)
+\newcommand{\tkzCondenser}{%
+  \draw ([shift={(3,0)}]90:0.5) arc[start angle=90,end angle=270,radius=0.5];
+  % pst-labo: \psarc(7,0){0.5}{270}{90} → 逆时针经过 0°/右侧
+  \draw ([shift={(7,0)}]270:0.5) arc[start angle=270,end angle=450,radius=0.5];
+  \fill[white] (0,-.05) rectangle (9,0.05);
+  \begin{scope}[line width=0.4pt]
+    \draw (-.075,.05) -- (9,0.05);
+    \draw (0.02,-.05) -- (9,-.05);
+  \end{scope}
+  \draw (3,0.5) -- (3.5,0.5);
+  \draw (3,-.5) -- (6.5,-.5);
+  \draw (3.6,0.5) -- (7,0.5);
+  \begin{scope}[line width=0.4pt]
+    \draw (3.5,0.5) -- (3.5,1.5);
+    \draw (3.6,0.5) -- (3.6,1.5);
+    \draw (6.6,-.5) -- (6.6,-1.5);
+    \draw (6.5,-.5) -- (6.5,-1.5);
+  \end{scope}
+  \draw (6.6,-.5) -- (7,-.5);
+  \draw[->] (6.55,-2.5) -- (6.55,-1.5);
+  \draw[->] (3.55,1.5)  -- (3.55,2.5);
+}
+
+\newcommand{\tkzThermometer}{%
+  % pst-labo: \psline[linearc=0.05](-.05,.25)(-.05,2.75)(0.05,2.75)(0.05,0.25)
+  % linearc=0.05 × unit, TikZ: rounded corners=0.05 (受 scale 缩放)
+  \draw[rounded corners=0.025cm]
+    (-.05,.25) -- (-.05,2.75) -- (0.05,2.75) -- (0.05,0.25) -- cycle;
+  % pst-labo: \psframe[framearc=0.8,fillstyle=solid,fillcolor=red](-.15,-.25)(0.15,0.25)
+  % framearc=0.8: 80% of half-min(0.3,0.5)=0.15 → radius=0.12
+  \filldraw[fill=red,draw=black,rounded corners=0.06cm] (-.15,-.25) rectangle (0.15,0.25);
+  % pst-labo: \psline[linecolor=red](0,2) — 红色竖线, 使用默认线宽
+  % 在 pst-labo 渲染中较粗, 看起来像红色填充
+  \draw[red,line width=0.8pt] (0,0) -- (0,2);
+}
+
+\newcommand{\tkzHeater}{%
+  \draw (1.17,2.5) -- (0,2.5) -- (0,0) -- (5.5,0) -- (5.5,2.5) -- (4.33,2.5);
+}
+
+% 内部小量筒轮廓 - 路径版本 (供 clip 使用)
+\newcommand{\tkzGraduatedCylinderPath}{%
+  (-0.5,6) -- (-0.5,.5)
+  -- ([shift={(-1,0.5)}]0:0.5) arc[start angle=0,end angle=-90,radius=0.5]
+  -- (-1,0) -- (1,0)
+  -- ([shift={(1,0.5)}]270:0.5) arc[start angle=270,end angle=180,radius=0.5]
+  -- (0.5,0.5) -- (0.5,6) -- cycle
+}
+
+% 内部小量筒 (描边)
+% pst-labo: \psset{linewidth=1.5\pslinewidth} — \pslinewidth 默认 0.8pt (ABSOLUTE)
+% → 1.5*0.8pt = 1.2pt (绝对值, 不随 unit/scale 缩放)
+% 注意: TikZ 的 [line width=N\pgflinewidth] 有循环引用 bug — \pgflinewidth 在
+% 乘法前被更新, 导致 line width=3\pgflinewidth 实际给出 3.6pt 而非 1.2pt。
+% 必须用显式 pt 值。
+\newcommand{\tkzGraduatedCylinderSmall}{%
+  \begin{scope}[line width=0.72pt,line cap=round,line join=round]
+    \draw (-0.5,6) -- (-0.5,.5)
+      -- ([shift={(-1,0.5)}]0:0.5) arc[start angle=0,end angle=-90,radius=0.5]
+      -- (-1,0) -- (1,0)
+      -- ([shift={(1,0.5)}]270:0.5) arc[start angle=270,end angle=180,radius=0.5]
+      -- (0.5,0.5) -- (0.5,6);
+  \end{scope}
+}
+
+% 带液体的量筒 (内部使用, 重命名以避免与主文件 \pstEproulette 冲突)
+\newcommand{\tkzGraduatedCylinderWithLiquid}{%
+  \begin{scope}
+    \clip \tkzGraduatedCylinderPath;
+    % pst-labo: \psframe*[linecolor=\psk@Distillation@DistillateColor]
+    \fill[\tkzDistillateColor] (-1.5,-1) rectangle (1.5,1);
+  \end{scope}
+  \tkzGraduatedCylinderSmall
+}
+
+% (注 : 原 PSTricks 中 \pst@roundFlask 已合并到 \tkzRoundFlaskSimple, 此处不再单独定义,
+%  避免与 tikz-chemlab.tex 中的用户命令 \tkzRoundFlask 冲突)
+
+% 自定义密集斜线图案 (匹配 pst-labo hlines 的密度)
+{\pgfpointorigin}{\pgfpoint{0.012cm}{0.012cm}}{\pgfpoint{0.012cm}{0.012cm}}
+{\pgfsetlinewidth{0.0028cm}\pgfpathmoveto{\pgfpoint{0cm}{0cm}}\pgfpathlineto{\pgfpoint{0.012cm}{0.012cm}}\pgfusepath{stroke}}
+{\pgfpointorigin}{\pgfpoint{0.012cm}{0.012cm}}{\pgfpoint{0.012cm}{0.012cm}}
+{\pgfsetlinewidth{0.004cm}\pgfpathmoveto{\pgfpoint{0cm}{0cm}}\pgfpathlineto{\pgfpoint{0.012cm}{0.012cm}}\pgfusepath{stroke}}
+% \pst@DistillationFractionnee 主图
+\newcommand{\tkzDistillationFractionated}{%
+  % --- roundFlask ---
+  \def\flaskLocal{%
+    % pst-labo: fillstyle=hlines,hatchwidth=0.007,hatchsep=0.03 → 水平线填充
+    \begin{scope}[pattern={Lines[angle=45,distance={1pt/sqrt(2)}]},pattern color=gray]
+      \fill (-.5,2.25) rectangle (-.25,3);
+      \fill (0.5,2.25)  rectangle (0.25,3);
+    \end{scope}
+    % pst-labo 线宽: neck=0.053, arcs=0.03 (都是 ×unit 用户单位, 随 scale 缩放)
+    % \chemlabUpdateLineWidths 已设置 \chemlabLineWidth = 0.053*scale
+    \chemlabUpdateLineWidths
+    \draw[line width=\chemlabLineWidth] (0.5,1.5) -- (0.5,3);
+    \draw[line width=\chemlabLineWidth] (-.5,1.5) -- (-.5,3);
+    % pst-labo: \psarc(0,0){1.581}{108.435}{71.565} 逆时针走长路 (经底部),
+    %   左右侧弧可见, 底部被液体填充覆盖, 顶部无可见弧线。此处拆分为
+    %   左右侧两段 (底部由下方轮廓弧绘制, 顶部不画)。
+    % 右上侧弧: 71° → 0° (连接右颈底部到球体最右点)
+    \draw[line width=\chemlabLineWidth] ([shift={(0,0)}]71.565:1.581) arc[start angle=71.565,end angle=0,radius=1.581];
+    % 左上侧弧: 180° → 108° (连接球体最左点到左颈底部)
+    \draw[line width=\chemlabLineWidth] ([shift={(0,0)}]180:1.581) arc[start angle=180,end angle=108.435,radius=1.581];
+    % pst-labo: \psset{style=\psk@Distillation@MixtureStyle}\fill
+    % 需要用 \shade (不是 \fill) 来产生渐变效果
+    \shade[\tkzMixtureStyle] plot[smooth,tension=0.5] coordinates {%
+      (-1.581,0) (-1.25,0.1) (-.75,-.1) (0,.1) (0.75,-.1) (1.25,.1) (1.581,0)}
+      arc[start angle=0,end angle=-180,radius=1.581];
+    % 底部轮廓弧: pst-labo \psarc[linewidth=0.03] → 0.03*unit, 用 \chemlabLineWidth 0.053
+    % (pst-labo 中 0.03 vs 0.053 差异微小, 统一用 0.053*scale 避免额外变量)
+    \draw[line width=\chemlabLineWidth] (0,0) ++(180:1.581) arc[start angle=180,end angle=360,radius=1.581];
+  }%
+  % --- 主图整体平移 ---
+  \begin{scope}[shift={(0,-3)}]
+    \begin{scope}[shift={(2.75,13.5)}]\tkzThermometer\end{scope}
+    \begin{scope}[shift={(2.75,2.5)}]\flaskLocal\end{scope}
+    \begin{scope}[shift={(2.75,4)}]\tkzColumn\end{scope}
+    \begin{scope}[shift={(3,13.4)},rotate=-45]\tkzCondenser\end{scope}
+    \begin{scope}[shift={(0,0)}]\tkzHeater\end{scope}
+    \begin{scope}[shift={(9.4,0)}]\tkzGraduatedCylinderWithLiquid
+      % 蒸馏装置量筒刻度 : 主刻度 1.5× 细刻度
+      \pgfmathsetlengthmacro{\chemlab@distill@major}{1.5*\chemlabGraduationLineWidth}%
+      \foreach \Level in {1,2,...,5} {\draw[line width=\chemlab@distill@major] (-.4,\Level) -- (-.1,\Level);}
+      \foreach \Level in {0.2,0.4,...,4.8} {\draw[line width=\chemlabGraduationLineWidth] (-.4,\Level) -- (-.2,\Level);}
+    \end{scope}
+    \begin{scope}[shift={(9.37,7)}]\tkzDrop\end{scope}
+    \begin{scope}[shift={(9.37,6)}]\tkzDrop\end{scope}
+    \begin{scope}[shift={(9.37,4)}]\tkzDrop\end{scope}
+    \begin{scope}[shift={(9.37,1.2)}]\tkzDrop\end{scope}
+    % 加热盘 (搅拌器)
+    \begin{scope}[shift={(0.75,.75)}]
+      \draw (0,0) circle (.5);
+      \foreach \i in {0,30,...,180} {\draw (\i:0.55) -- (\i:0.65);}
+      \draw[->,line width=0.035cm] (0,0) -- (0,0.45);
+    \end{scope}
+  \end{scope}
+}
+
+% ============================================================
+% 9. 本生灯 (Bec Bunsen) - 不带 grille
+% ============================================================
+\newcommand{\tkzBunsenBurner}{%
+  \chemlabUpdateLineWidths\begin{scope}[line width=\chemlabLineWidth,line cap=round,line join=round]
+    \draw (-1.25,0) rectangle (1.25,0.25);
+    \draw (-.5,1.25) rectangle (0.5,2.25);
+    \foreach \n in {-0.3,0.0,0.3} {\draw (\n,1.75) circle (0.1);}
+    \draw (-.25,2.25) rectangle (0.25,4.25);
+    \draw (0.25,1.25) -- (0.25,0.5) -- (1.25,0.25);
+    \draw (-1.25,0.25) -- (-.25,0.5) -- (-0.25,0.75);
+    \draw (-2.25,0.75) -- (-.25,0.75);
+    \draw (-2.25,1) -- (-.25,1);
+    \draw (-.25,0.875) ellipse (0.1 and 0.125);
+    \fill[white] (-2.25,0.75) rectangle (-0.25,1);
+    \draw (-2.25,0.75) -- (-0.25,0.75);
+    \draw (-2.25,1) -- (-0.25,1) -- (-.25,1.25);
+    \draw plot[smooth,tension=0.5] coordinates {(-0.25,0.5) (0,0.4) (0.25,0.5)};
+    % flamme
+    % pst-labo 源码: \rput(0,4.25){\psclip{\psbezier[...gradient...] (12点)}\pspolygon[...gradient...](-0.25,0)(0.25,0)(0,1)\endpsclip}
+    % \psbezier 12个点 + BezierNArray padding (0,0) = 13点 = 4段贝塞尔
+    % 经像素级验证, 正确路径从 (0,0) 出发, 经4段贝塞尔回到 (0,0), 无闭合直线:
+    %   Seg 1: (0,0) → c1=P1=(-0.25,0), c2=P2=(-0.35,0.5) → P3=(-0.4,0.75) [左下→左中]
+    %   Seg 2: P3=(-0.4,0.75) → c1=P4=(-0.35,1), c2=P5=(-0.25,1.5) → P6=(0.5,2) [左中→顶]
+    %   Seg 3: P6=(0.5,2) → c1=P7=(0.25,1.5), c2=P8=(0.35,1) → P9=(0.4,0.75) [顶→右中]
+    %   Seg 4: P9=(0.4,0.75) → c1=P10=(0.35,0.5), c2=P11=(0.25,0) → (0,0) [右中→底]
+    % 渐变: gradbegin=PaleOrange (底), gradend=yellow (顶), gradmidpoint=0, gradangle=0 (垂直)
+    \begin{scope}[shift={(0,4.25)}]
+      % 外焰填充: PaleOrange (底) -> yellow (顶) 线性垂直渐变
+      \shade[top color=yellow, bottom color=PaleOrange]
+        (0,0) .. controls (-0.25,0) and (-0.35,0.5)
+        .. (-0.4,0.75) .. controls (-0.35,1) and (-0.25,1.5)
+        .. (0.5,2) .. controls (0.25,1.5) and (0.35,1)
+        .. (0.4,0.75) .. controls (0.35,0.5) and (0.25,0)
+        .. (0,0);
+      % 内焰: 三角形 cyan(底)->white(顶) 渐变, 裁剪到外焰形状内
+      \begin{scope}
+        \clip
+          (0,0) .. controls (-0.25,0) and (-0.35,0.5)
+          .. (-0.4,0.75) .. controls (-0.35,1) and (-0.25,1.5)
+          .. (0.5,2) .. controls (0.25,1.5) and (0.35,1)
+          .. (0.4,0.75) .. controls (0.35,0.5) and (0.25,0)
+          .. (0,0);
+        \shade[top color=white, bottom color=cyan]
+          (-0.25,0) -- (0.25,0) -- (0,1) -- cycle;
+      \end{scope}
+    \end{scope}
+  \end{scope}
+}
+
+% 火焰 + 网格 (FlammeGrille 形状) - 路径版本 (供 clip 使用)
+\newcommand{\tkzFlameGrillPath}{%
+  ([shift={(0,0.75)}]270:0.75) arc[start angle=270,end angle=360,radius=0.75]
+  -- ([shift={(1.5,0.75)}]180:0.75) arc[start angle=180,end angle=90,radius=0.75]
+  -- (1.5,1.5) -- (-1.5,1.5)
+  -- ([shift={(-1.5,0.75)}]90:0.75) arc[start angle=90,end angle=0,radius=0.75]
+  -- ([shift={(0,0.75)}]180:0.75) arc[start angle=180,end angle=270,radius=0.75]
+  -- cycle
+}
+
+\newcommand{\tkzFlameGrill}{%
+  \fill[flameAndGrill] \tkzFlameGrillPath;
+}
+
+% ============================================================
+% 10. 本生灯 - 带 grille
+% ============================================================
+\newcommand{\tkzBunsenBurnerGrill}{%
+  \chemlabUpdateLineWidths\begin{scope}[line width=\chemlabLineWidth,line cap=round,line join=round]
+    \draw (-1.25,0) rectangle (1.25,0.25);
+    \draw (-.5,1.25) rectangle (0.5,2.25);
+    \foreach \n in {-0.3,0.0,0.3} {\draw (\n,1.75) circle (0.1);}
+    \draw (-.25,2.25) rectangle (0.25,4.25);
+    \draw (0.25,1.25) -- (0.25,0.5) -- (1.25,0.25);
+    \draw (-1.25,0.25) -- (-.25,0.5) -- (-0.25,0.75);
+    \draw (-2.25,0.75) -- (-.25,0.75);
+    \draw (-2.25,1) -- (-.25,1);
+    \draw (-.25,0.875) ellipse (0.1 and 0.125);
+    \fill[white] (-2.25,0.75) rectangle (-0.25,1);
+    \draw (-2.25,0.75) -- (-0.25,0.75);
+    \draw (-2.25,1) -- (-0.25,1) -- (-.25,1.25);
+    \draw plot[smooth,tension=0.5] coordinates {(-0.25,0.5) (0,0.4) (0.25,0.5)};
+    % flamme (clip 到 FlammeGrille)
+    % 原 pst-labo 火焰分两层:
+    %   外焰: \pst@FlammeGrille 整体填充 flameAndGrill (PaleOrange->yellow 渐变)
+    %   内焰: 三角形 cyan->white 渐变 (在内焰区域)
+    % 颜色和大小可通过 \chemlabset 调整
+    \begin{scope}[shift={(0,4.25)},scale=\chemlabFlameScale]
+      \begin{scope}
+        \clip \tkzFlameGrillPath;
+        % 外焰: PaleOrange (底) -> yellow (顶) 线性垂直渐变
+        % 对应 pst-labo: fillstyle=gradient, gradbegin=PaleOrange, gradend=yellow
+        % 渐变范围与火焰形状 (y=0..1.5) 一致, 避免底部颜色被稀释
+        \shade[top color=\chemlabFlameOuterEndColor, bottom color=\chemlabFlameOuterColor]
+          (-1.5,0) rectangle (1.5,1.5);
+        % 内焰: cyan (底) -> white (顶) 线性垂直渐变 (三角形)
+        \shade[top color=\chemlabFlameInnerEndColor, bottom color=\chemlabFlameInnerColor]
+          (-0.25,0) -- (0.25,0) -- (0,1) -- cycle;
+      \end{scope}
+    \end{scope}
+    \draw[dashed,line width=\chemlabEllipseLineWidth] (-2,5.75) -- (2,5.75);
+  \end{scope}
+}
+
+% ============================================================
+% 11. 烧瓶 (Ballon)
+% ============================================================
+% 路径版本 - 供 clip 使用 (闭合轮廓)
+\newcommand{\tkzRoundFlaskSimplePath}{%
+  ([shift={(-0.7,3.4)}]90:0.2) arc[start angle=90,end angle=0,radius=0.2]
+  -- (-0.5,3.4) -- (-0.5,2.4)
+  -- (-0.489,2.401)
+  arc[start angle=113,end angle=427,radius=1.25]
+  -- (0.5,2.4) -- (0.5,3.4)
+  -- ([shift={(0.7,3.4)}]180:0.2) arc[start angle=180,end angle=90,radius=0.2]
+  -- (0,3.5) -- cycle
+}
+
+\newcommand{\tkzRoundFlaskSimple}{%
+  \chemlabUpdateLineWidths\begin{scope}[line width=\chemlabLineWidth,line cap=round,line join=round]
+    % 左侧: 瓶口圆弧 + 颈部直线 + 球体大圆弧, 合并为单条路径以平滑过渡
+    \draw ([shift={(-0.7,3.4)}]90:0.2) arc[start angle=90,end angle=0,radius=0.2]
+          -- (-0.5,3.4) -- (-0.5,2.4)
+          -- (-0.489,2.401) arc[start angle=113,end angle=427,radius=1.25];
+    % 右侧: 球体终点(0.489,2.401) -> 颈部直线 -> 瓶口圆弧
+    \draw (0.489,2.401) -- (0.5,2.4) -- (0.5,3.4)
+          -- ([shift={(0.7,3.4)}]180:0.2) arc[start angle=180,end angle=90,radius=0.2];
+    % 瓶口椭圆: 白色填充覆盖颈部上端圆头, 避免穿入椭圆
+    % pst-labo: ballon椭圆用默认线宽 0.053 (与主轮廓一致, 不是 0.07)
+    \filldraw[fill=white,draw=black,line width=\chemlabLineWidth] (0,3.6) ellipse (0.7 and 0.1);
+  \end{scope}
+}
+
+\newcommand{\tkzRoundFlaskGrill}{%
+  \chemlabUpdateLineWidths\begin{scope}[line width=\chemlabLineWidth,line cap=round,line join=round]
+    % 左侧: 瓶口圆弧 + 颈部直线 + 球体大圆弧, 合并为单条路径
+    \draw ([shift={(-0.7,2.15)}]90:0.2) arc[start angle=90,end angle=0,radius=0.2]
+          -- (-0.5,2.15) -- (-0.5,1.4)
+          -- (-0.489,1.401) arc[start angle=113,end angle=427,radius=1.25];
+    % 右侧: 球体终点 -> 颈部直线 -> 瓶口圆弧
+    \draw (0.489,1.401) -- (0.5,1.15) -- (0.5,3.4)
+          -- ([shift={(0.7,2.15)}]180:0.2) arc[start angle=180,end angle=90,radius=0.2];
+    % 瓶口椭圆: 白色填充覆盖颈部上端圆头, 避免穿入椭圆
+    % pst-labo: ballon椭圆用默认线宽 0.053 (与主轮廓一致)
+    \filldraw[fill=white,draw=black,line width=\chemlabLineWidth] (0,2.35) ellipse (0.7 and 0.1);
+  \end{scope}
+}
+
+% ============================================================
+% 12. 试管 (TubeEssais)
+% ============================================================
+\newcommand{\tkzTestTubeStopper}{%
+  \chemlabUpdateLineWidths
+  \begin{scope}[fill=LightGray,draw=black,line width=\chemlabLineWidth,line cap=round,line join=round]
+    \filldraw (0,-0.3) ellipse (0.4 and 0.1);
+    \filldraw (-0.4,-0.3) -- (-0.6,0.5) -- (0.6,0.5) -- (0.4,-0.3) -- cycle;
+    \fill[draw=none] (0,-0.3) ellipse (0.4 and 0.1);
+    \filldraw (0,0.5) ellipse (0.6 and 0.1);
+  \end{scope}
+  \draw[line width=\chemlabEllipseLineWidth] plot[smooth,tension=0.5]
+        coordinates {(-0.5,0) (0,-0.07) (0.5,0)};
+}
+
+\newcommand{\tkzTestTubeBody}{%
+  \chemlabUpdateLineWidths\begin{scope}[line width=\chemlabLineWidth,line cap=round,line join=round]
+    % 合并左侧直线 + 底部圆弧 + 右侧直线为单条路径, 平滑转角
+    \draw (-0.5,3.5) -- (-0.5,0.5)
+          arc[start angle=180,end angle=360,radius=0.5]
+          -- (0.5,3.5);
+    % 试管口椭圆 (原 pst-labo 用 0.08cm, 比其他椭圆粗)
+    \draw[line width=\chemlabTubeEllipseLineWidth] (0,3.5) ellipse (0.5 and 0.1);
+  \end{scope}
+}
+
+\newcommand{\tkzTestTubeStraightTube}{%
+  \draw[line width=0.5\pgflinewidth] (0.05,-1) -- (0.05,5);
+  \draw[line width=0.5\pgflinewidth] (-0.05,-1) -- (-0.05,5);
+  \tkzTestTubeStopper
+  \draw[fill=white,rounded corners=0.5,line width=0.5\pgflinewidth]
+       (-0.05,5) rectangle (0.05,0.5);
+  \draw[white,line width=0.14cm] (-0.1,5) -- (0.1,5);
+}
+
+\newcommand{\tkzTestTubeElbowTube}{%
+  \draw[line width=0.5\pgflinewidth] (0.05,-1) -- (0.05,0);
+  \draw[line width=0.5\pgflinewidth] (-0.05,-1) -- (-0.05,0);
+  \tkzTestTubeStopper
+  % 弯管路径: pst-labo \pspolygon(...)(8,2)(8,1.9)...
+  \filldraw[fill=white,rounded corners=0.05cm,line width=0.5\pgflinewidth]
+       (-0.05,0.5) -- (-0.05,2) -- (8,2) -- (8,1.9)
+       -- (0.05,1.9) -- (0.05,0.5) -- cycle;
+  \draw[white,line width=0.14cm] (7.95,1.9) -- (8.05,2);
+}
+
+\newcommand{\tkzTestTubeUTube}{%
+  \draw[line width=0.5\pgflinewidth] (0.05,-1) -- (0.05,0);
+  \draw[line width=0.5\pgflinewidth] (-0.05,-1) -- (-0.05,0);
+  \tkzTestTubeStopper
+  \filldraw[fill=white,rounded corners=0.05cm,line width=0.5\pgflinewidth]
+       (-0.05,0.5) -- (-0.05,2) -- (4.5,2) -- (4.5,-3)
+       -- (4.4,-3) -- (4.4,1.9) -- (0.05,1.9) -- (0.05,0.5) -- cycle;
+  \draw[white,line width=0.14cm] (4.3,-3) -- (4.6,-3);
+}
+
+\newcommand{\tkzTestTubeUTubeLong}{%
+  \draw[line width=0.5\pgflinewidth] (0.05,-1) -- (0.05,0);
+  \draw[line width=0.5\pgflinewidth] (-0.05,-1) -- (-0.05,0);
+  \tkzTestTubeStopper
+  \filldraw[fill=white,rounded corners=0.05cm,line width=0.5\pgflinewidth]
+       (-0.05,0.5) -- (-0.05,2) -- (4.5,2) -- (4.5,-9)
+       -- (4.4,-9) -- (4.4,1.9) -- (0.05,1.9) -- (0.05,0.5) -- cycle;
+  \draw[white,line width=0.14cm] (4.3,-9) -- (4.6,-9);
+}
+
+\newcommand{\tkzCurvedTube}{%
+  \draw[line width=0.5\pgflinewidth] (0.05,-1) -- (0.05,0);
+  \draw[line width=0.5\pgflinewidth] (-0.05,-1) -- (-0.05,0);
+  \tkzTestTubeStopper
+  \begin{scope}[line width=0.4pt]
+    \draw (-0.05,0.5) -- (-0.05,1);
+    \draw ([shift={(0.5,1)}]180:0.55) arc[start angle=180,end angle=90,radius=0.55];
+    \draw (0.5,1.55) -- (5.5,1.55);
+    \draw ([shift={(5.5,1)}]90:0.55) arc[start angle=90,end angle=0,radius=0.55];
+    \draw (6.05,1) -- (6.05,-8.8);
+    \draw ([shift={(6.5,-8.8)}]180:0.45) arc[start angle=180,end angle=360,radius=0.45];
+    \draw (6.95,-8.8) -- (6.95,-8.3);
+    \draw (7.05,-8.3) -- (7.05,-8.8);
+    \draw ([shift={(6.5,-8.8)}]0:0.55) arc[start angle=0,end angle=-180,radius=0.55];
+    \draw (5.95,-8.8) -- (5.95,1);
+    \draw ([shift={(5.5,1)}]0:0.45) arc[start angle=0,end angle=90,radius=0.45];
+    \draw (5.5,1.45) -- (0.5,1.45);
+    \draw ([shift={(0.5,1)}]90:0.45) arc[start angle=90,end angle=180,radius=0.45];
+    \draw (0.05,1) -- (0.05,0.5);
+    \draw (-0.05,0.5) -- (0.05,0.5);
+  \end{scope}
+  \fill[white] (-0.025,0.52) rectangle (0.020,0.6);
+}
+
+\newcommand{\tkzCurvedTubeShort}{%
+  \draw[line width=0.5\pgflinewidth] (0.05,-1) -- (0.05,0);
+  \draw[line width=0.5\pgflinewidth] (-0.05,-1) -- (-0.05,0);
+  \tkzTestTubeStopper
+  \draw (-0.05,0.5) -- (-0.05,1);
+  \begin{scope}[line width=0.4pt]
+    \draw ([shift={(0.5,1)}]180:0.55) arc[start angle=180,end angle=90,radius=0.55];
+    \draw (0.5,1.55) -- (3.5,1.55);
+    \draw ([shift={(3.5,1)}]90:0.55) arc[start angle=90,end angle=0,radius=0.55];
+    \draw (4.05,1) -- (4.05,-2.8);
+    \draw ([shift={(4.5,-2.8)}]180:0.45) arc[start angle=180,end angle=360,radius=0.45];
+    \draw (4.95,-2.8) -- (4.95,-2.3);
+    \draw (5.05,-2.3) -- (5.05,-2.8);
+    \draw ([shift={(4.5,-2.8)}]0:0.55) arc[start angle=0,end angle=-180,radius=0.55];
+    \draw (3.95,-2.8) -- (3.95,1);
+    \draw ([shift={(3.5,1)}]0:0.45) arc[start angle=0,end angle=90,radius=0.45];
+    \draw (3.5,1.45) -- (0.5,1.45);
+    \draw ([shift={(0.5,1)}]90:0.45) arc[start angle=90,end angle=180,radius=0.45];
+    \draw (0.05,1) -- (0.05,0.5);
+    \draw (-0.05,0.5) -- (0.05,0.5);
+  \end{scope}
+  \fill[white] (-0.025,0.52) rectangle (0.020,0.6);
+}
+
+\newcommand{\tkzCurvedTubeShortDoubleTube}{%
+  \begin{scope}[line width=0.4pt]
+    \draw (-0.05,0.5) -- (-0.05,1);
+    \draw ([shift={(0.5,1)}]180:0.55) arc[start angle=180,end angle=90,radius=0.55];
+    \draw (0.5,1.55) -- (3.5,1.55);
+    \draw ([shift={(3.5,1)}]90:0.55) arc[start angle=90,end angle=0,radius=0.55];
+    \draw (4.05,1) -- (4.05,-2.8);
+    \draw ([shift={(4.5,-2.8)}]180:0.45) arc[start angle=180,end angle=360,radius=0.45];
+    \draw (4.95,-2.8) -- (4.95,-2.3);
+    \draw (5.05,-2.3) -- (5.05,-2.8);
+    \draw ([shift={(4.5,-2.8)}]0:0.55) arc[start angle=0,end angle=-180,radius=0.55];
+    \draw (3.95,-2.8) -- (3.95,1);
+    \draw ([shift={(3.5,1)}]0:0.45) arc[start angle=0,end angle=90,radius=0.45];
+    \draw (3.5,1.45) -- (0.5,1.45);
+    \draw ([shift={(0.5,1)}]90:0.45) arc[start angle=90,end angle=180,radius=0.45];
+    \draw (0.05,1) -- (0.05,0.5);
+    \draw (-0.05,0.5) -- (0.05,0.5);
+  \end{scope}
+  \fill[white] (-0.025,0.52) rectangle (0.018,0.8);
+}
+
+\newcommand{\tkzTestTubeDoubleTube}{%
+  \begin{scope}[line width=0.4pt]
+    \draw (-0.3,-3) -- (-0.3,0);
+    \draw (-.2,-3) -- (-0.2,0);
+    \draw (0.25,-1) -- (0.25,0);
+    \draw (.15,-1) -- (.15,0);
+  \end{scope}
+  \tkzTestTubeStopper
+  \begin{scope}[shift={(0.2,0)}]\tkzCurvedTubeShortDoubleTube\end{scope}
+  \begin{scope}[shift={(0,0.5)}]
+    \begin{scope}[line width=0.4pt]
+      \filldraw[fill=white,rounded corners=0.05cm]
+        (-.3,0) -- (-0.3,2) -- (-0.5,2.2) -- (-0.5,3) -- (0,3)
+                -- (0,2.2) -- (-0.2,2) -- (-0.2,0) -- cycle;
+      \draw (0.1,1.55) -- (-.5,1.55) -- (-0.5,1.7) -- (-.55,1.7)
+            -- (-.55,1.3) -- (-0.5,1.3) -- (-0.5,1.55) -- (-.5,1.45) -- (.1,1.45);
+      \filldraw[fill=white,rounded corners=0.2] (-0.4,1.3) rectangle (-0.1,1.7);
+    \end{scope}
+    \fill[white] (-0.25,3) ellipse (0.3 and 0.1);
+  \end{scope}
+}
+
+% 试管夹 (Pince) - 几何与原 pst-labo pst-laboObj.tex line 483-508 一致
+% 根据原 pst-labo 实际渲染 (5.3x 截图) 校准:
+%   - 上边缘凹弧较浅 (原 \pscurve 3点几乎共线, 浅弧)
+%   - 顶部小凸起为圆弧形 (\psarcn 圆弧)
+%   - 所有转角为圆角 (原 \pscustom 默认 linejoin=0 即 round)
+\newcommand{\tkzTestTubeClamp}{%
+  % 第1块: 上部夹爪
+  % 上边缘(1a, 夹合面): 下凹弧贴合试管顶部弧面
+  %   试管半径 0.5, 在 y=3.2 处试管顶部弧面下凹约 0.1, 用贝塞尔曲线模拟
+  %   从 (0.5,0) 经 (0,-0.1) 到 (-0.5,0), 控制点 y=-0.13 产生平滑下凹
+  \filldraw[fill=PaleOrange,draw=black,line cap=round,line join=round]
+    (0.5,0) .. controls (0.25,-0.13) and (-0.25,-0.13) .. (-0.5,0)
+    -- (-0.8,0)
+    -- ([shift={(-0.5,0)}]180:0.3) arc[start angle=180,end angle=270,radius=0.3]
+    -- (-.5,-.3) -- (2.5,-.3) -- (2.4,-.2) -- (1,0) -- (0.5,0) -- cycle;
+  % 第2块: 下部夹爪
+  % 注: 原 \psarcn(-.5,0){0.3}{-90}{180} 是顺时针从 -90°(=270°) 到 180°, 跨度 90° (四分之一圆弧)
+  % TikZ arc 当 end<start 时顺时针, 需用 end=-180 让其走短弧 (避免四分之三圆弧)
+  \filldraw[fill=PaleOrange,draw=black,line cap=round,line join=round]
+    (-0.8,0) -- (-0.8,-0.3)
+    -- ([shift={(-0.5,-0.3)}]180:0.3) arc[start angle=180,end angle=270,radius=0.3]
+    -- (-0.5,-0.6) -- (2.5,-.6) -- (2.5,-.3) -- (-.5,-.3)
+    -- ([shift={(-.5,0)}]-90:0.3) arc[start angle=-90,end angle=-180,radius=0.3] -- cycle;
+  % 第3块: 顶部小凸起 - 原 \psarcn 顺时针 180°->90°, 圆弧形凸起
+  % 去掉 (-0.8,0.05)->(-0.75,0.05) 的多余水平线段, 直接从 (-0.5,0.05) 到圆弧起点
+  % 使凸起呈纯圆弧形 (与原 pst-labo 渲染一致)
+  \filldraw[fill=PaleOrange,draw=black,line cap=round,line join=round]
+    (-.5,0.05) -- ([shift={(-0.5,0.05)}]180:0.25)
+    arc[start angle=180,end angle=90,radius=0.25]
+    -- (-.5,0.3) -- (-0.5,0.05) -- cycle;
+  % 第4块: 夹臂上部
+  \filldraw[fill=PaleOrange,draw=black,line cap=round,line join=round]
+    (0.5,0.3) -- (4.9,0.3) -- (5,0.2) -- (1,0) -- (0.5,0) -- (0.5,0.3) -- cycle;
+  % 第5块: 夹臂下部 (Brown 棕色)
+  \filldraw[fill=Brown,draw=black,line cap=round,line join=round]
+    (0.5,0) -- (5,0.2) -- (5,0) -- (2,-0.2) -- (1,0) -- cycle;
+  % 螺丝椭圆
+  \draw[line width=1.5\pgflinewidth,line cap=round] (1,0) ellipse (0.3 and 0.1);
+  % 螺丝下方的杆
+  \draw[line width=1.5\pgflinewidth,line cap=round,line join=round]
+        (0.7,0) -- (0.4,-.3) -- (0.4,-.6);
+}
+
+% ============================================================
+% 13. 容量瓶 (Fiole jaugée)
+% ============================================================
+\newcommand{\tkzVolumetricFlask}{%
+  \chemlabUpdateLineWidths
+  \draw[rounded corners=0.1cm,line width=\chemlabLineWidth,line cap=round,line join=round]
+       (-0.21,3.5) -- (-0.1,3.5) -- (-0.1,1.5)
+       -- (-0.75,0) -- (0.75,0) -- (0.1,1.5) -- (0.1,3.5) -- (0.21,3.5);
+  \draw[line width=\chemlabGraduationLineWidth,line cap=round] (-0.1,2.5) -- (0.1,2.5);
+}
+
+% ============================================================
+% 14. 结晶皿 (Cristallisoir)
+% ============================================================
+\newcommand{\Cristallisoir}{%
+  \chemlabUpdateLineWidths
+  \begin{scope}[line width=\chemlabLineWidth,line cap=round,line join=round]
+  \draw (-1.9,2) -- (-2,2);
+  \draw ([shift={(-2,1.95)}]90:0.05) arc[start angle=90,end angle=270,radius=0.05];
+  \draw (-2,1.9) -- (-2,1);
+  \draw ([shift={(-1,1)}]180:1) arc[start angle=180,end angle=270,radius=1];
+  \draw (-1,0) -- (1,0);
+  \draw ([shift={(1,1)}]270:1) arc[start angle=270,end angle=360,radius=1];
+  \draw (2,1) -- (2,1.9);
+  \draw ([shift={(2,1.95)}]270:0.05) arc[start angle=270,end angle=90,radius=0.05];
+  \draw (2,2) -- (1.9,2);
+  \draw (1.9,2) -- (1.9,1);
+  \draw ([shift={(1,1)}]0:0.9) arc[start angle=0,end angle=-90,radius=0.9];
+  \draw (1,0.1) -- (-1,0.1);
+  \draw ([shift={(-1,1)}]270:0.9) arc[start angle=270,end angle=180,radius=0.9];
+  \draw (-1.9,1) -- (-1.9,2);
+  \end{scope}
+}
+
+\newcommand{\InterieurCristallisoir}{%
+  (1.9,2) -- (1.9,1)
+  -- ([shift={(1,1)}]0:0.9) arc[start angle=0,end angle=-90,radius=0.9]
+  -- (1,0.1) -- (-1,0.1)
+  -- ([shift={(-1,1)}]270:0.9) arc[start angle=270,end angle=180,radius=0.9]
+  -- (-1.9,1) -- (-1.9,2) -- cycle
+}
+
+\newcommand{\tkzCrystallizingDish}{%
+  \begin{scope}
+    \clip \InterieurCristallisoir;
+    \fill[LightBlue1] (-3,-1) rectangle (3,1.5);
+  \end{scope}
+  \Cristallisoir
+}
+
+% ============================================================
+% 15. 倒置试管 (TubeRenverse)
+% ============================================================
+\newcommand{\tkzInvertedTube}{%
+  \chemlabUpdateLineWidths
+  \begin{scope}[line width=\chemlabEllipseLineWidth,line cap=round,line join=round]
+    \fill[LightBlue1] (-0.5,0) rectangle (0.5,5.5);
+    % 合并左侧 + 顶部圆弧 + 右侧为单条路径
+    % pst-labo: \psarcn(0,6){0.5}{180}{0} = 从180°顺时针到0°, 经过顶部90°
+    % TikZ: arc[start=180, end=0] = 从180°逆时针(减小)到0°, 经过顶部90°
+    \draw (-0.5,0) -- (-0.5,6)
+          arc[start angle=180,end angle=0,radius=0.5]
+          -- (0.5,0);
+  \end{scope}
+}
+
+% ============================================================
+% 16. 试管架 (ReposeTube)
+% ============================================================
+\newcommand{\tkzTestTubeRack}{%
+  \begin{scope}[line width=0.1cm,draw=lightgray]
+    \draw ([shift={(0,-0.25)}]100:1) arc[start angle=100,end angle=140,radius=1];
+    \draw ([shift={(0,-.25)}]150:1) arc[start angle=150,end angle=160,radius=1];
+    \draw ([shift={(0,-0.25)}]20:1) arc[start angle=20,end angle=80,radius=1];
+  \end{scope}
+}
+
+% ============================================================
+% 17. 烧杯边缘 + 刻度 (RebordBecher)
+% ============================================================
+\newcommand{\tkzBeakerRim}{%
+  \chemlabUpdateLineWidths
+  \draw[line width=\chemlabLineWidth] (0,2.55) ellipse (1.1 and .1);
+  % 主刻度 : 粗细为细刻度线的 1.5 倍 (原 pst-labo: 0.03cm = 1.5 × 0.02cm)
+  % 用 \pgfmathsetmacro 预算尺寸, 避免 \dimexpr 在 pgfkeys 中的兼容问题
+  \pgfmathsetlengthmacro{\chemlab@majorGrad}{1.5*\chemlabGraduationLineWidth}%
+  \foreach \nDiv in {0.5,1.0,...,2.0} {%
+    \draw[line width=\chemlab@majorGrad] (-.75,\nDiv) -- (-.4,\nDiv);}
+  % 细分刻度
+  \foreach \nSubDiv in {0.5,0.6,...,2.0} {%
+    \draw[line width=\chemlabGraduationLineWidth] (-0.75,\nSubDiv) -- (-.5,\nSubDiv);}
+}
+
+% ============================================================
+% 18. 烧杯 (Becher)
+% ============================================================
+% 注 : 原 PSTricks 使用 \psline[linearc=0.5](-1,2.5)(-1,0)(1,0)(1,2.5)
+% TikZ 的 rounded corners 与 PSTricks linearc 语义略有不同,
+% 因此改用显式圆弧精确模拟 PSTricks linearc=0.5 的行为 :
+% 左下角圆弧 : 圆心 (-0.5,0.5), 半径 0.5, 从 180° 到 270°
+% 右下角圆弧 : 圆心 (0.5,0.5),  半径 0.5, 从 270° 到 360°
+\newcommand{\tkzBeakerBody}{%
+  \chemlabUpdateLineWidths
+  \draw[line width=\chemlabLineWidth,line cap=round,line join=round]
+       (-1,2.5) -- (-1,0.5)
+       -- ([shift={(-0.5,0.5)}]180:0.5) arc[start angle=180,end angle=270,radius=0.5]
+       -- (0.5,0)
+       -- ([shift={(0.5,0.5)}]270:0.5) arc[start angle=270,end angle=360,radius=0.5]
+       -- (1,2.5);
+}
+
+% ============================================================
+% 19. 锥形瓶 (Erlenmeyer)
+% ============================================================
+% 注 : 原 PSTricks 使用 \psline[linearc=0.3](-0.5,3.5)(-0.5,2.5)(-1.5,0)(1.5,0)(0.5,2.5)(0.5,3.5)
+% TikZ 的 rounded corners 与 PSTricks linearc 语义不同,
+% 因此改用显式圆弧精确模拟 linearc=0.3 (由 scripts/erlen_arcs5.py 计算) :
+%   肩部 (凹转角, 内侧角 21.8°) : 半径 0.3 太大无法相切 (切点距 1.558 > 颈部线段长 1.0), 保留尖角
+%   左下 (凸转角, 内侧角 68.2°) : center=(-1.0569,0.3), r=0.3, 158.20° -> 270° (ccw)
+%   右下 (凸转角, 内侧角 68.2°) : center=(1.0569,0.3),  r=0.3, -90° -> 21.80° (ccw)
+\newcommand{\tkzErlenmeyerBody}{%
+  \chemlabUpdateLineWidths
+  \draw[line width=\chemlabLineWidth,line cap=round,line join=round]
+       (-0.5,3.5) -- (-0.5,2.5)
+       -- (-1.3354,0.4114)
+       -- ([shift={(-1.0569,0.3)}]158.20:0.3) arc[start angle=158.20,end angle=270,radius=0.3]
+       -- (1.0569,0)
+       -- ([shift={(1.0569,0.3)}]-90:0.3) arc[start angle=-90,end angle=21.80,radius=0.3]
+       -- (0.5,2.5) -- (0.5,3.5);
+}
+
+% ============================================================
+% 20. 试剂瓶 (Flacon)
+% ============================================================
+\newcommand{\tkzReagentBottleBody}{%
+  \chemlabUpdateLineWidths\begin{scope}[line width=\chemlabLineWidth,line cap=round,line join=round]
+    % 左侧瓶口上角小弧 (psarcn 90->0, 顺时针)
+    \draw ([shift={(-0.6,3.4)}]90:0.1) arc[start angle=90,end angle=0,radius=0.1];
+    % 左侧颈部直线
+    \draw (-0.5,3.4) -- (-0.5,3.1);
+    % 左侧瓶口下角凹弧 (psarcn 0->-90, 顺时针; TikZ end<start 自动顺时针)
+    \draw ([shift={(-0.6,3.1)}]0:0.1) arc[start angle=0,end angle=-90,radius=0.1];
+    % 左侧肩部大凸弧 (psarc 90->180, 逆时针)
+    \draw ([shift={(-0.6,2.6)}]90:0.4) arc[start angle=90,end angle=180,radius=0.4];
+    % 左侧瓶身直线
+    \draw (-1,2.6) -- (-1,0.2);
+    % 左侧底部圆角 (psarc 180->270, 逆时针)
+    \draw ([shift={(-.8,0.2)}]180:0.2) arc[start angle=180,end angle=270,radius=0.2];
+    % 底部
+    \draw (-.8,0) -- (.8,0);
+    % 右侧底部圆角 (psarc -90->0, 逆时针)
+    \draw ([shift={(.8,0.2)}]-90:0.2) arc[start angle=-90,end angle=0,radius=0.2];
+    % 右侧瓶身直线
+    \draw (1,0.2) -- (1,2.6);
+    % 右侧肩部大凸弧 (psarc 0->90, 逆时针)
+    \draw ([shift={(0.6,2.6)}]0:0.4) arc[start angle=0,end angle=90,radius=0.4];
+    % 右侧瓶口下角凹弧 (psarcn -90->180, 顺时针短弧; TikZ 需 end=-180 避免 270° 长弧)
+    \draw ([shift={(0.6,3.1)}]-90:0.1) arc[start angle=-90,end angle=-180,radius=0.1];
+    % 右侧颈部直线
+    \draw (0.5,3.1) -- (0.5,3.4);
+    % 右侧瓶口上角小弧 (psarcn 180->90, 顺时针)
+    \draw ([shift={(0.6,3.4)}]180:0.1) arc[start angle=180,end angle=90,radius=0.1];
+  \end{scope}
+}
+
+% ============================================================
+% 21. 玻璃杯 (Verre) - F. Bréal
+% ============================================================
+\newcommand{\tkzWatchGlassBody}{%
+  \chemlabUpdateLineWidths\begin{scope}[line width=\chemlabLineWidth,line cap=round,line join=round]
+    % 合并左斜线 + 底部圆弧 + 右斜线为单条路径, 平滑转角
+    \draw (-1,3.5) -- (-0.5,1)
+          arc[start angle=180,end angle=360,radius=0.5]
+          -- (1,3.5);
+  \end{scope}
+}
+
+\newcommand{\tkzWatchGlassBase}{%
+  \chemlabUpdateLineWidths\begin{scope}[line width=\chemlabLineWidth,rounded corners=0.03cm,line cap=round,line join=round]
+    \draw (-0.5,1) -- (-0.34,0.2) -- (-1.2,0) -- (1.2,0) -- (0.34,0.2) -- (0.5,1);
+  \end{scope}
+}
+
+% ============================================================
+% 22. 漏斗 (Entonnoir)
+% ============================================================
+\newcommand{\tkzFunnelOutline}{%
+  \begin{scope}[line cap=round,line join=round]
+    \draw (-0.07,0) -- (-0.07,1) -- (-1,2.5);
+    \draw (1,2.5) -- (0.07,1) -- (0.07,0.1);
+  \end{scope}
+}
+
+\newcommand{\tkzFunnelBody}{%
+  \begin{scope}
+    \clip (-0.07,0) -- (-0.07,1) -- (-1,2.5)
+          -- (1,2.5) -- (0.07,1) -- (0.07,0.1) -- cycle;
+    \fill[white] (-2,-1) rectangle (2,3);
+  \end{scope}
+  \begin{scope}[rounded corners=0.25cm]
+    \draw (-0.07,0) -- (-0.07,1) -- (-1,2.5);
+    \draw (1,2.5) -- (0.07,1) -- (0.07,0.1);
+  \end{scope}
+  \draw (0,2.5) ellipse (1 and 0.1);
+}
+
+% ============================================================
+% 23. 球形冷凝器 (Réfrigérant à boulles)
+% ============================================================
+\newcommand{\tkzCondenserStem}{%
+  % 整个 TigeBoulles 作为一个连续路径 (匹配 pst-labo \pscustom)
+  % pst-labo: \pscustom[linestyle=none]{...\fill} 填充 + 单独描边 (无闭合线)
+  % TikZ: 分开 \fill (带 cycle 闭合填充) 和 \draw (无 cycle, 顶部敞口)
+  % 顶部是敞口的 — 两端弧之间没有连线 (匹配 pst-labo)
+  %
+  % 填充: 带闭合线 (fill 需要 cycle)
+  \fill[white]
+    % 顶部圆弧与颈部 - 左侧
+    ({-0.35+0.1*cos(90)},{7.5+0.1*sin(90)}) arc[start angle=90,end angle=0,radius=0.1]
+    -- (-.25,7.5) -- (-.25,6.6)
+    -- ({-.15+0.1*cos(180)},{6.6+0.1*sin(180)}) arc[start angle=180,end angle=270,radius=0.1]
+    -- ({-.15+0.1*cos(90)},{6.4+0.1*sin(90)}) arc[start angle=90,end angle=0,radius=0.1]
+    -- (-.05,6.4) -- (-0.05,6)
+    % 左侧 7 个球状突起 (中心 x=-0.05, 半径 0.25, arc 90→270 向左凸)
+    (-0.05,6.0) arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,5.50) -- (-0.05,5.25)
+    arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,4.75) -- (-0.05,4.50)
+    arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,4.00) -- (-0.05,3.75)
+    arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,3.25) -- (-0.05,3.00)
+    arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,2.50) -- (-0.05,2.25)
+    arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,1.75) -- (-0.05,1.50)
+    arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,1.00) -- (-0.05,0.75)
+    % 左侧底部到下管口
+    -- (-0.05,-1.5) -- (0.05,-1.5) -- (0.05,1)
+    % 右侧 7 个球状突起 (中心 x=0.05, 半径 0.25, arc 270→450 向右凸)
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,1.50) -- (0.05,1.75)
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,2.25) -- (0.05,2.50)
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,3.00) -- (0.05,3.25)
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,3.75) -- (0.05,4.00)
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,4.50) -- (0.05,4.75)
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,5.25) -- (0.05,5.50)
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,6.00) -- (0.05,6.40)
+    % 顶部圆弧与颈部 - 右侧
+    -- ({0.15+0.1*cos(180)},{6.4+0.1*sin(180)}) arc[start angle=180,end angle=90,radius=0.1]
+    -- ({0.15+0.1*cos(-90)},{6.6+0.1*sin(-90)}) arc[start angle=-90,end angle=0,radius=0.1]
+    -- (0.25,6.6) -- (0.25,7.5)
+    -- ({0.35+0.1*cos(180)},{7.5+0.1*sin(180)}) arc[start angle=180,end angle=90,radius=0.1]
+    -- cycle;
+  %
+  % 描边: 底部敞口 (匹配 pst-labo: 左右侧分别 \psline, 无底部连线)
+  \draw
+    % 顶部圆弧与颈部 - 左侧
+    ({-0.35+0.1*cos(90)},{7.5+0.1*sin(90)}) arc[start angle=90,end angle=0,radius=0.1]
+    -- (-.25,7.5) -- (-.25,6.6)
+    -- ({-.15+0.1*cos(180)},{6.6+0.1*sin(180)}) arc[start angle=180,end angle=270,radius=0.1]
+    -- ({-.15+0.1*cos(90)},{6.4+0.1*sin(90)}) arc[start angle=90,end angle=0,radius=0.1]
+    -- (-.05,6.4) -- (-0.05,6)
+    % 左侧 7 个球状突起
+    (-0.05,6.0) arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,5.50) -- (-0.05,5.25)
+    arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,4.75) -- (-0.05,4.50)
+    arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,4.00) -- (-0.05,3.75)
+    arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,3.25) -- (-0.05,3.00)
+    arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,2.50) -- (-0.05,2.25)
+    arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,1.75) -- (-0.05,1.50)
+    arc[start angle=90,end angle=270,radius=0.25] -- (-0.05,1.00) -- (-0.05,0.75)
+    -- (-0.05,-1.5);
+  % 右侧 (单独 \draw, 底部不连接左侧)
+  \draw
+    (0.05,-1.5) -- (0.05,1)
+    % 右侧 7 个球状突起
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,1.50) -- (0.05,1.75)
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,2.25) -- (0.05,2.50)
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,3.00) -- (0.05,3.25)
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,3.75) -- (0.05,4.00)
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,4.50) -- (0.05,4.75)
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,5.25) -- (0.05,5.50)
+    arc[start angle=270,end angle=450,radius=0.25] -- (0.05,6.00) -- (0.05,6.40)
+    -- ({0.15+0.1*cos(180)},{6.4+0.1*sin(180)}) arc[start angle=180,end angle=90,radius=0.1]
+    -- ({0.15+0.1*cos(-90)},{6.6+0.1*sin(-90)}) arc[start angle=-90,end angle=0,radius=0.1]
+    -- (0.25,6.6) -- (0.25,7.5)
+    -- ({0.35+0.1*cos(180)},{7.5+0.1*sin(180)}) arc[start angle=180,end angle=90,radius=0.1];
+  % 底部液滴
+  \begin{scope}[shift={(0,-1.6)}]\tkzDrop\end{scope}
+}
+
+\newcommand{\tkzCondenserBody}{%
+  % 渐变填充: pst-labo gradbegin=cyan (底), gradend=PaleOrange (顶), gradmidpoint=0
+  % TikZ: bottom color=cyan (底), top color=PaleOrange (顶)
+  \shade[top color=PaleOrange,bottom color=cyan]
+    ([shift={(0,5.75)}]0:0.5) arc[start angle=0,end angle=180,radius=0.5]
+    -- (-0.5,5.75) -- (-0.5,5.5) -- (-1.5,5.5)
+    -- (-1.5,5.3) -- (-.5,5.3) -- (-.5,1.7) -- (-1.5,1.7)
+    -- (-1.5,1.5) -- (-.5,1.5) -- (-0.5,1)
+    -- ([shift={(0,1)}]180:0.5) arc[start angle=180,end angle=360,radius=0.5]
+    -- (0.5,1) -- (0.5,5.75) -- cycle;
+  % 描边
+  \begin{scope}[line width=0.88pt]
+    \draw ([shift={(0,5.75)}]0:0.5) arc[start angle=0,end angle=180,radius=0.5];
+    \draw (-0.5,5.75) -- (-0.5,5.5) -- (-1.5,5.5);
+    \draw (-0.5,5.75) -- (-0.5,5.5) -- (-1.5,5.5);
+    \draw (-1.5,5.3) -- (-.5,5.3) -- (-.5,1.7) -- (-1.5,1.7);
+    \draw (-1.5,1.5) -- (-.5,1.5) -- (-0.5,1);
+    \draw ([shift={(0,1)}]180:0.5) arc[start angle=180,end angle=360,radius=0.5];
+    \draw (0.5,1) -- (0.5,5.75);
+  \end{scope}
+  \draw[->,cyan] (-2.5,1.6) -- (-1.6,1.6);
+  \draw[<-,PaleOrange] (-2.5,5.4) -- (-1.6,5.4);
+}
+
+\newcommand{\tkzCondenserBulbs}{%
+  \begin{scope}[shift={(0,0.2)}]
+    \tkzCondenserBody
+    \tkzCondenserStem
+  \end{scope}
+  \tkzTestTubeStopper
+  \fill[white,rounded corners=0.025cm]
+       (-0.05,0.6) -- (-0.05,0.5) -- (0.05,0.5) -- (0.05,0.6) -- cycle;
+}
+
+% ============================================================
+% 24. 加热球 (Chauffe-Ballon)
+% ============================================================
+\newcommand{\tkzHeaterRoundFlask}{%
+  \filldraw[fill=white,draw=black] (-2,-1) rectangle (2,1);
+  \draw (-1.25,0) circle (0.4);
+  \begin{scope}[shift={(-1.25,0)}]
+    \foreach \iA in {0,30,...,180} {\draw (\iA:0.45) -- (\iA:0.6);}
+    \draw[->] (0,0) -- (60:0.3);
+  \end{scope}
+  % 按钮区域: pst-labo \psframe[doubleline=true] 产生双线边框
+  % PSTricks doubleline: 外框在指定坐标, 内框向内偏移
+  % 实测: 外框到内框偏移约 0.13 units (含线宽+间隔, at scale=0.5)
+  % 外框 (在指定坐标处)
+  \draw[black,line width=0.8pt] (1,-.5) rectangle (1.5,0.5);
+  % 内框 (向内偏移, 填充灰色)
+  \filldraw[fill=gray,draw=black,line width=0.8pt] ({1+0.14},{-.5+0.14}) rectangle ({1.5-0.14},{0.5-0.14});
+  % 红色指示灯
+  \fill[red] (1.25,0.7) circle (0.1);
+}
+
+% ============================================================
+% 25. 回流烧瓶 (Ballon à reflux)
+% ============================================================
+\newcommand{\tkzRoundFlaskReflux}{%
+  \begin{scope}
+    \clip \tkzRoundFlaskSimplePath;   % 使用路径版本形成闭合 clip 区域
+    \shade[top color=cyan,bottom color=white,draw=cyan]
+      plot[smooth,tension=0.5] coordinates {%
+        (-1.5,1.5) (-1.375,1.55) (-1.25,1.5) (-1.125,1.45)
+        (-1,1.5) (-.875,1.55) (-.75,1.5) (-.625,1.45)
+        (-.5,1.5) (-.375,1.55) (-.25,1.5) (-0.125,1.45)
+        (0,1.5) (0.125,1.55) (.25,1.5) (0.375,1.45)
+        (0.5,1.5) (0.625,1.55) (0.75,1.5) (0.875,1.45)
+        (1,1.5) (1.125,1.55) (1.25,1.5) (1.375,1.45) (1.5,1.5)}
+      -- (1.5,1.5) -- (1.5,0) -- (-1.5,0) -- (-1.5,1.5) -- cycle;
+  \end{scope}
+  \tkzRoundFlaskSimple
+}
+
+% ============================================================
+% 26. 分液漏斗 (Ampoule à décanter / Separate Funnel)
+% ============================================================
+% 相 : 水相 / 有机相
+\definecolor{AqueousPhaseColor}{cmyk}{0.215686,0.062745,0,0}
+\definecolor{OrganicPhaseColor}{cmyk}{0.223529,0.094118,0.501961,0}
+
+% pst-labo: \tkzSeparatoryFunnel 设 linewidth=0.04 (用户单位, 随 unit 缩放)
+% TikZ: 用 \chemlabLineWidth (基础 0.053cm × scale) 近似, 匹配其他器皿线宽
+\newcommand{\tkzSeparatoryFunnelBody}{%
+  \chemlabUpdateLineWidths
+  \draw[line width=\chemlabLineWidth,line cap=round,line join=round]
+    (-0.65,15) -- (-0.55,13.75)
+    .. controls (-1.55,13.54) and ( -1.92,12.7) .. (-1.92,11.65)
+    .. controls (-1.92,10.6) and (-0.3,9.55) .. (-0.3,8.5)
+    -- (-0.3,2)
+    .. controls (-0.3,1.5) and (-0.14,1.5) .. (-0.14,1)
+    -- (-0.14,-1)
+    -- (0.14,-1)
+    -- (0.14,1)
+    .. controls (0.14,1.5) and (0.3,1.5) .. (0.3,2)
+    -- (0.3,8.5)
+    .. controls (0.3,9.55) and (1.92,10.6) .. (1.92,11.65)
+    .. controls ( 1.92,12.7) and (1.55,13.54) .. (0.55,13.75)
+    -- (0.65,15);
+}
+
+% 用于 clip 的轮廓
+\newcommand{\tkzSeparatoryFunnelOutlineClip}{%
+  (-0.65,15) -- (-0.55,13.75)
+  .. controls (-1.55,13.54) and ( -1.92,12.7) .. (-1.92,11.65)
+  .. controls (-1.92,10.6) and (-0.3,9.55) .. (-0.3,8.5)
+  -- (-0.3,2)
+  .. controls (-0.3,1.5) and (-0.14,1.5) .. (-0.14,1)
+  -- (-0.14,-1) -- (0.14,-1) -- (0.14,1)
+  .. controls (0.14,1.5) and (0.3,1.5) .. (0.3,2)
+  -- (0.3,8.5)
+  .. controls (0.3,9.55) and (1.92,10.6) .. (1.92,11.65)
+  .. controls (1.92,12.7) and (1.55,13.54) .. (0.55,13.75)
+  -- (0.65,15) -- cycle
+}
+
+% 顶盖 (Bouchon) - 继承 linewidth=0.04
+\newcommand{\tkzStopper}{%
+  \chemlabUpdateLineWidths
+  \filldraw[fill=gray!10,draw=gray,line width=\chemlabLineWidth,line cap=round,line join=round]
+    (-0.67,15.25) -- (0.67,15.25) -- (0.57,14) -- (-0.57,14) -- cycle;
+  \filldraw[fill=gray!5,draw=gray,line width=\chemlabLineWidth,line cap=round,line join=round]
+    ([shift={(0.555,15.365)}]-90:0.1145) arc[start angle=-90,end angle=-180,radius=0.1145]
+    -- ([shift={(0,15.92)}]-45:0.67) arc[start angle=-45,end angle=225,radius=0.67]
+    -- ([shift={(-0.555,15.365)}]0:0.1145) arc[start angle=0,end angle=-90,radius=0.1145]
+    -- cycle;
+}
+
+% 开启的旋塞 (TapOpen)
+% pst-labo: \psframe[fillstyle=solid] 默认 fillcolor=white (PSTricks 默认)
+% TikZ: \fill 默认黑色, 必须显式 fill=white
+\newcommand{\tkzTapOpen}{%
+  \chemlabUpdateLineWidths
+  \filldraw[fill=white,line width=\chemlabLineWidth] (-.2,0.5) rectangle (.2,1);
+  \draw[line width=\chemlabLineWidth] (-.2,0.4) rectangle (-.3,1.1);
+  \draw[line width=\chemlabLineWidth] (.2,0.4) rectangle (.3,1.1);
+  \draw[line width=\chemlabLineWidth] (.3,0.6) -- (.4,0.6) -- (.5,0.3) -- (.9,0.3) -- (.9,1.2) -- (.5,1.2)
+        -- (.4,0.9) -- (.3,0.9) -- cycle;
+  \fill[cyan!50] (-.6,0.4) -- (-.85,0.6) -- (-.85,0.9) -- (-.6,1.1) -- (-.3,1.1) -- (-.3,0.4) -- cycle;
+  \draw[line width=\chemlabLineWidth] (-0.6,0.4) -- (-0.6,1.1);
+  \draw[line width=\chemlabLineWidth] (0.5,0.3) -- (0.5,1.2);
+}
+
+% 关闭的旋塞 (TapClosed)
+% pst-labo: \psframe[fillstyle=solid] 默认 fillcolor=white
+\newcommand{\tkzTapClosed}{%
+  \chemlabUpdateLineWidths
+  \filldraw[fill=white,line width=\chemlabLineWidth] (-.2,0.5) rectangle (.2,1);
+  \draw[line width=\chemlabLineWidth] (-.2,0.4) rectangle (-.3,1.1);
+  \draw[line width=\chemlabLineWidth] (.2,0.4) rectangle (.3,1.1);
+  \draw[line width=\chemlabLineWidth] ([shift={(0.35,0.6)}]180:0.05) arc[start angle=180,end angle=90,radius=0.05]
+        -- (0.4,0.65) -- (0.9,0.65) -- (0.9,0.85) -- (0.35,0.85)
+        -- ([shift={(0.35,0.9)}]-90:0.05) arc[start angle=-90,end angle=-180,radius=0.05]
+        -- cycle;
+  \draw[line width=\chemlabLineWidth] (0.5,0.65) -- (0.5,0.85);
+  \fill[cyan!50] (-.6,0.4) -- (-.85,0.6) -- (-.85,0.9) -- (-.6,1.1) -- (-.3,1.1) -- (-.3,0.4) -- cycle;
+  \draw[line width=\chemlabLineWidth] (-0.6,0.4) -- (-0.6,1.1);
+}
+
+% \tkzSeparatoryFunnel  (主调用)
+% 可选参数 : stopper=true/false, TapOpen=true/false, liquidLevel1, liquidLevel2
+\newcommand{\tkzSeparatoryFunnel}[1][]{%
+  \begingroup
+  \chemlabUpdateLineWidths
+  \pgfkeys{
+    /tkzSeparatoryFunnel/.cd,
+    stopper/.is if=TkzTestTubeStopper,
+    TapOpen/.is if=TkzTapOpen,
+    liquidLevel1/.store in=\tkzTestTubeLiquidLevelI,
+    liquidLevel2/.store in=\tkzTestTubeLiquidLevelII,
+    #1}
+  % 默认值
+  \ifdefined\tkzTestTubeLiquidLevelI\else\def\tkzTestTubeLiquidLevelI{11}\fi
+  \ifdefined\tkzTestTubeLiquidLevelII\else\def\tkzTestTubeLiquidLevelII{12}\fi
+  % 水相
+  \begin{scope}
+    \clip \tkzSeparatoryFunnelOutlineClip;
+    \fill[AqueousPhaseColor] (-2,1) rectangle (2,\tkzTestTubeLiquidLevelI);
+  \end{scope}
+  % 有机相
+  \begin{scope}
+    \clip \tkzSeparatoryFunnelOutlineClip;
+    \fill[OrganicPhaseColor] (-2,\tkzTestTubeLiquidLevelI)
+          rectangle (2,\tkzTestTubeLiquidLevelII);
+  \end{scope}
+  \ifTkzTestTubeStopper\tkzStopper\fi
+  \tkzSeparatoryFunnelBody
+  \ifTkzTapOpen\tkzTapOpen\else\tkzTapClosed\fi
+  % 出口管口 (pst-labo: \psellipse[fillstyle=solid,fillcolor=white] 既有白色填充又有黑色轮廓)
+  \filldraw[fill=white,line width=\chemlabLineWidth] (0,-1) ellipse (0.15 and 0.25);
+  % 瓶口圆点 (填充, 无需线宽)
+  \fill[darkgray] (-0.675,15) circle (0.03);
+  \fill[darkgray] (0.675,15) circle (0.03);
+  \draw[darkgray,line width=\chemlabLineWidth] (-0.65,15) -- (0.65,15);
+  % 颈与瓶身接合
+  \draw[gray,line width=\chemlabLineWidth] (-0.55,13.75) -- (0.55,13.75);
+  \endgroup
+}
+
+% ============================================================
+% 27. 支架 (pstSupport)
+% ============================================================
+% pst-labo: \psset{dimen=m,linewidth=0.04} — linewidth=0.04 是用户单位, 随 unit 缩放
+% TikZ: 用 \chemlabLineWidth (基础 0.053cm × scale), 与其他器皿一致
+\newcommand{\tkzStand}{%
+  \chemlabUpdateLineWidths
+  \begin{scope}[line width=\chemlabLineWidth]
+    \filldraw[fill=woodColor,draw=black,line join=round]
+        (-2,-6) rectangle (5,-5);
+    \filldraw[fill=woodColor,draw=black,line join=round]
+        (2.75,2) rectangle (3.25,16);
+    \filldraw[fill=woodColor,draw=black,line join=round]
+        ([shift={(2.75,1.5)}]90:0.5) arc[start angle=90,end angle=180,radius=0.5]
+        -- (2.25,1.5) -- (2.25,-5) -- (3.75,-5) -- (3.75,1.5)
+        -- ([shift={(3.25,1.5)}]0:0.5) arc[start angle=0,end angle=90,radius=0.5]
+        -- cycle;
+    \draw (2,11.5) -- (1.55,10.5);
+    \filldraw[fill=woodColor,draw=black,line join=round]
+        (-2.5,11.5) -- (-2,11.5) -- (-1.55,10.5) -- (-2.5,10.5) -- cycle;
+    \filldraw[fill=woodColor,draw=black,line join=round]
+        (4,11.5) -- (2,11.5) -- (1.55,10.5) -- (4,10.5) -- cycle;
+    \draw (-2.5,10.5) rectangle (4,11.5);
+    % 旋钮: pst-labo \pscustom[style=woodColor]{...} 填充会自动闭合, 但描边只画实际路径
+    % (不画对角闭合边). TikZ: \fill 自动闭合填充, \draw 画开放路径 (无 -- cycle).
+    \fill[woodColor]
+        (4,11.2) -- (4.5,11.2)
+        -- ([shift={(5,11)}]158.2:0.5385) arc[start angle=158.2,end angle=-158.2,radius=0.5385]
+        -- (4.5,10.8) -- (4,10.8) -- cycle;
+    \draw
+        (4,11.2) -- (4.5,11.2)
+        -- ([shift={(5,11)}]158.2:0.5385) arc[start angle=158.2,end angle=-158.2,radius=0.5385]
+        -- (4.5,10.8) -- (4,10.8);
+    \draw (4.5,10.8) -- (4.5,11.2);
+  \end{scope}
+}
+
+\endinput

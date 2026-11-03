@@ -1,0 +1,1213 @@
+{
+  "_note": "图库模板库：把教材里反复出现的成套装置固化成标准 plan（装置清单 + 相对位置 + 连接关系）。字段与模型输出的 plan 完全一致，可直接校验、直接渲染；atlas 字段回指图库里对应的原始插图。新增模板必须能通过 validatePlan 与 renderPlan（e2e 会逐条跑）。",
+  "templates": [
+    {
+      "id": "kmno4-o2-drainage",
+      "name": "加热高锰酸钾制氧气·排水法收集",
+      "atlas": "atlas-123",
+      "tags": [
+        "固固加热",
+        "排水法",
+        "气体制备"
+      ],
+      "note": "管口略向下防冷凝水倒流、口部塞棉花、导管从管口引出后伸入倒扣瓶口",
+      "plan": {
+        "subject": "chemistry",
+        "canvas_hint": "two_column",
+        "devices": [
+          {
+            "id": "stand_1",
+            "type": "stand",
+            "label": "铁架台",
+            "relative_position": "left_center",
+            "interface": [
+              "clamp",
+              "base"
+            ]
+          },
+          {
+            "id": "test_tube_1",
+            "type": "test_tube",
+            "label": "试管",
+            "relative_position": "center",
+            "params": {
+              "solid_chunks": true,
+              "tilted": "down",
+              "has_cotton": true
+            },
+            "interface": [
+              "mouth_open"
+            ]
+          },
+          {
+            "id": "burner_1",
+            "type": "burner",
+            "label": "酒精灯",
+            "relative_position": "center_bottom",
+            "interface": [
+              "flame"
+            ]
+          },
+          {
+            "id": "tube_1",
+            "type": "tube",
+            "label": "导管",
+            "relative_position": "right_center",
+            "interface": [
+              "left_end",
+              "right_end"
+            ]
+          },
+          {
+            "id": "trough_1",
+            "type": "trough",
+            "label": "水槽",
+            "relative_position": "right_bottom",
+            "params": {
+              "liquid_level": 0.8
+            },
+            "interface": [
+              "liquid_inside"
+            ]
+          },
+          {
+            "id": "gas_jar_1",
+            "type": "gas_jar",
+            "label": "集气瓶",
+            "relative_position": "right_bottom",
+            "params": {
+              "inverted": true,
+              "has_glass_plate": false
+            },
+            "interface": [
+              "top_in",
+              "top_out"
+            ]
+          }
+        ],
+        "connections": [
+          {
+            "from": "stand_1.clamp",
+            "to": "test_tube_1.mouth_open",
+            "style": "dashed",
+            "note": "铁夹固定试管"
+          },
+          {
+            "from": "burner_1.flame",
+            "to": "test_tube_1.mouth_open",
+            "style": "straight",
+            "note": "加热固体药品"
+          },
+          {
+            "from": "test_tube_1.mouth_open",
+            "to": "tube_1.left_end",
+            "style": "straight",
+            "note": "导管从管口引出"
+          },
+          {
+            "from": "tube_1.right_end",
+            "to": "gas_jar_1.top_in",
+            "style": "straight",
+            "route": "up_into_jar",
+            "note": "排水法，伸入倒扣瓶口"
+          }
+        ],
+        "expected_counts": {
+          "stand": 1,
+          "test_tube": 1,
+          "burner": 1,
+          "tube": 1,
+          "trough": 1,
+          "gas_jar": 1
+        }
+      }
+    },
+    {
+      "id": "kmno4-o2-upward",
+      "name": "加热高锰酸钾制氧气·向上排空气法",
+      "atlas": "atlas-003",
+      "tags": [
+        "固固加热",
+        "向上排空气",
+        "气体制备"
+      ],
+      "note": "集气瓶正放、盖玻璃片、导管伸到瓶底（长进短出）",
+      "plan": {
+        "subject": "chemistry",
+        "canvas_hint": "two_column",
+        "devices": [
+          {
+            "id": "stand_1",
+            "type": "stand",
+            "label": "铁架台",
+            "relative_position": "left_center",
+            "interface": [
+              "clamp",
+              "base"
+            ]
+          },
+          {
+            "id": "test_tube_1",
+            "type": "test_tube",
+            "label": "试管",
+            "relative_position": "center",
+            "params": {
+              "solid_chunks": true,
+              "tilted": "down",
+              "has_cotton": true
+            },
+            "interface": [
+              "mouth_open"
+            ]
+          },
+          {
+            "id": "burner_1",
+            "type": "burner",
+            "label": "酒精灯",
+            "relative_position": "center_bottom",
+            "interface": [
+              "flame"
+            ]
+          },
+          {
+            "id": "tube_1",
+            "type": "tube",
+            "label": "导管",
+            "relative_position": "right_center",
+            "interface": [
+              "left_end",
+              "right_end"
+            ]
+          },
+          {
+            "id": "gas_jar_1",
+            "type": "gas_jar",
+            "label": "集气瓶",
+            "relative_position": "right_bottom",
+            "params": {
+              "has_glass_plate": true
+            },
+            "interface": [
+              "bottom_in",
+              "top_out"
+            ]
+          }
+        ],
+        "connections": [
+          {
+            "from": "stand_1.clamp",
+            "to": "test_tube_1.mouth_open",
+            "style": "dashed",
+            "note": "铁夹固定试管"
+          },
+          {
+            "from": "burner_1.flame",
+            "to": "test_tube_1.mouth_open",
+            "style": "straight",
+            "note": "加热固体药品"
+          },
+          {
+            "from": "test_tube_1.mouth_open",
+            "to": "tube_1.left_end",
+            "style": "straight",
+            "note": "导管从管口引出"
+          },
+          {
+            "from": "tube_1.right_end",
+            "to": "gas_jar_1.bottom_in",
+            "style": "straight",
+            "route": "down_into_jar",
+            "note": "向上排空气法，导管伸到瓶底"
+          }
+        ],
+        "expected_counts": {
+          "stand": 1,
+          "test_tube": 1,
+          "burner": 1,
+          "tube": 1,
+          "gas_jar": 1
+        }
+      }
+    },
+    {
+      "id": "co2-upward",
+      "name": "实验室制取二氧化碳（锥形瓶+长颈漏斗，向上排空气法）",
+      "atlas": "atlas-110",
+      "tags": [
+        "固液常温",
+        "向上排空气",
+        "气体制备"
+      ],
+      "note": "长颈漏斗下端伸入液面以下形成液封，固体用大理石，导管伸到集气瓶底",
+      "plan": {
+        "subject": "chemistry",
+        "canvas_hint": "two_column",
+        "devices": [
+          {
+            "id": "funnel_1",
+            "type": "long_neck_funnel",
+            "label": "长颈漏斗",
+            "relative_position": "left_top",
+            "interface": [
+              "top_open",
+              "bottom_out"
+            ]
+          },
+          {
+            "id": "bottle_1",
+            "type": "bottle",
+            "label": "锥形瓶",
+            "relative_position": "left_center",
+            "params": {
+              "liquid_level": 0.35,
+              "solid_chunks": true
+            },
+            "interface": [
+              "top_open",
+              "side_right_out",
+              "liquid_inside"
+            ]
+          },
+          {
+            "id": "tube_1",
+            "type": "tube",
+            "label": "导管",
+            "relative_position": "center",
+            "interface": [
+              "left_end",
+              "right_end"
+            ]
+          },
+          {
+            "id": "gas_jar_1",
+            "type": "gas_jar",
+            "label": "集气瓶",
+            "relative_position": "right_center",
+            "params": {
+              "has_glass_plate": true
+            },
+            "interface": [
+              "bottom_in",
+              "top_out"
+            ]
+          }
+        ],
+        "connections": [
+          {
+            "from": "funnel_1.bottom_out",
+            "to": "bottle_1.liquid_inside",
+            "style": "straight",
+            "note": "长颈漏斗液封"
+          },
+          {
+            "from": "bottle_1.side_right_out",
+            "to": "tube_1.left_end",
+            "style": "straight",
+            "note": "导出二氧化碳"
+          },
+          {
+            "from": "tube_1.right_end",
+            "to": "gas_jar_1.bottom_in",
+            "style": "straight",
+            "route": "down_into_jar",
+            "note": "向上排空气法，导管伸到瓶底"
+          }
+        ],
+        "expected_counts": {
+          "long_neck_funnel": 1,
+          "bottle": 1,
+          "tube": 1,
+          "gas_jar": 1
+        }
+      }
+    },
+    {
+      "id": "h2-downward",
+      "name": "实验室制取氢气（向下排空气法）",
+      "atlas": "atlas-119",
+      "tags": [
+        "固液常温",
+        "向下排空气",
+        "气体制备"
+      ],
+      "note": "集气瓶倒置、导管伸到瓶底（短进长出）；氢气密度小于空气",
+      "plan": {
+        "subject": "chemistry",
+        "canvas_hint": "two_column",
+        "devices": [
+          {
+            "id": "funnel_1",
+            "type": "long_neck_funnel",
+            "label": "长颈漏斗",
+            "relative_position": "left_top",
+            "interface": [
+              "top_open",
+              "bottom_out"
+            ]
+          },
+          {
+            "id": "bottle_1",
+            "type": "bottle",
+            "label": "锥形瓶",
+            "relative_position": "left_center",
+            "params": {
+              "liquid_level": 0.4,
+              "solid_chunks": true
+            },
+            "interface": [
+              "top_open",
+              "side_right_out",
+              "liquid_inside"
+            ]
+          },
+          {
+            "id": "tube_1",
+            "type": "tube",
+            "label": "导管",
+            "relative_position": "center",
+            "interface": [
+              "left_end",
+              "right_end"
+            ]
+          },
+          {
+            "id": "gas_jar_1",
+            "type": "gas_jar",
+            "label": "集气瓶",
+            "relative_position": "right_center",
+            "params": {
+              "inverted": true
+            },
+            "interface": [
+              "top_in",
+              "top_out"
+            ]
+          }
+        ],
+        "connections": [
+          {
+            "from": "funnel_1.bottom_out",
+            "to": "bottle_1.liquid_inside",
+            "style": "straight",
+            "note": "长颈漏斗液封"
+          },
+          {
+            "from": "bottle_1.side_right_out",
+            "to": "tube_1.left_end",
+            "style": "straight",
+            "note": "导出氢气"
+          },
+          {
+            "from": "tube_1.right_end",
+            "to": "gas_jar_1.top_in",
+            "style": "straight",
+            "route": "straight",
+            "note": "向下排空气法，导管伸入倒置瓶口"
+          }
+        ],
+        "expected_counts": {
+          "long_neck_funnel": 1,
+          "bottle": 1,
+          "tube": 1,
+          "gas_jar": 1
+        }
+      }
+    },
+    {
+      "id": "h2-cuo",
+      "name": "氢气还原氧化铜",
+      "atlas": "atlas-122",
+      "tags": [
+        "金属还原",
+        "固固加热",
+        "通入气体"
+      ],
+      "note": "试管口略向下倾斜、CuO 铺在管底、导管穿过塞子伸到固体上方；黑色变红色、管口有水珠",
+      "plan": {
+        "subject": "chemistry",
+        "canvas_hint": "two_column",
+        "devices": [
+          {
+            "id": "stand_1",
+            "type": "stand",
+            "label": "铁架台",
+            "relative_position": "left_center",
+            "interface": [
+              "clamp",
+              "base"
+            ]
+          },
+          {
+            "id": "test_tube_1",
+            "type": "test_tube",
+            "label": "试管（内装 CuO）",
+            "relative_position": "center",
+            "params": {
+              "solid_chunks": true,
+              "tilted": "down"
+            },
+            "interface": [
+              "mouth_open"
+            ]
+          },
+          {
+            "id": "burner_1",
+            "type": "burner",
+            "label": "酒精灯",
+            "relative_position": "center_bottom",
+            "interface": [
+              "flame"
+            ]
+          },
+          {
+            "id": "tube_1",
+            "type": "tube",
+            "label": "导管（氢气）",
+            "relative_position": "right_center",
+            "interface": [
+              "left_end",
+              "right_end"
+            ]
+          }
+        ],
+        "connections": [
+          {
+            "from": "stand_1.clamp",
+            "to": "test_tube_1.mouth_open",
+            "style": "dashed",
+            "note": "铁夹固定试管"
+          },
+          {
+            "from": "burner_1.flame",
+            "to": "test_tube_1.mouth_open",
+            "style": "straight",
+            "note": "加热氧化铜"
+          },
+          {
+            "from": "tube_1.right_end",
+            "to": "test_tube_1.mouth_open",
+            "style": "straight",
+            "route": "into_tube",
+            "note": "导管伸到管内氧化铜上方，通入氢气"
+          }
+        ],
+        "expected_counts": {
+          "stand": 1,
+          "test_tube": 1,
+          "burner": 1,
+          "tube": 1
+        }
+      }
+    },
+    {
+      "id": "c-cuo",
+      "name": "木炭还原氧化铜",
+      "atlas": "atlas-045",
+      "tags": [
+        "金属还原",
+        "固固加热"
+      ],
+      "note": "碳粉与氧化铜混合加热，导管伸到管内固体上方，另一端通入澄清石灰水检验 CO2",
+      "plan": {
+        "subject": "chemistry",
+        "canvas_hint": "two_column",
+        "devices": [
+          {
+            "id": "stand_1",
+            "type": "stand",
+            "label": "铁架台",
+            "relative_position": "left_center",
+            "interface": [
+              "clamp",
+              "base"
+            ]
+          },
+          {
+            "id": "test_tube_1",
+            "type": "test_tube",
+            "label": "试管（C+CuO）",
+            "relative_position": "center",
+            "params": {
+              "solid_chunks": true,
+              "tilted": "down"
+            },
+            "interface": [
+              "mouth_open"
+            ]
+          },
+          {
+            "id": "burner_1",
+            "type": "burner",
+            "label": "酒精灯",
+            "relative_position": "center_bottom",
+            "interface": [
+              "flame"
+            ]
+          },
+          {
+            "id": "tube_1",
+            "type": "tube",
+            "label": "导管",
+            "relative_position": "right_center",
+            "interface": [
+              "left_end",
+              "right_end"
+            ]
+          },
+          {
+            "id": "beaker_1",
+            "type": "beaker",
+            "label": "澄清石灰水",
+            "relative_position": "right_bottom",
+            "params": {
+              "liquid_level": 0.55
+            },
+            "interface": [
+              "liquid_inside"
+            ]
+          }
+        ],
+        "connections": [
+          {
+            "from": "stand_1.clamp",
+            "to": "test_tube_1.mouth_open",
+            "style": "dashed",
+            "note": "铁夹固定试管"
+          },
+          {
+            "from": "burner_1.flame",
+            "to": "test_tube_1.mouth_open",
+            "style": "straight",
+            "note": "高温加热混合物"
+          },
+          {
+            "from": "test_tube_1.mouth_open",
+            "to": "tube_1.left_end",
+            "style": "straight",
+            "note": "导出生成的气体"
+          },
+          {
+            "from": "tube_1.right_end",
+            "to": "beaker_1.liquid_inside",
+            "style": "straight",
+            "route": "orthogonal_down",
+            "note": "通入澄清石灰水，检验二氧化碳"
+          }
+        ],
+        "expected_counts": {
+          "stand": 1,
+          "test_tube": 1,
+          "burner": 1,
+          "tube": 1,
+          "beaker": 1
+        }
+      }
+    },
+    {
+      "id": "o2-combustion-air",
+      "name": "燃烧法测定空气中氧气的含量",
+      "atlas": "atlas-128",
+      "tags": [
+        "定量测定",
+        "燃烧"
+      ],
+      "note": "集气瓶正放、瓶底留少量水、燃烧匙从瓶口伸入瓶内中部；冷却后瓶内水面上升约 1/5",
+      "plan": {
+        "subject": "chemistry",
+        "canvas_hint": "single_column",
+        "devices": [
+          {
+            "id": "gas_jar_1",
+            "type": "gas_jar",
+            "label": "集气瓶",
+            "relative_position": "center",
+            "params": {
+              "liquid_level": 0.15
+            },
+            "interface": [
+              "bottom_in",
+              "top_out"
+            ]
+          },
+          {
+            "id": "spoon_1",
+            "type": "combustion_spoon",
+            "label": "燃烧匙",
+            "relative_position": "center_top",
+            "interface": [
+              "handle",
+              "bowl"
+            ]
+          }
+        ],
+        "connections": [
+          {
+            "from": "spoon_1.bowl",
+            "to": "gas_jar_1.bottom_in",
+            "style": "straight",
+            "note": "燃烧匙伸入瓶内，红磷燃烧消耗氧气"
+          }
+        ],
+        "expected_counts": {
+          "gas_jar": 1,
+          "combustion_spoon": 1
+        }
+      }
+    },
+    {
+      "id": "drainage-generic",
+      "name": "排水法收集（通用）",
+      "atlas": "atlas-022",
+      "tags": [
+        "收集方法"
+      ],
+      "note": "水槽盛水、集气瓶倒扣、导管伸到倒扣瓶口下方；适用于难溶/微溶于水的气体",
+      "plan": {
+        "subject": "chemistry",
+        "canvas_hint": "single_column",
+        "devices": [
+          {
+            "id": "trough_1",
+            "type": "trough",
+            "label": "水槽",
+            "relative_position": "center_bottom",
+            "params": {
+              "liquid_level": 0.8
+            },
+            "interface": [
+              "liquid_inside"
+            ]
+          },
+          {
+            "id": "gas_jar_1",
+            "type": "gas_jar",
+            "label": "集气瓶",
+            "relative_position": "center_bottom",
+            "params": {
+              "inverted": true,
+              "has_glass_plate": false
+            },
+            "interface": [
+              "top_in",
+              "top_out"
+            ]
+          },
+          {
+            "id": "tube_1",
+            "type": "tube",
+            "label": "导管",
+            "relative_position": "right_center",
+            "interface": [
+              "left_end",
+              "right_end"
+            ]
+          }
+        ],
+        "connections": [
+          {
+            "from": "gas_jar_1.top_out",
+            "to": "trough_1.liquid_inside",
+            "style": "straight",
+            "note": "集气瓶倒扣浸入水中"
+          },
+          {
+            "from": "tube_1.right_end",
+            "to": "gas_jar_1.top_in",
+            "style": "straight",
+            "route": "up_into_jar",
+            "note": "导管伸到倒扣瓶口，排出瓶内水"
+          }
+        ],
+        "expected_counts": {
+          "trough": 1,
+          "gas_jar": 1,
+          "tube": 1
+        }
+      }
+    },
+    {
+      "id": "upward-displacement-generic",
+      "name": "向上排空气法收集（通用）",
+      "atlas": "atlas-018",
+      "tags": [
+        "收集方法"
+      ],
+      "note": "集气瓶正放、盖玻璃片、导管伸到瓶底（长进短出）；适用于密度比空气大的气体",
+      "plan": {
+        "subject": "chemistry",
+        "canvas_hint": "single_column",
+        "devices": [
+          {
+            "id": "gas_jar_1",
+            "type": "gas_jar",
+            "label": "集气瓶",
+            "relative_position": "center",
+            "params": {
+              "has_glass_plate": true
+            },
+            "interface": [
+              "bottom_in",
+              "top_out"
+            ]
+          },
+          {
+            "id": "tube_1",
+            "type": "tube",
+            "label": "导管",
+            "relative_position": "left_center",
+            "interface": [
+              "left_end",
+              "right_end"
+            ]
+          }
+        ],
+        "connections": [
+          {
+            "from": "tube_1.right_end",
+            "to": "gas_jar_1.bottom_in",
+            "style": "straight",
+            "route": "down_into_jar",
+            "note": "导管伸到瓶底，把空气从瓶口排出"
+          }
+        ],
+        "expected_counts": {
+          "gas_jar": 1,
+          "tube": 1
+        }
+      }
+    },
+    {
+      "id": "filtration",
+      "name": "过滤（漏斗+滤纸+烧杯+玻璃棒）",
+      "tags": [
+        "过滤",
+        "分离提纯",
+        "基本操作"
+      ],
+      "note": "一贴二低三靠：滤纸贴漏斗内壁、液面低于滤纸边缘、漏斗颈靠烧杯内壁、玻璃棒靠三层滤纸",
+      "plan": {
+        "subject": "chemistry",
+        "canvas_hint": "two_column",
+        "devices": [
+          {
+            "id": "stand_1",
+            "type": "stand",
+            "label": "铁架台",
+            "relative_position": "left_center",
+            "interface": [
+              "clamp",
+              "base"
+            ]
+          },
+          {
+            "id": "funnel_1",
+            "type": "funnel",
+            "label": "漏斗",
+            "relative_position": "center",
+            "params": {
+              "has_filter_paper": true
+            },
+            "interface": [
+              "top_open",
+              "stem_bottom"
+            ]
+          },
+          {
+            "id": "beaker_1",
+            "type": "beaker",
+            "label": "烧杯",
+            "relative_position": "center_bottom",
+            "params": {
+              "liquid_level": 0.3
+            },
+            "interface": [
+              "top_open",
+              "liquid_inside"
+            ]
+          },
+          {
+            "id": "rod_1",
+            "type": "glass_rod",
+            "label": "玻璃棒",
+            "relative_position": "right_top",
+            "interface": [
+              "top",
+              "bottom"
+            ]
+          }
+        ],
+        "connections": [
+          {
+            "from": "stand_1.clamp",
+            "to": "funnel_1.stem_bottom",
+            "style": "dashed",
+            "note": "铁圈固定漏斗"
+          },
+          {
+            "from": "funnel_1.stem_bottom",
+            "to": "beaker_1.top_open",
+            "style": "straight",
+            "note": "漏斗颈靠烧杯内壁"
+          },
+          {
+            "from": "rod_1.bottom",
+            "to": "funnel_1.top_open",
+            "style": "straight",
+            "note": "玻璃棒引流，下端靠三层滤纸"
+          }
+        ],
+        "expected_counts": {
+          "stand": 1,
+          "funnel": 1,
+          "beaker": 1,
+          "glass_rod": 1
+        }
+      }
+    },
+    {
+      "id": "evaporation",
+      "name": "蒸发结晶（蒸发皿+三脚架+酒精灯+玻璃棒）",
+      "tags": [
+        "蒸发",
+        "结晶",
+        "基本操作"
+      ],
+      "note": "蒸发皿架在三脚架上，酒精灯加热皿底，玻璃棒不断搅拌；出现较多固体时停止加热，用余热蒸干",
+      "plan": {
+        "subject": "chemistry",
+        "canvas_hint": "two_column",
+        "devices": [
+          {
+            "id": "dish_1",
+            "type": "evaporating_dish",
+            "label": "蒸发皿",
+            "relative_position": "center",
+            "params": {
+              "liquid_level": 0.45
+            },
+            "interface": [
+              "top_open",
+              "liquid_inside"
+            ]
+          },
+          {
+            "id": "tripod_1",
+            "type": "tripod",
+            "label": "三脚架",
+            "relative_position": "center_bottom",
+            "interface": [
+              "top",
+              "bottom"
+            ]
+          },
+          {
+            "id": "burner_1",
+            "type": "burner",
+            "label": "酒精灯",
+            "relative_position": "center_bottom",
+            "interface": [
+              "flame"
+            ]
+          },
+          {
+            "id": "rod_1",
+            "type": "glass_rod",
+            "label": "玻璃棒",
+            "relative_position": "right_center",
+            "interface": [
+              "top",
+              "bottom"
+            ]
+          }
+        ],
+        "connections": [
+          {
+            "from": "burner_1.flame",
+            "to": "dish_1.bottom",
+            "style": "straight",
+            "note": "酒精灯加热蒸发皿"
+          },
+          {
+            "from": "rod_1.bottom",
+            "to": "dish_1.top_open",
+            "style": "straight",
+            "note": "玻璃棒搅拌，防止局部过热液滴飞溅"
+          }
+        ],
+        "expected_counts": {
+          "evaporating_dish": 1,
+          "tripod": 1,
+          "burner": 1,
+          "glass_rod": 1
+        }
+      }
+    },
+    {
+      "id": "gas-drying",
+      "name": "气体的干燥（干燥管串联在导管之间）",
+      "tags": [
+        "干燥",
+        "除杂",
+        "气体净化"
+      ],
+      "note": "干燥管左进右出（left_open 进、right_open 出），管内装固体干燥剂；洗气则用盛液体的瓶，长进短出",
+      "plan": {
+        "subject": "chemistry",
+        "canvas_hint": "two_column",
+        "devices": [
+          {
+            "id": "flask_1",
+            "type": "flask",
+            "label": "锥形瓶",
+            "relative_position": "left_center",
+            "params": {
+              "solid_chunks": true,
+              "liquid_level": 0.4
+            },
+            "interface": [
+              "side_right_out",
+              "liquid_inside",
+              "top_open"
+            ]
+          },
+          {
+            "id": "funnel_1",
+            "type": "long_neck_funnel",
+            "label": "长颈漏斗",
+            "relative_position": "left_top",
+            "interface": [
+              "bottom_out"
+            ]
+          },
+          {
+            "id": "tube_1",
+            "type": "tube",
+            "label": "导管",
+            "relative_position": "center_top",
+            "interface": [
+              "left_end",
+              "right_end"
+            ]
+          },
+          {
+            "id": "dry_1",
+            "type": "drying_tube",
+            "label": "干燥管",
+            "relative_position": "center",
+            "params": {
+              "solid_chunks": true
+            },
+            "interface": [
+              "left_open",
+              "right_open"
+            ]
+          },
+          {
+            "id": "tube_2",
+            "type": "tube",
+            "label": "导管",
+            "relative_position": "right_center",
+            "interface": [
+              "left_end",
+              "right_end"
+            ]
+          },
+          {
+            "id": "jar_1",
+            "type": "gas_jar",
+            "label": "集气瓶",
+            "relative_position": "right_bottom",
+            "params": {
+              "has_glass_plate": true
+            },
+            "interface": [
+              "bottom_in"
+            ]
+          }
+        ],
+        "connections": [
+          {
+            "from": "funnel_1.bottom_out",
+            "to": "flask_1.liquid_inside",
+            "style": "straight",
+            "note": "长颈漏斗液封，防止气体逸出"
+          },
+          {
+            "from": "flask_1.side_right_out",
+            "to": "tube_1.left_end",
+            "style": "straight",
+            "note": "导出气体"
+          },
+          {
+            "from": "tube_1.right_end",
+            "to": "dry_1.left_open",
+            "style": "straight",
+            "note": "气体进入干燥管"
+          },
+          {
+            "from": "dry_1.right_open",
+            "to": "tube_2.left_end",
+            "style": "straight",
+            "note": "干燥后的气体流出"
+          },
+          {
+            "from": "tube_2.right_end",
+            "to": "jar_1.bottom_in",
+            "style": "straight",
+            "route": "down_into_jar",
+            "note": "向上排空气法收集，导管伸到瓶底"
+          }
+        ],
+        "expected_counts": {
+          "flask": 1,
+          "long_neck_funnel": 1,
+          "tube": 2,
+          "drying_tube": 1,
+          "gas_jar": 1
+        }
+      }
+    },
+    {
+      "id": "distillation",
+      "name": "蒸馏（蒸馏烧瓶+蒸馏头+温度计+冷凝管）",
+      "tags": [
+        "蒸馏",
+        "分离提纯",
+        "沸点"
+      ],
+      "note": "温度计水银球在支管口（测蒸气温度）；冷凝水下进上出；接收瓶正对冷凝管出口",
+      "plan": {
+        "subject": "chemistry",
+        "canvas_hint": "two_column",
+        "devices": [
+          {
+            "id": "flask_1",
+            "type": "distilling_flask",
+            "label": "蒸馏烧瓶",
+            "relative_position": "center_bottom",
+            "params": {
+              "liquid_level": 0.5
+            },
+            "interface": [
+              "top_open",
+              "side_out",
+              "bottom"
+            ]
+          },
+          {
+            "id": "head_1",
+            "type": "distillation_head",
+            "label": "蒸馏头",
+            "relative_position": "left_center",
+            "interface": [
+              "bottom_in",
+              "top_out",
+              "slant_out"
+            ]
+          },
+          {
+            "id": "thermo_1",
+            "type": "thermometer",
+            "label": "温度计",
+            "relative_position": "left_center",
+            "interface": [
+              "top",
+              "bulb"
+            ]
+          },
+          {
+            "id": "cond_1",
+            "type": "condenser",
+            "label": "冷凝管",
+            "relative_position": "center",
+            "interface": [
+              "in_left",
+              "out_right",
+              "water_in",
+              "water_out"
+            ]
+          },
+          {
+            "id": "beaker_1",
+            "type": "beaker",
+            "label": "锥形瓶",
+            "relative_position": "right_bottom",
+            "params": {
+              "liquid_level": 0.3
+            },
+            "interface": [
+              "top_open",
+              "liquid_inside"
+            ]
+          },
+          {
+            "id": "burner_1",
+            "type": "burner",
+            "label": "酒精灯",
+            "relative_position": "bottom_center",
+            "interface": [
+              "flame"
+            ]
+          },
+          {
+            "id": "stand_1",
+            "type": "stand",
+            "label": "铁架台",
+            "relative_position": "left_bottom",
+            "interface": [
+              "clamp",
+              "base"
+            ]
+          }
+        ],
+        "connections": [
+          {
+            "from": "burner_1.flame",
+            "to": "flask_1.bottom",
+            "style": "straight",
+            "note": "酒精灯加热蒸馏烧瓶"
+          },
+          {
+            "from": "stand_1.clamp",
+            "to": "flask_1.bottom",
+            "style": "dashed",
+            "note": "铁架台固定烧瓶"
+          },
+          {
+            "from": "flask_1.top_open",
+            "to": "head_1.bottom_in",
+            "style": "straight",
+            "note": "蒸馏头坐在烧瓶口上"
+          },
+          {
+            "from": "thermo_1.bulb",
+            "to": "head_1.top_out",
+            "style": "straight",
+            "note": "温度计水银球位于支管口，测蒸气温度"
+          },
+          {
+            "from": "head_1.slant_out",
+            "to": "cond_1.in_left",
+            "style": "straight",
+            "note": "蒸气进入冷凝管"
+          },
+          {
+            "from": "cond_1.out_right",
+            "to": "beaker_1.top_open",
+            "style": "straight",
+            "note": "馏出液流入接收瓶"
+          }
+        ],
+        "expected_counts": {
+          "distilling_flask": 1,
+          "distillation_head": 1,
+          "thermometer": 1,
+          "condenser": 1,
+          "beaker": 1,
+          "burner": 1,
+          "stand": 1
+        }
+      }
+    }
+  ]
+}
